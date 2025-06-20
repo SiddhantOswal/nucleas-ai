@@ -1,6 +1,8 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { CpuArchitecture } from "@/components/ui/cpu-architecture";
 import { Database, Target, Zap, BarChart3, Shield, Settings, ArrowRight, Activity, Users, TrendingUp, Route, Eye } from "lucide-react";
 
 const Product = () => {
@@ -141,6 +143,93 @@ const Product = () => {
               Everything you need to collect, unify, analyze, and activate your customer data in real-time. 
               Built for scale, designed for speed.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Nucleus Architecture Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              NucleasAI:{" "}
+              <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                The Nucleus
+              </span>{" "}
+              of Your Data Ecosystem
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Just like a nucleus powers every cell, NucleasAI becomes the central hub that energizes 
+              all your customer data flows, connecting every touchpoint in real-time.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Architecture Visual */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 blur-3xl rounded-3xl"></div>
+              <div className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+                <div className="h-64 flex items-center justify-center">
+                  <CpuArchitecture 
+                    text="AI"
+                    className="text-purple-300"
+                    width="100%"
+                    height="200px"
+                  />
+                </div>
+                <div className="mt-6 text-center">
+                  <h3 className="text-lg font-semibold text-white mb-2">Real-Time Data Processing</h3>
+                  <p className="text-sm text-gray-400">
+                    Watch data flow from every source into your unified nucleus, 
+                    powered by AI for instant insights and activation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - Data Flow Description */}
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mt-2 flex-shrink-0 animate-pulse"></div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Web & Mobile Data Streams</h4>
+                  <p className="text-gray-400">Customer interactions from websites, apps, and mobile platforms flow directly into the nucleus.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mt-2 flex-shrink-0 animate-pulse delay-200"></div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">CRM & Business Systems</h4>
+                  <p className="text-gray-400">Salesforce, HubSpot, and other business tools connect seamlessly to enrich customer profiles.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-2 flex-shrink-0 animate-pulse delay-500"></div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">AI-Powered Identity Resolution</h4>
+                  <p className="text-gray-400">The nucleus merges anonymous and known user data using advanced ML algorithms.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full mt-2 flex-shrink-0 animate-pulse delay-700"></div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Real-Time Activation</h4>
+                  <p className="text-gray-400">Insights and segments activate instantly across 200+ marketing and analytics tools.</p>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 p-4 rounded-lg border border-purple-700/50">
+                  <p className="text-purple-200 text-sm">
+                    <span className="font-semibold">💡 The Nucleus Effect:</span> Every data point strengthens the whole system, 
+                    creating a unified customer view that powers better experiences across every touchpoint.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
