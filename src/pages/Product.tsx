@@ -1,10 +1,48 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Database, Target, Zap, BarChart3, Shield, Settings, ArrowRight } from "lucide-react";
+import { Database, Target, Zap, BarChart3, Shield, Settings, ArrowRight, Activity, Users, TrendingUp, Route, Eye } from "lucide-react";
 
 const Product = () => {
+  const coreFeatures = [
+    {
+      icon: Database,
+      title: "Real-Time Data Ingestion",
+      description: "Collect event data instantly from websites, apps, CRMs, and pixels.",
+      color: "text-blue-400"
+    },
+    {
+      icon: Target,
+      title: "Identity Resolution",
+      description: "Merge user profiles using deterministic and AI-powered probabilistic logic.",
+      color: "text-purple-400"
+    },
+    {
+      icon: Users,
+      title: "Smart Segmentation",
+      description: "Build real-time cohorts using traits, UTM, and behavior.",
+      color: "text-green-400"
+    },
+    {
+      icon: TrendingUp,
+      title: "Predictive Insights",
+      description: "Score users for conversion, churn, and LTV using ML models.",
+      color: "text-orange-400"
+    },
+    {
+      icon: Route,
+      title: "Smart Redirect Rules",
+      description: "Redirect users dynamically based on geo, time, or behavior.",
+      color: "text-cyan-400"
+    },
+    {
+      icon: Shield,
+      title: "Privacy-First",
+      description: "Built-in GDPR/CCPA compliance and AI consent detection.",
+      color: "text-red-400"
+    }
+  ];
+
   const features = [
     {
       icon: Database,
@@ -103,6 +141,41 @@ const Product = () => {
               Everything you need to collect, unify, analyze, and activate your customer data in real-time. 
               Built for scale, designed for speed.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Features Section */}
+      <section className="py-16 bg-gray-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Core{" "}
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Capabilities
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Everything you need to collect, unify, and activate customer data in real-time
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {coreFeatures.map((feature, index) => (
+              <Card key={index} className="bg-gray-800/40 border-gray-700 hover:bg-gray-800/60 transition-all duration-300 group">
+                <CardHeader className="pb-4">
+                  <feature.icon className={`h-8 w-8 ${feature.color} mb-3 group-hover:scale-110 transition-transform duration-300`} />
+                  <CardTitle className="text-lg font-semibold text-white">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
