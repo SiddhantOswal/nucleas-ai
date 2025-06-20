@@ -201,19 +201,19 @@ const Contact = () => {
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400">General Inquiries</span>
                     <Badge variant="secondary" className="bg-green-900/30 text-green-300 border-green-800">
-                      < 24 hours
+                      &lt; 24 hours
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400">Sales Requests</span>
                     <Badge variant="secondary" className="bg-blue-900/30 text-blue-300 border-blue-800">
-                      < 4 hours
+                      &lt; 4 hours
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400">Enterprise Support</span>
                     <Badge variant="secondary" className="bg-purple-900/30 text-purple-300 border-purple-800">
-                      < 2 hours
+                      &lt; 2 hours
                     </Badge>
                   </div>
                 </div>
