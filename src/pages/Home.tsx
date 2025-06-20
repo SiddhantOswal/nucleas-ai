@@ -67,7 +67,7 @@ const Home = () => {
               {/* Stats */}
               <div className="flex flex-wrap gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-400">< 100ms</div>
+                  <div className="text-2xl font-bold text-orange-400">&lt;100ms</div>
                   <div className="text-sm text-gray-400">Activation Time</div>
                 </div>
                 <div className="text-center">
@@ -123,7 +123,7 @@ const Home = () => {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-300">Activation Speed</span>
-                        <span className="text-pink-400">< 50ms avg</span>
+                        <span className="text-pink-400">&lt;50ms avg</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <div className="bg-gradient-to-r from-pink-500 to-purple-500 h-2 rounded-full w-11/12 animate-pulse delay-1000"></div>
