@@ -2,34 +2,103 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Database, Zap, Target, BarChart3, Shield, Rocket } from "lucide-react";
+import { ArrowRight, Database, Zap, Target, BarChart3, Shield, Rocket, Play } from "lucide-react";
 
 const Home = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-              Real-time Customer Data Platform
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Unify, analyze, and activate your customer data instantly. Built for modern teams who need speed, accuracy, and intelligence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg px-8 py-4">
-                Request Demo
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 text-lg px-8 py-4">
-                Join Waitlist
-              </Button>
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 via-purple-900/30 to-slate-900/20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column - Content */}
+            <div className="text-left">
+              <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
+                <span className="bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
+                  Unify Customer Data.
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">
+                  Activate in Real-Time.
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-2xl">
+                NucleasAI is a real-time CDP that collects, unifies, and activates customer data instantly — powered by AI.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 mb-16">
+                <Button size="lg" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-lg px-10 py-6 h-auto font-semibold shadow-2xl shadow-indigo-500/25">
+                  Request Demo
+                  <ArrowRight className="ml-3 h-6 w-6" />
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 text-lg px-10 py-6 h-auto font-semibold backdrop-blur-sm">
+                  <Play className="mr-3 h-5 w-5" />
+                  Join Waitlist
+                </Button>
+              </div>
+              <div className="flex items-center gap-8 text-sm text-gray-400">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span>1,000+ companies on waitlist</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                  <span>Sub-second data activation</span>
+                </div>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm">
-              Join 1,000+ companies already on the waitlist
-            </p>
+
+            {/* Right Column - Product Visual Placeholder */}
+            <div className="relative">
+              <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 p-8 backdrop-blur-sm">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-2xl"></div>
+                <div className="relative">
+                  <div className="text-center mb-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800/80 rounded-full border border-gray-600/50 mb-4">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-sm text-gray-300">Live Dashboard Preview</span>
+                    </div>
+                  </div>
+                  
+                  {/* Dashboard Mockup */}
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="bg-gray-800/60 rounded-lg p-4 border border-gray-600/30">
+                        <div className="text-xs text-gray-400 mb-2">Active Users</div>
+                        <div className="text-2xl font-bold text-white">24,789</div>
+                        <div className="text-xs text-green-400">+12.3%</div>
+                      </div>
+                      <div className="bg-gray-800/60 rounded-lg p-4 border border-gray-600/30">
+                        <div className="text-xs text-gray-400 mb-2">Events/sec</div>
+                        <div className="text-2xl font-bold text-white">1,847</div>
+                        <div className="text-xs text-indigo-400">Real-time</div>
+                      </div>
+                      <div className="bg-gray-800/60 rounded-lg p-4 border border-gray-600/30">
+                        <div className="text-xs text-gray-400 mb-2">Profiles</div>
+                        <div className="text-2xl font-bold text-white">2.1M</div>
+                        <div className="text-xs text-purple-400">Unified</div>
+                      </div>
+                    </div>
+                    
+                    {/* Chart placeholder */}
+                    <div className="bg-gray-800/60 rounded-lg p-6 border border-gray-600/30">
+                      <div className="flex justify-between items-center mb-4">
+                        <div className="text-sm text-gray-300">Customer Journey Flow</div>
+                        <div className="text-xs text-gray-500">Last 24h</div>
+                      </div>
+                      <div className="h-32 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-lg flex items-end justify-center">
+                        <div className="text-xs text-gray-400 pb-4">Interactive Analytics Coming Soon</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-xl"></div>
+            </div>
           </div>
         </div>
       </section>
