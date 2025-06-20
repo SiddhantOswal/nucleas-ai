@@ -1,190 +1,172 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { ArrowRight, Database, Zap, Target, BarChart3, Shield, Rocket, Play } from "lucide-react";
+import { ArrowRight, Play, Zap, Users, TrendingUp } from "lucide-react";
 
 const Home = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 via-purple-900/30 to-slate-900/20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Content */}
-            <div className="text-left">
-              <h1 className="text-6xl md:text-7xl font-bold mb-8 leading-tight">
-                <span className="bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-pink-900/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30"></div>
+        
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              {/* Badge */}
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full">
+                <Zap className="w-4 h-4 text-orange-400 mr-2" />
+                <span className="text-sm font-medium text-purple-300">Real-Time CDP Powered by AI</span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-pink-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
                   Unify Customer Data.
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                   Activate in Real-Time.
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-2xl">
-                NucleasAI is a real-time CDP that collects, unifies, and activates customer data instantly — powered by AI.
+
+              {/* Subheadline */}
+              <p className="text-xl md:text-2xl text-purple-200 leading-relaxed max-w-2xl">
+                <span className="text-red-300">NucleasAI</span> is a real-time CDP that collects, unifies, and activates customer data instantly — 
+                <span className="text-orange-300"> powered by AI</span>.
               </p>
-              <div className="flex flex-col sm:flex-row gap-6 mb-16">
-                <Button size="lg" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-lg px-10 py-6 h-auto font-semibold shadow-2xl shadow-indigo-500/25">
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-orange-500 via-pink-500 to-red-500 hover:from-orange-600 hover:via-pink-600 hover:to-red-600 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-pink-500/25 transition-all duration-300"
+                >
                   Request Demo
-                  <ArrowRight className="ml-3 h-6 w-6" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-2 border-gray-600 text-gray-300 hover:bg-gray-800 hover:border-gray-500 text-lg px-10 py-6 h-auto font-semibold backdrop-blur-sm">
-                  <Play className="mr-3 h-5 w-5" />
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-pink-500 text-pink-400 hover:bg-pink-500/10 hover:text-pink-300 font-semibold px-8 py-4 text-lg transition-all duration-300"
+                >
+                  <Play className="mr-2 h-5 w-5" />
                   Join Waitlist
                 </Button>
               </div>
-              <div className="flex items-center gap-8 text-sm text-gray-400">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                  <span>1,000+ companies on waitlist</span>
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-8 pt-8">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-orange-400">< 100ms</div>
+                  <div className="text-sm text-gray-400">Activation Time</div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
-                  <span>Sub-second data activation</span>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-400">99.9%</div>
+                  <div className="text-sm text-gray-400">Uptime SLA</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-pink-400">200+</div>
+                  <div className="text-sm text-gray-400">Integrations</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Product Visual Placeholder */}
+            {/* Right Content - Dashboard Preview */}
             <div className="relative">
-              <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 p-8 backdrop-blur-sm">
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-2xl"></div>
-                <div className="relative">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800/80 rounded-full border border-gray-600/50 mb-4">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl rounded-3xl"></div>
+              
+              {/* Dashboard Placeholder */}
+              <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+                <div className="space-y-6">
+                  {/* Header */}
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold text-white">Real-Time Dashboard</h3>
+                    <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-sm text-gray-300">Live Dashboard Preview</span>
+                      <span className="text-sm text-green-400">Live</span>
                     </div>
                   </div>
-                  
-                  {/* Dashboard Mockup */}
+
+                  {/* Mock Data Bars */}
                   <div className="space-y-4">
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="bg-gray-800/60 rounded-lg p-4 border border-gray-600/30">
-                        <div className="text-xs text-gray-400 mb-2">Active Users</div>
-                        <div className="text-2xl font-bold text-white">24,789</div>
-                        <div className="text-xs text-green-400">+12.3%</div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300">Data Ingestion</span>
+                        <span className="text-purple-400">2.3M events/min</span>
                       </div>
-                      <div className="bg-gray-800/60 rounded-lg p-4 border border-gray-600/30">
-                        <div className="text-xs text-gray-400 mb-2">Events/sec</div>
-                        <div className="text-2xl font-bold text-white">1,847</div>
-                        <div className="text-xs text-indigo-400">Real-time</div>
-                      </div>
-                      <div className="bg-gray-800/60 rounded-lg p-4 border border-gray-600/30">
-                        <div className="text-xs text-gray-400 mb-2">Profiles</div>
-                        <div className="text-2xl font-bold text-white">2.1M</div>
-                        <div className="text-xs text-purple-400">Unified</div>
+                      <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full w-4/5 animate-pulse"></div>
                       </div>
                     </div>
-                    
-                    {/* Chart placeholder */}
-                    <div className="bg-gray-800/60 rounded-lg p-6 border border-gray-600/30">
-                      <div className="flex justify-between items-center mb-4">
-                        <div className="text-sm text-gray-300">Customer Journey Flow</div>
-                        <div className="text-xs text-gray-500">Last 24h</div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300">Identity Resolution</span>
+                        <span className="text-orange-400">94% match rate</span>
                       </div>
-                      <div className="h-32 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-lg flex items-end justify-center">
-                        <div className="text-xs text-gray-400 pb-4">Interactive Analytics Coming Soon</div>
+                      <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full w-5/6 animate-pulse delay-500"></div>
                       </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300">Activation Speed</span>
+                        <span className="text-pink-400">< 50ms avg</span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="bg-gradient-to-r from-pink-500 to-purple-500 h-2 rounded-full w-11/12 animate-pulse delay-1000"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mock Charts */}
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="bg-gray-800/50 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Users className="w-4 h-4 text-purple-400" />
+                        <span className="text-sm text-gray-300">Active Users</span>
+                      </div>
+                      <div className="text-2xl font-bold text-purple-400">1.2M</div>
+                    </div>
+                    <div className="bg-gray-800/50 rounded-lg p-4">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <TrendingUp className="w-4 h-4 text-orange-400" />
+                        <span className="text-sm text-gray-300">Conversions</span>
+                      </div>
+                      <div className="text-2xl font-bold text-orange-400">+23%</div>
                     </div>
                   </div>
                 </div>
               </div>
-              
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-xl"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-gray-900/50">
+      {/* Trust Section */}
+      <section className="py-16 bg-gradient-to-r from-gray-900/50 to-purple-900/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Everything you need for{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                customer success
-              </span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              From data collection to real-time activation, we've built the most comprehensive CDP for modern businesses.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Database,
-                title: "Unified Data Collection",
-                description: "Collect data from every touchpoint with our comprehensive SDKs and APIs. Real-time streaming with 99.9% uptime."
-              },
-              {
-                icon: Target,
-                title: "Identity Resolution",
-                description: "Advanced ML algorithms create unified customer profiles across devices and channels with 95% accuracy."
-              },
-              {
-                icon: Zap,
-                title: "Real-time Activation",
-                description: "Activate insights instantly across 200+ marketing tools and platforms. Sub-second latency guaranteed."
-              },
-              {
-                icon: BarChart3,
-                title: "AI-Powered Analytics",
-                description: "Get predictive insights and automated recommendations that drive revenue growth and retention."
-              },
-              {
-                icon: Shield,
-                title: "Enterprise Security",
-                description: "SOC 2 compliant with end-to-end encryption. Your data is secure and compliant with global regulations."
-              },
-              {
-                icon: Rocket,
-                title: "Scale Without Limits",
-                description: "Handle billions of events per day with auto-scaling infrastructure that grows with your business."
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 hover:scale-105">
-                <CardContent className="p-6">
-                  <feature.icon className="h-12 w-12 text-purple-400 mb-4" />
-                  <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Waitlist Section */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-12 rounded-2xl border border-gray-800">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to transform your customer data?
-            </h2>
-            <p className="text-xl text-gray-400 mb-8">
-              Join our waitlist and be among the first to experience the future of customer data platforms.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                placeholder="Enter your email" 
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
-              />
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 whitespace-nowrap">
-                Join Waitlist
-              </Button>
+          <div className="text-center">
+            <p className="text-gray-400 mb-8">Trusted by forward-thinking companies</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="w-32 h-12 bg-gray-700/30 rounded-lg flex items-center justify-center">
+                  <span className="text-gray-500 font-medium">Logo {i}</span>
+                </div>
+              ))}
             </div>
-            <p className="text-gray-500 text-sm mt-4">
-              We'll notify you when we launch. No spam, ever.
-            </p>
           </div>
         </div>
       </section>
