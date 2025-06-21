@@ -1,7 +1,7 @@
 
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Moon, Sun } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -12,6 +12,36 @@ interface ThemeToggleProps {
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const [isDark, setIsDark] = useState(true)
 
+  useEffect(() => {
+    // Check initial theme from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme')
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && systemDark)
+    
+    setIsDark(shouldBeDark)
+    applyTheme(shouldBeDark)
+  }, [])
+
+  const applyTheme = (dark: boolean) => {
+    const root = document.documentElement
+    if (dark) {
+      root.classList.add('dark')
+      root.style.setProperty('--background', '0 0% 0%')
+      root.style.setProperty('--foreground', '210 40% 98%')
+    } else {
+      root.classList.remove('dark')
+      root.style.setProperty('--background', '0 0% 100%')
+      root.style.setProperty('--foreground', '222.2 84% 4.9%')
+    }
+    localStorage.setItem('theme', dark ? 'dark' : 'light')
+  }
+
+  const toggleTheme = () => {
+    const newDark = !isDark
+    setIsDark(newDark)
+    applyTheme(newDark)
+  }
+
   return (
     <div
       className={cn(
@@ -21,7 +51,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           : "bg-white border border-zinc-200",
         className
       )}
-      onClick={() => setIsDark(!isDark)}
+      onClick={toggleTheme}
       role="button"
       tabIndex={0}
     >
