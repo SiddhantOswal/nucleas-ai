@@ -38,7 +38,11 @@ const DynamicActionBar = React.forwardRef<
         height: BUTTON_BAR_HEIGHT,
       };
 
-  const transition = { type: "spring", stiffness: 400, damping: 35 };
+  const transition = { 
+    type: "spring" as const, 
+    stiffness: 400, 
+    damping: 35 
+  };
 
   return (
     <div
