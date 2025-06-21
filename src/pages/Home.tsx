@@ -2,7 +2,8 @@
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Activity, Link, Database, Brain, Shuffle, Clock, ShoppingBag, 
-         GraduationCap, Palette, MapPin, Check } from "lucide-react";
+         GraduationCap, Palette, MapPin, Check, Home, Package, Target, 
+         CreditCard, Info, Mail } from "lucide-react";
 import { Globe } from "@/components/ui/globe";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";  
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
@@ -15,12 +16,12 @@ const HomePage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
 
   const navItems = useMemo(() => [
-    { name: 'Home', url: '#home', icon: () => <div className="w-4 h-4 bg-blue-500 rounded"></div> },
-    { name: 'Product', url: '#product', icon: () => <div className="w-4 h-4 bg-green-500 rounded"></div> },
-    { name: 'Solutions', url: '#solutions', icon: () => <div className="w-4 h-4 bg-purple-500 rounded"></div> },
-    { name: 'Pricing', url: '#pricing', icon: () => <div className="w-4 h-4 bg-orange-500 rounded"></div> },
-    { name: 'About', url: '#about', icon: () => <div className="w-4 h-4 bg-pink-500 rounded"></div> },
-    { name: 'Contact', url: '#contact', icon: () => <div className="w-4 h-4 bg-red-500 rounded"></div> }
+    { name: 'Home', url: '#home', icon: Home },
+    { name: 'Product', url: '#product', icon: Package },
+    { name: 'Solutions', url: '#solutions', icon: Target },
+    { name: 'Pricing', url: '#pricing', icon: CreditCard },
+    { name: 'About', url: '#about', icon: Info },
+    { name: 'Contact', url: '#contact', icon: Mail }
   ], []);
 
   const productFeatures = useMemo(() => [
@@ -300,27 +301,7 @@ const HomePage = () => {
                   <GradientCard
                     icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"></div>}
                     title={plan.name}
-                    description={
-                      <div className="space-y-4">
-                        <div>
-                          <span className="text-4xl font-bold text-gray-900 dark:text-white">
-                            {plan.price[billingCycle] === 'Custom' ? 'Custom' : `$${plan.price[billingCycle]}`}
-                          </span>
-                          {plan.price[billingCycle] !== 'Custom' && plan.price[billingCycle] !== '0' && (
-                            <span className="text-gray-500 dark:text-gray-400 text-lg">/month</span>
-                          )}
-                        </div>
-                        <p className="text-gray-600 dark:text-gray-300">{plan.description}</p>
-                        <ul className="space-y-2">
-                          {plan.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center text-gray-600 dark:text-gray-300">
-                              <Check className="w-4 h-4 text-green-500 mr-3" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    }
+                    description={`${plan.price[billingCycle] === 'Custom' ? 'Custom' : `$${plan.price[billingCycle]}`}${plan.price[billingCycle] !== 'Custom' && plan.price[billingCycle] !== '0' ? '/month' : ''} - ${plan.description}. Features: ${plan.features.join(', ')}`}
                     linkLabel={plan.buttonText}
                   />
                   {plan.highlight && (
@@ -370,12 +351,7 @@ const HomePage = () => {
                     <span className="text-white font-bold text-sm">{testimonial.avatar}</span>
                   </div>}
                   title={testimonial.name}
-                  description={
-                    <div>
-                      <p className="text-gray-600 dark:text-gray-300 mb-2">{testimonial.title}</p>
-                      <p className="italic text-gray-700 dark:text-gray-200">"{testimonial.quote}"</p>
-                    </div>
-                  }
+                  description={`${testimonial.title} - "${testimonial.quote}"`}
                 />
               ))}
             </div>
@@ -423,39 +399,7 @@ const HomePage = () => {
               <GradientCard
                 icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"></div>}
                 title="Contact Form"
-                description={
-                  <form className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-                      <input className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm" placeholder="Your name" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                      <input className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm" placeholder="your@email.com" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company</label>
-                      <input className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm" placeholder="Your company" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                      <textarea className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm h-24" placeholder="Tell us about your needs..."></textarea>
-                    </div>
-                    <div className="relative w-full h-12">
-                      <ShapeBlur
-                        variation={0}
-                        shapeSize={1.0}
-                        roundness={0.5}
-                        borderSize={0.005}
-                        circleEdge={1.0}
-                        className="rounded-lg"
-                      />
-                      <Button className="absolute inset-0 w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 rounded-lg z-10">
-                        Send Message
-                      </Button>
-                    </div>
-                  </form>
-                }
+                description="Fill out our contact form to get in touch with our team and learn more about NucleasAI's capabilities for your business."
               />
             </div>
           </div>
