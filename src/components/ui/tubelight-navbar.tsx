@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 interface NavItem {
   name: string
@@ -31,6 +33,32 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  // Track scroll position to update active tab
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = items.map(item => ({
+        name: item.name,
+        element: document.querySelector(item.url)
+      })).filter(section => section.element)
+
+      const scrollPosition = window.scrollY + window.innerHeight / 3
+
+      for (const section of sections) {
+        const element = section.element as HTMLElement
+        const offsetTop = element.offsetTop
+        const offsetBottom = offsetTop + element.offsetHeight
+
+        if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+          setActiveTab(section.name)
+          break
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [items])
 
   const handleClick = (item: NavItem) => {
     setActiveTab(item.name)
@@ -92,6 +120,22 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
             </button>
           )
         })}
+        
+        {/*  Separator */}
+        <div className="w-px h-6 bg-gray-700 mx-1" />
+        
+        {/* Theme Toggle */}
+        <ThemeToggle className="scale-75" />
+        
+        {/* Login/Signup Buttons */}
+        <div className="flex items-center gap-2 ml-2">
+          <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white px-3 py-1 text-xs">
+            Login
+          </Button>
+          <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-3 py-1 text-xs">
+            Sign Up
+          </Button>
+        </div>
       </div>
     </div>
   )

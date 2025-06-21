@@ -1,12 +1,20 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Zap, Users, TrendingUp, Home, Package, Target, DollarSign, Info, Mail } from "lucide-react";
-import { HeroFuturistic } from "@/components/ui/hero-futuristic";
+import { ArrowRight, Zap, Users, TrendingUp, Home, Package, Target, DollarSign, Info, Mail, 
+         Activity, Link, Database, Brain, Shuffle, Clock, ShoppingBag, GraduationCap, 
+         Palette, MapPin, Check } from "lucide-react";
+import { Globe } from "@/components/ui/globe";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import { CpuArchitecture } from "@/components/ui/cpu-architecture";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Component as ShapeBlur } from "@/components/ui/shapeblur";
+import { Footer } from "@/components/layout/Footer";
 
 const HomePage = () => {
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+
   const navItems = [
     { name: 'Home', url: '#home', icon: Home },
     { name: 'Product', url: '#product', icon: Package },
@@ -16,57 +24,197 @@ const HomePage = () => {
     { name: 'Contact', url: '#contact', icon: Mail }
   ];
 
+  const productFeatures = [
+    {
+      icon: Activity,
+      title: "Pixel Tracker",
+      description: "Track UTM parameters, sessions, and events across all touchpoints with sub-second latency."
+    },
+    {
+      icon: Link,
+      title: "Smart Redirect Engine", 
+      description: "Intelligent routing based on geography, device type, and campaign parameters."
+    },
+    {
+      icon: Database,
+      title: "Real-Time CDP",
+      description: "Event ingestion and identity resolution powered by advanced machine learning algorithms."
+    },
+    {
+      icon: Brain,
+      title: "Analytics & AI Insights",
+      description: "ML-powered segmentation with GPT-driven insights and predictive analytics."
+    },
+    {
+      icon: Shuffle,
+      title: "CRM & Ad Integrations",
+      description: "Seamlessly connect with Google Sheets, Zapier, Meta Ads, and 50+ other platforms."
+    }
+  ];
+
+  const solutions = [
+    {
+      icon: Clock,
+      title: "SaaS & Startups",
+      description: "Reduce CAC and improve retention with unified customer insights and behavioral analytics.",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: ShoppingBag,
+      title: "D2C & E-commerce", 
+      description: "Track campaigns, segment audiences, and personalize offers to maximize conversion rates.",
+      color: "from-orange-500 to-red-500"
+    },
+    {
+      icon: GraduationCap,
+      title: "EdTech",
+      description: "Understand learner behavior, optimize onboarding experiences, and reduce churn effectively.",
+      color: "from-blue-500 to-purple-500"
+    },
+    {
+      icon: Palette,
+      title: "Creator Tools",
+      description: "Track link performance, automate outreach campaigns, and segment by user behavior.",
+      color: "from-green-500 to-blue-500"
+    },
+    {
+      icon: MapPin,
+      title: "Regional Brands",
+      description: "Smart routing by location and language with comprehensive local campaign analytics.",
+      color: "from-pink-500 to-purple-500"
+    }
+  ];
+
+  const pricingPlans = [
+    {
+      name: "Free",
+      price: { monthly: "0", yearly: "0" },
+      description: "Perfect for getting started with basic tracking",
+      features: [
+        "Basic pixel tracking",
+        "Link shortening", 
+        "Analytics dashboard",
+        "Up to 10K events/month",
+        "Community support"
+      ],
+      highlight: false,
+      buttonText: "Get Started Free"
+    },
+    {
+      name: "Growth", 
+      price: { monthly: "49", yearly: "39" },
+      description: "Advanced features for scaling businesses",
+      features: [
+        "Real-time CDP",
+        "Smart routing engine",
+        "CRM integrations",
+        "Up to 1M events/month",
+        "Priority email support",
+        "Custom audiences",
+        "API access"
+      ],
+      highlight: true,
+      buttonText: "Start Free Trial"
+    },
+    {
+      name: "Enterprise",
+      price: { monthly: "Custom", yearly: "Custom" },
+      description: "Full-scale solution for large organizations", 
+      features: [
+        "Dedicated infrastructure",
+        "24/7 phone support",
+        "Consent management",
+        "Data warehouse support",
+        "Custom integrations",
+        "SLA guarantees",
+        "White-label options"
+      ],
+      highlight: false,
+      buttonText: "Contact Sales"
+    }
+  ];
+
   return (
     <div className="bg-black text-white">
       <TubelightNavBar items={navItems} />
       
       {/* Hero Section */}
-      <section id="home" className="min-h-screen">
-        <HeroFuturistic />
+      <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-blue-900/10 to-transparent"></div>
+        
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+          <div className="mb-8">
+            <GooeyText
+              texts={["NucleasAI", "Real-Time", "Data Hub", "AI-Powered"]}
+              className="mb-6 h-24"
+              textClassName="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent"
+            />
+          </div>
+          
+          <h2 className="text-2xl md:text-3xl text-gray-300 font-medium mb-8 leading-relaxed">
+            The nucleus of your customer data universe.
+            <br />
+            <span className="text-purple-300">Collect, unify, and activate in real-time.</span>
+          </h2>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <div className="relative w-48 h-12">
+              <ShapeBlur
+                variation={0}
+                shapeSize={1.0}
+                roundness={0.5}
+                borderSize={0.005}
+                circleEdge={1.0}
+                className="rounded-lg"
+              />
+              <Button className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg z-10">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+            <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+              Watch Demo
+            </Button>
+          </div>
+        </div>
+
+        {/* Globe Background */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+          <Globe className="max-w-[800px]" />
+        </div>
       </section>
 
       {/* Product Section */}
-      <section id="product" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <section id="product" className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <GooeyText
-              texts={["Real-Time", "Data", "Platform", "AI-Powered"]}
-              className="mb-8 h-32"
-              textClassName="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
-            />
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+              All-in-One AI-Powered Customer Data Platform
+            </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              NucleasAI sits at the center of your data ecosystem, unifying customer touchpoints 
-              and activating insights in real-time.
+              Collect, unify, and activate customer data in real-time across web, mobile, and marketing channels.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-6">
-                {[
-                  {
-                    title: "Real-Time Data Ingestion",
-                    desc: "Collect and process customer data instantly from all touchpoints"
-                  },
-                  {
-                    title: "AI-Powered Identity Resolution", 
-                    desc: "Merge anonymous and known users with advanced machine learning"
-                  },
-                  {
-                    title: "Smart Segmentation",
-                    desc: "Create dynamic audience segments based on behavior and traits"
-                  },
-                  {
-                    title: "Predictive Analytics",
-                    desc: "Score customers for LTV, churn risk, and conversion probability"
-                  }
-                ].map((feature, index) => (
-                  <div key={index} className="border-l-4 border-purple-500 pl-6">
-                    <h3 className="text-xl font-semibold text-orange-400 mb-2">{feature.title}</h3>
-                    <p className="text-gray-400">{feature.desc}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {productFeatures.map((feature, index) => (
+                <div key={index} className="relative p-6 rounded-2xl border border-gray-800">
+                  <GlowingEffect
+                    spread={30}
+                    glow={true}
+                    disabled={false}
+                    proximity={48}
+                    inactiveZone={0.1}
+                    borderWidth={2}
+                  />
+                  <div className="relative bg-black/50 p-6 rounded-xl">
+                    <feature.icon className="w-8 h-8 text-purple-400 mb-4" />
+                    <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                    <p className="text-gray-400 text-sm">{feature.description}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
             <div className="flex justify-center">
@@ -84,49 +232,32 @@ const HomePage = () => {
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <section id="solutions" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent mb-6">
-              Industry Solutions
+              Built for Growth Teams Across Industries
             </h2>
             <p className="text-xl text-gray-300">
-              Tailored for modern businesses across every sector
+              Tailored solutions for modern businesses in every sector
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "SaaS Companies",
-                problem: "Siloed user data slows product growth",
-                solution: "Unify product, CRM, and behavior data in real time",
-                color: "from-purple-500 to-pink-500"
-              },
-              {
-                title: "D2C Brands", 
-                problem: "Hard to personalize without unified identity",
-                solution: "Power tailored journeys with first-party data",
-                color: "from-orange-500 to-red-500"
-              },
-              {
-                title: "FinTech Firms",
-                problem: "Risk, fraud, and conversion are disconnected", 
-                solution: "Activate behavioral data instantly with smart triggers",
-                color: "from-pink-500 to-purple-500"
-              }
-            ].map((solution, index) => (
-              <div key={index} className={`bg-gradient-to-br ${solution.color} p-8 rounded-2xl`}>
-                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
-                <div className="space-y-4">
-                  <div className="bg-black/20 p-4 rounded-lg">
-                    <p className="text-sm text-gray-200 mb-2">Challenge:</p>
-                    <p className="text-white">{solution.problem}</p>
-                  </div>
-                  <div className="bg-white/10 p-4 rounded-lg">
-                    <p className="text-sm text-gray-200 mb-2">Solution:</p>
-                    <p className="text-white">{solution.solution}</p>
-                  </div>
+            {solutions.map((solution, index) => (
+              <div key={index} className="relative p-6 rounded-2xl border border-gray-700">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.1}
+                  borderWidth={2}
+                />
+                <div className={`relative bg-gradient-to-br ${solution.color} p-8 rounded-xl`}>
+                  <solution.icon className="w-10 h-10 text-white mb-4" />
+                  <h3 className="text-xl font-bold text-white mb-4">{solution.title}</h3>
+                  <p className="text-white/90">{solution.description}</p>
                 </div>
               </div>
             ))}
@@ -135,56 +266,85 @@ const HomePage = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-6">
-              Early Access Pricing
+              Simple, Transparent Pricing
             </h2>
-            <p className="text-xl text-gray-300">
-              Join the beta and shape the future of customer data platforms
+            <p className="text-xl text-gray-300 mb-8">
+              Start free. Scale when you grow.
             </p>
+            
+            {/* Billing Toggle */}
+            <div className="flex items-center justify-center gap-4 mb-12">
+              <span className={`${billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'}`}>Monthly</span>
+              <button
+                onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
+                className="relative w-14 h-7 bg-gray-700 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
+              >
+                <div className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full transition-transform ${billingCycle === 'yearly' ? 'translate-x-7' : ''}`} />
+              </button>
+              <span className={`${billingCycle === 'yearly' ? 'text-white' : 'text-gray-400'}`}>
+                Yearly <span className="text-green-400 text-sm">(Save 20%)</span>
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Startup",
-                price: "Free",
-                desc: "Perfect for early-stage companies",
-                features: ["Up to 10K events/month", "Basic identity resolution", "Core integrations", "Community support"],
-                highlight: false
-              },
-              {
-                name: "Growth", 
-                price: "Coming Soon",
-                desc: "For scaling businesses",
-                features: ["Unlimited events", "Advanced AI features", "Premium integrations", "Priority support"],
-                highlight: true
-              },
-              {
-                name: "Enterprise",
-                price: "Contact Us", 
-                desc: "For large organizations",
-                features: ["Custom deployment", "Dedicated support", "Advanced security", "Custom integrations"],
-                highlight: false
-              }
-            ].map((plan, index) => (
-              <div key={index} className={`p-8 rounded-2xl border ${plan.highlight ? 'border-purple-500 bg-purple-900/20' : 'border-gray-700 bg-gray-900/50'}`}>
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <div className="text-3xl font-bold text-purple-400 mb-4">{plan.price}</div>
-                <p className="text-gray-400 mb-6">{plan.desc}</p>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-300">
-                      <Zap className="w-4 h-4 text-purple-400 mr-3" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Button className={`w-full ${plan.highlight ? 'bg-gradient-to-r from-purple-600 to-pink-600' : 'bg-gray-700'}`}>
-                  {plan.name === "Enterprise"? "Contact Sales" : "Join Beta"}
-                </Button>
+            {pricingPlans.map((plan, index) => (
+              <div key={index} className={`relative p-8 rounded-2xl border ${plan.highlight ? 'border-purple-500 scale-105' : 'border-gray-700'}`}>
+                <GlowingEffect
+                  spread={plan.highlight ? 50 : 30}
+                  glow={true}
+                  disabled={false}
+                  proximity={plan.highlight ? 80 : 48}
+                  inactiveZone={0.1}
+                  borderWidth={plan.highlight ? 3 : 2}
+                />
+                <div className="relative bg-gray-900/50 p-6 rounded-xl">
+                  {plan.highlight && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Most Popular
+                      </span>
+                    </div>
+                  )}
+                  
+                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+                      {plan.price[billingCycle] === 'Custom' ? 'Custom' : `$${plan.price[billingCycle]}`}
+                    </span>
+                    {plan.price[billingCycle] !== 'Custom' && plan.price[billingCycle] !== '0' && (
+                      <span className="text-gray-400 text-lg">/month</span>
+                    )}
+                  </div>
+                  <p className="text-gray-400 mb-6">{plan.description}</p>
+                  
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-300">
+                        <Check className="w-4 h-4 text-green-400 mr-3" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="relative w-full h-12">
+                    <ShapeBlur
+                      variation={0}
+                      shapeSize={1.0}
+                      roundness={0.5}
+                      borderSize={0.005}
+                      circleEdge={1.0}
+                      className="rounded-lg"
+                    />
+                    <Button className={`absolute inset-0 w-full rounded-lg z-10 ${plan.highlight ? 'bg-gradient-to-r from-purple-600 to-pink-600' : 'bg-gray-700'}`}>
+                      {plan.buttonText}
+                    </Button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -192,17 +352,30 @@ const HomePage = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent mb-8">
-            Our Mission
+            Built by Engineers Obsessed with Data
           </h2>
-          <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            We're building the next-generation real-time CDP powered by AI — so every team can 
-            unify their customer data, activate insights instantly, and deliver smarter user experiences.
+          <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16">
+            We're a small team with deep experience in CDPs, identity graphs, and AI — on a mission to simplify real-time customer data for everyone.
           </p>
           
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mb-12">
+            <p className="text-xl text-purple-300 font-medium">
+              "We believe AI-powered data platforms should be easy to use, privacy-first, and deeply actionable."
+            </p>
+          </div>
+          
+          <div className="flex justify-center gap-8 mb-16">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-xl">A{i}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-purple-400" />
@@ -229,7 +402,7 @@ const HomePage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-6">
@@ -248,44 +421,73 @@ const HomePage = () => {
                   Join our beta program and be among the first to experience the future of customer data platforms.
                 </p>
                 <div className="space-y-4">
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
-                    Request Demo
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button variant="outline" className="border-purple-500 text-purple-400 hover:bg-purple-500/10">
-                    <Play className="mr-2 h-5 w-5" />
-                    Join Beta Program
-                  </Button>
+                  <div className="relative w-48 h-12">
+                    <ShapeBlur
+                      variation={0}
+                      shapeSize={1.0}
+                      roundness={0.5}
+                      borderSize={0.005}
+                      circleEdge={1.0}
+                      className="rounded-lg"
+                    />
+                    <Button className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg z-10">
+                      Request Demo
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-900/50 p-8 rounded-2xl border border-gray-700">
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                  <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="Your name" />
+            <div className="relative p-8 rounded-2xl border border-gray-700">
+              <GlowingEffect
+                spread={40}
+                glow={true}
+                disabled={false}
+                proximity={64}
+                inactiveZone={0.1}
+                borderWidth={2}
+              />
+              <div className="relative bg-gray-900/50 p-6 rounded-xl">
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                    <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                    <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="your@email.com" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Company</label>
+                    <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="Your company" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                    <textarea className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 h-24" placeholder="Tell us about your needs..."></textarea>
+                  </div>
+                  <div className="relative w-full h-12">
+                    <ShapeBlur
+                      variation={0}
+                      shapeSize={1.0}
+                      roundness={0.5}
+                      borderSize={0.005}
+                      circleEdge={1.0}
+                      className="rounded-lg"
+                    />
+                    <Button className="absolute inset-0 w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 rounded-lg z-10">
+                      Send Message
+                    </Button>
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                  <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="your@email.com" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Company</label>
-                  <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="Your company" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                  <textarea className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 h-24" placeholder="Tell us about your needs..."></textarea>
-                </div>
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600">
-                  Send Message
-                </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
