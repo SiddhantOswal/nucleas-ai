@@ -1,86 +1,106 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Users, TrendingUp, Home, Package, Target, DollarSign, Info, Mail, 
-         Activity, Link, Database, Brain, Shuffle, Clock, ShoppingBag, GraduationCap, 
-         Palette, MapPin, Check } from "lucide-react";
+import { ArrowRight, Activity, Link, Database, Brain, Shuffle, Clock, ShoppingBag, 
+         GraduationCap, Palette, MapPin, Check } from "lucide-react";
 import { Globe } from "@/components/ui/globe";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";  
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Component as ShapeBlur } from "@/components/ui/shapeblur";
 import { Footer } from "@/components/layout/Footer";
-import { DemoOne } from "@/components/ui/dynamic-action";
+import { DashboardDemo } from "@/components/ui/dashboard-demo";
+import { GradientCard } from "@/components/ui/gradient-card";
 
 const HomePage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
 
-  const navItems = [
-    { name: 'Home', url: '#home', icon: Home },
-    { name: 'Product', url: '#product', icon: Package },
-    { name: 'Solutions', url: '#solutions', icon: Target },
-    { name: 'Pricing', url: '#pricing', icon: DollarSign },
-    { name: 'About', url: '#about', icon: Info },
-    { name: 'Contact', url: '#contact', icon: Mail }
-  ];
+  const navItems = useMemo(() => [
+    { name: 'Home', url: '#home', icon: () => <div className="w-4 h-4 bg-blue-500 rounded"></div> },
+    { name: 'Product', url: '#product', icon: () => <div className="w-4 h-4 bg-green-500 rounded"></div> },
+    { name: 'Solutions', url: '#solutions', icon: () => <div className="w-4 h-4 bg-purple-500 rounded"></div> },
+    { name: 'Pricing', url: '#pricing', icon: () => <div className="w-4 h-4 bg-orange-500 rounded"></div> },
+    { name: 'About', url: '#about', icon: () => <div className="w-4 h-4 bg-pink-500 rounded"></div> },
+    { name: 'Contact', url: '#contact', icon: () => <div className="w-4 h-4 bg-red-500 rounded"></div> }
+  ], []);
 
-  const productFeatures = [
+  const productFeatures = useMemo(() => [
     {
-      icon: Activity,
+      icon: <Activity className="w-6 h-6 text-purple-500" />,
       title: "Pixel Tracker",
       description: "Track UTM parameters, sessions, and events across all touchpoints with sub-second latency."
     },
     {
-      icon: Link,
+      icon: <Link className="w-6 h-6 text-blue-500" />,
       title: "Smart Redirect Engine", 
       description: "Intelligent routing based on geography, device type, and campaign parameters."
     },
     {
-      icon: Database,
+      icon: <Database className="w-6 h-6 text-green-500" />,
       title: "Real-Time CDP",
       description: "Event ingestion and identity resolution powered by advanced machine learning algorithms."
     },
     {
-      icon: Brain,
+      icon: <Brain className="w-6 h-6 text-pink-500" />,
       title: "Analytics & AI Insights",
       description: "ML-powered segmentation with GPT-driven insights and predictive analytics."
     },
     {
-      icon: Shuffle,
+      icon: <Shuffle className="w-6 h-6 text-orange-500" />,
       title: "CRM & Ad Integrations",
       description: "Seamlessly connect with Google Sheets, Zapier, Meta Ads, and 50+ other platforms."
     }
-  ];
+  ], []);
 
-  const solutions = [
+  const solutions = useMemo(() => [
     {
-      icon: Clock,
+      icon: <Clock className="w-8 h-8 text-blue-500" />,
       title: "SaaS & Startups",
       description: "Reduce CAC and improve retention with unified customer insights and behavioral analytics.",
     },
     {
-      icon: ShoppingBag,
+      icon: <ShoppingBag className="w-8 h-8 text-green-500" />,
       title: "D2C & E-commerce", 
       description: "Track campaigns, segment audiences, and personalize offers to maximize conversion rates.",
     },
     {
-      icon: GraduationCap,
+      icon: <GraduationCap className="w-8 h-8 text-purple-500" />,
       title: "EdTech",
       description: "Understand learner behavior, optimize onboarding experiences, and reduce churn effectively.",
     },
     {
-      icon: Palette,
+      icon: <Palette className="w-8 h-8 text-pink-500" />,
       title: "Creator Tools",
       description: "Track link performance, automate outreach campaigns, and segment by user behavior.",
     },
     {
-      icon: MapPin,
+      icon: <MapPin className="w-8 h-8 text-orange-500" />,
       title: "Regional Brands",
       description: "Smart routing by location and language with comprehensive local campaign analytics.",
     }
-  ];
+  ], []);
 
-  const pricingPlans = [
+  const testimonials = useMemo(() => [
+    {
+      name: "Arjun Mehta",
+      title: "Growth Lead at D2CTech",
+      quote: "NucleasAI helps us cut campaign spend by 32% while boosting lead quality. The smart redirect rules are brilliant.",
+      avatar: "AM"
+    },
+    {
+      name: "Sarah Nair",
+      title: "Founder, EduLaunch",
+      quote: "Personalized link routing and UTM tracking simplified our student onboarding flow. Love the dashboard insights.",
+      avatar: "SN"
+    },
+    {
+      name: "Deepak Reddy",
+      title: "CTO, Finlytix",
+      quote: "The behavioral pixel and lead enrichment from NucleasAI is miles ahead of anything we've used before.",
+      avatar: "DR"
+    }
+  ], []);
+
+  const pricingPlans = useMemo(() => [
     {
       name: "Free",
       price: { monthly: "0", yearly: "0" },
@@ -127,30 +147,28 @@ const HomePage = () => {
       highlight: false,
       buttonText: "Contact Sales"
     }
-  ];
+  ], []);
 
   return (
     <>
       <TubelightNavBar items={navItems} />
       
-      <main className="bg-black text-white">
+      <main className="bg-white dark:bg-black text-black dark:text-white">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-blue-900/10 to-transparent"></div>
-          
+        <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900/10 via-blue-900/10 to-transparent dark:from-purple-900/20 dark:via-blue-900/20 dark:to-transparent">
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
             <div className="mb-8">
               <GooeyText
                 texts={["NucleasAI", "Real-Time", "Data Hub", "AI-Powered"]}
                 className="mb-6 h-24"
-                textClassName="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent"
+                textClassName="text-5xl md:text-7xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent"
               />
             </div>
             
-            <h2 className="text-2xl md:text-3xl text-gray-300 font-medium mb-8 leading-relaxed">
+            <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-medium mb-8 leading-relaxed">
               The nucleus of your customer data universe.
               <br />
-              <span className="text-purple-300">Collect, unify, and activate in real-time.</span>
+              <span className="text-purple-600 dark:text-purple-400">Collect, unify, and activate in real-time.</span>
             </h2>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -168,32 +186,32 @@ const HomePage = () => {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+              <Button variant="outline" className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
                 Watch Demo
               </Button>
             </div>
           </div>
 
           {/* Globe Background */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-20">
+          <div className="absolute inset-0 flex items-center justify-center opacity-20 dark:opacity-30">
             <Globe className="max-w-[800px]" />
           </div>
         </section>
 
         {/* Dashboard Demo Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8">
+        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
                 See NucleasAI in Action
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Experience our real-time customer data platform through an interactive preview
               </p>
             </div>
             
             <div className="flex justify-center">
-              <DemoOne />
+              <DashboardDemo />
             </div>
           </div>
         </section>
@@ -202,65 +220,48 @@ const HomePage = () => {
         <section id="product" className="py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <header className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
                 All-in-One AI-Powered Customer Data Platform
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Collect, unify, and activate customer data in real-time across web, mobile, and marketing channels.
               </p>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {productFeatures.map((feature, index) => (
-                <article key={index} className="relative p-6 rounded-2xl border border-gray-800">
-                  <GlowingEffect
-                    spread={30}
-                    glow={true}
-                    disabled={false}
-                    proximity={48}
-                    inactiveZone={0.1}
-                    borderWidth={2}
-                  />
-                  <div className="relative bg-black/50 p-6 rounded-xl">
-                    <feature.icon className="w-8 h-8 text-purple-400 mb-4" />
-                    <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                    <p className="text-gray-400 text-sm">{feature.description}</p>
-                  </div>
-                </article>
+                <GradientCard
+                  key={index}
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                  linkLabel="Learn more"
+                />
               ))}
             </div>
           </div>
         </section>
 
         {/* Solutions Section */}
-        <section id="solutions" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
+        <section id="solutions" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/20">
           <div className="max-w-7xl mx-auto">
             <header className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent mb-6">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent mb-6">
                 Built for Growth Teams Across Industries
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-gray-600 dark:text-gray-300">
                 Tailored solutions for modern businesses in every sector
               </p>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {solutions.map((solution, index) => (
-                <article key={index} className="relative p-6 rounded-2xl border border-gray-700">
-                  <GlowingEffect
-                    spread={40}
-                    glow={true}
-                    disabled={false}
-                    proximity={64}
-                    inactiveZone={0.1}
-                    borderWidth={2}
-                  />
-                  <div className="relative bg-gray-900/50 p-8 rounded-xl">
-                    <solution.icon className="w-10 h-10 text-white mb-4" />
-                    <h3 className="text-xl font-bold text-white mb-4">{solution.title}</h3>
-                    <p className="text-gray-300">{solution.description}</p>
-                  </div>
-                </article>
+                <GradientCard
+                  key={index}
+                  icon={solution.icon}
+                  title={solution.title}
+                  description={solution.description}
+                />
               ))}
             </div>
           </div>
@@ -270,83 +271,65 @@ const HomePage = () => {
         <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <header className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-6">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent mb-6">
                 Simple, Transparent Pricing
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Start free. Scale when you grow.
               </p>
               
               {/* Billing Toggle */}
               <div className="flex items-center justify-center gap-4 mb-12">
-                <span className={`${billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'}`}>Monthly</span>
+                <span className={`${billingCycle === 'monthly' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>Monthly</span>
                 <button
                   onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-                  className="relative w-14 h-7 bg-gray-700 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="relative w-14 h-7 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
                   aria-label="Toggle billing cycle"
                 >
-                  <div className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full transition-transform ${billingCycle === 'yearly' ? 'translate-x-7' : ''}`} />
+                  <div className={`absolute top-1 left-1 w-5 h-5 bg-white dark:bg-gray-200 rounded-full transition-transform ${billingCycle === 'yearly' ? 'translate-x-7' : ''}`} />
                 </button>
-                <span className={`${billingCycle === 'yearly' ? 'text-white' : 'text-gray-400'}`}>
-                  Yearly <span className="text-green-400 text-sm">(Save 20%)</span>
+                <span className={`${billingCycle === 'yearly' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
+                  Yearly <span className="text-green-500 text-sm">(Save 20%)</span>
                 </span>
               </div>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {pricingPlans.map((plan, index) => (
-                <article key={index} className={`relative p-8 rounded-2xl border ${plan.highlight ? 'border-purple-500 scale-105' : 'border-gray-700'}`}>
-                  <GlowingEffect
-                    spread={plan.highlight ? 50 : 30}
-                    glow={true}
-                    disabled={false}
-                    proximity={plan.highlight ? 80 : 48}
-                    inactiveZone={0.1}
-                    borderWidth={plan.highlight ? 3 : 2}
-                  />
-                  <div className="relative bg-gray-900/50 p-6 rounded-xl">
-                    {plan.highlight && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-                          Most Popular
-                        </span>
+                <article key={index} className={`relative ${plan.highlight ? 'scale-105' : ''}`}>
+                  <GradientCard
+                    icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"></div>}
+                    title={plan.name}
+                    description={
+                      <div className="space-y-4">
+                        <div>
+                          <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                            {plan.price[billingCycle] === 'Custom' ? 'Custom' : `$${plan.price[billingCycle]}`}
+                          </span>
+                          {plan.price[billingCycle] !== 'Custom' && plan.price[billingCycle] !== '0' && (
+                            <span className="text-gray-500 dark:text-gray-400 text-lg">/month</span>
+                          )}
+                        </div>
+                        <p className="text-gray-600 dark:text-gray-300">{plan.description}</p>
+                        <ul className="space-y-2">
+                          {plan.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-center text-gray-600 dark:text-gray-300">
+                              <Check className="w-4 h-4 text-green-500 mr-3" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    )}
-                    
-                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
-                        {plan.price[billingCycle] === 'Custom' ? 'Custom' : `$${plan.price[billingCycle]}`}
+                    }
+                    linkLabel={plan.buttonText}
+                  />
+                  {plan.highlight && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Most Popular
                       </span>
-                      {plan.price[billingCycle] !== 'Custom' && plan.price[billingCycle] !== '0' && (
-                        <span className="text-gray-400 text-lg">/month</span>
-                      )}
                     </div>
-                    <p className="text-gray-400 mb-6">{plan.description}</p>
-                    
-                    <ul className="space-y-3 mb-8">
-                      {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-300">
-                          <Check className="w-4 h-4 text-green-400 mr-3" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <div className="relative w-full h-12">
-                      <ShapeBlur
-                        variation={0}
-                        shapeSize={1.0}
-                        roundness={0.5}
-                        borderSize={0.005}
-                        circleEdge={1.0}
-                        className="rounded-lg"
-                      />
-                      <Button className={`absolute inset-0 w-full rounded-lg z-10 ${plan.highlight ? 'bg-gradient-to-r from-purple-600 to-pink-600' : 'bg-gray-700'}`}>
-                        {plan.buttonText}
-                      </Button>
-                    </div>
-                  </div>
+                  )}
                 </article>
               ))}
             </div>
@@ -354,53 +337,47 @@ const HomePage = () => {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
+        <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/20">
           <div className="max-w-7xl mx-auto text-center">
             <header>
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-orange-400 bg-clip-text text-transparent mb-8">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-orange-600 bg-clip-text text-transparent mb-8">
                 Built by Engineers Obsessed with Data
               </h2>
-              <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16">
+              <p className="text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-16">
                 We're a small team with deep experience in CDPs, identity graphs, and AI — on a mission to simplify real-time customer data for everyone.
               </p>
             </header>
             
             <div className="mb-12">
-              <blockquote className="text-xl text-purple-300 font-medium">
+              <blockquote className="text-xl text-purple-600 dark:text-purple-400 font-medium">
                 "We believe AI-powered data platforms should be easy to use, privacy-first, and deeply actionable."
               </blockquote>
             </div>
             
             <div className="flex justify-center gap-8 mb-16">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">T{i}</span>
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">{testimonial.avatar}</span>
                 </div>
               ))}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-8 h-8 text-purple-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Privacy-First</h3>
-                <p className="text-gray-400">Built with privacy and compliance at its core</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-orange-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Performance-Obsessed</h3>
-                <p className="text-gray-400">Sub-100ms activation times, 99.9% uptime SLA</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-pink-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Product-Led</h3>
-                <p className="text-gray-400">Built by engineers, for engineers and marketers</p>
-              </div>
+              {testimonials.map((testimonial, index) => (
+                <GradientCard
+                  key={index}
+                  icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">{testimonial.avatar}</span>
+                  </div>}
+                  title={testimonial.name}
+                  description={
+                    <div>
+                      <p className="text-gray-600 dark:text-gray-300 mb-2">{testimonial.title}</p>
+                      <p className="italic text-gray-700 dark:text-gray-200">"{testimonial.quote}"</p>
+                    </div>
+                  }
+                />
+              ))}
             </div>
           </div>
         </section>
@@ -409,10 +386,10 @@ const HomePage = () => {
         <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <header className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent mb-6">
+              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-6">
                 Get In Touch
               </h2>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-gray-600 dark:text-gray-300">
                 Ready to transform your customer data? Let's talk.
               </p>
             </header>
@@ -420,8 +397,8 @@ const HomePage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Ready to get started?</h3>
-                  <p className="text-gray-400 mb-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Ready to get started?</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Join our beta program and be among the first to experience the future of customer data platforms.
                   </p>
                   <div className="space-y-4">
@@ -443,32 +420,26 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <div className="relative p-8 rounded-2xl border border-gray-700">
-                <GlowingEffect
-                  spread={40}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.1}
-                  borderWidth={2}
-                />
-                <div className="relative bg-gray-900/50 p-6 rounded-xl">
+              <GradientCard
+                icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"></div>}
+                title="Contact Form"
+                description={
                   <form className="space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                      <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="Your name" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                      <input className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm" placeholder="Your name" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                      <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="your@email.com" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                      <input className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm" placeholder="your@email.com" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Company</label>
-                      <input className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400" placeholder="Your company" />
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company</label>
+                      <input className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm" placeholder="Your company" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                      <textarea className="w-full p-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 h-24" placeholder="Tell us about your needs..."></textarea>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                      <textarea className="w-full p-3 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 backdrop-blur-sm h-24" placeholder="Tell us about your needs..."></textarea>
                     </div>
                     <div className="relative w-full h-12">
                       <ShapeBlur
@@ -484,8 +455,8 @@ const HomePage = () => {
                       </Button>
                     </div>
                   </form>
-                </div>
-              </div>
+                }
+              />
             </div>
           </div>
         </section>

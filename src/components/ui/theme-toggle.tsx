@@ -10,9 +10,11 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     // Check initial theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme')
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -26,12 +28,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     const root = document.documentElement
     if (dark) {
       root.classList.add('dark')
-      root.style.setProperty('--background', '0 0% 0%')
-      root.style.setProperty('--foreground', '210 40% 98%')
     } else {
       root.classList.remove('dark')
-      root.style.setProperty('--background', '0 0% 100%')
-      root.style.setProperty('--foreground', '222.2 84% 4.9%')
     }
     localStorage.setItem('theme', dark ? 'dark' : 'light')
   }
@@ -40,6 +38,10 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     const newDark = !isDark
     setIsDark(newDark)
     applyTheme(newDark)
+  }
+
+  if (!mounted) {
+    return null
   }
 
   return (
