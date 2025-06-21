@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Activity, Link, Database, Brain, Shuffle, Clock, ShoppingBag, 
          GraduationCap, Palette, MapPin, Check, Home, Package, Target, 
-         CreditCard, Info, Mail } from "lucide-react";
+         CreditCard, Info, Mail, Bot, Users, Briefcase } from "lucide-react";
 import { Globe } from "@/components/ui/globe";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";  
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
@@ -11,6 +11,8 @@ import { Component as ShapeBlur } from "@/components/ui/shapeblur";
 import { Footer } from "@/components/layout/Footer";
 import { DashboardDemo } from "@/components/ui/dashboard-demo";
 import { GradientCard } from "@/components/ui/gradient-card";
+import { TestimonialCards } from "@/components/ui/testimonial-cards";
+import { ContactForm } from "@/components/ui/contact-form";
 
 const HomePage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
@@ -49,6 +51,11 @@ const HomePage = () => {
       icon: <Shuffle className="w-6 h-6 text-orange-500" />,
       title: "CRM & Ad Integrations",
       description: "Seamlessly connect with Google Sheets, Zapier, Meta Ads, and 50+ other platforms."
+    },
+    {
+      icon: <Bot className="w-6 h-6 text-cyan-500" />,
+      title: "AI Agents Service",
+      description: "Deploy intelligent agents for automated customer interactions and lead qualification."
     }
   ], []);
 
@@ -77,6 +84,11 @@ const HomePage = () => {
       icon: <MapPin className="w-8 h-8 text-orange-500" />,
       title: "Regional Brands",
       description: "Smart routing by location and language with comprehensive local campaign analytics.",
+    },
+    {
+      icon: <Briefcase className="w-8 h-8 text-indigo-500" />,
+      title: "Agencies",
+      description: "Manage campaigns across clients, automate reporting, and drive results with unified insights.",
     }
   ], []);
 
@@ -104,46 +116,64 @@ const HomePage = () => {
   const pricingPlans = useMemo(() => [
     {
       name: "Free",
-      price: { monthly: "0", yearly: "0" },
-      description: "Perfect for getting started with basic tracking",
+      subtitle: "Early startups, devs",
+      price: "₹0",
       features: [
-        "Basic pixel tracking",
-        "Link shortening", 
-        "Analytics dashboard",
-        "Up to 10K events/month",
-        "Community support"
+        "500 links/mo, 1 domain",
+        "5,000 sessions/mo",
+        "1,000 contacts",
+        "3 playbooks/month",
+        "No personalization",
+        "Basic UTM, webhook export",
+        "Email only"
       ],
       highlight: false,
       buttonText: "Get Started Free"
     },
     {
       name: "Growth", 
-      price: { monthly: "49", yearly: "39" },
-      description: "Advanced features for scaling businesses",
+      subtitle: "Scaling startups, growth teams",
+      price: "Starts at ₹4,999",
       features: [
-        "Real-time CDP",
-        "Smart routing engine",
-        "CRM integrations",
-        "Up to 1M events/month",
-        "Priority email support",
-        "Custom audiences",
-        "API access"
+        "10,000 links, 3 domains",
+        "100,000 events/mo",
+        "50,000 contacts",
+        "25+ playbooks + scheduling",
+        "Rule-based personalization",
+        "CRM, Zapier, Google Sheets",
+        "Chat + Email"
       ],
       highlight: true,
       buttonText: "Start Free Trial"
     },
     {
-      name: "Enterprise",
-      price: { monthly: "Custom", yearly: "Custom" },
-      description: "Full-scale solution for large organizations", 
+      name: "Pro",
+      subtitle: "Mature teams, agencies",
+      price: "Starts at ₹19,999",
       features: [
-        "Dedicated infrastructure",
-        "24/7 phone support",
-        "Consent management",
-        "Data warehouse support",
-        "Custom integrations",
-        "SLA guarantees",
-        "White-label options"
+        "Unlimited links, 10+ domains",
+        "1 Million events/mo",
+        "500,000 contacts",
+        "Unlimited playbooks + APIs",
+        "AI based personalization",
+        "Advanced APIs, CDP sync",
+        "Dedicated CSM"
+      ],
+      highlight: false,
+      buttonText: "Contact Sales"
+    },
+    {
+      name: "Enterprise",
+      subtitle: "Large orgs, industries",
+      price: "Custom pricing",
+      features: [
+        "Unlimited + dedicated routing",
+        "Custom scale as per requirement",
+        "1 Million+ contacts",
+        "Custom models & AI tuning",
+        "AI based personalization",
+        "Enterprise APIs, SSO, audit logs",
+        "Account Manager"
       ],
       highlight: false,
       buttonText: "Contact Sales"
@@ -204,7 +234,7 @@ const HomePage = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                See NucleasAI in Action
+                See NuclausAI in Action
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Experience our real-time customer data platform through an interactive preview
@@ -278,32 +308,44 @@ const HomePage = () => {
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Start free. Scale when you grow.
               </p>
-              
-              {/* Billing Toggle */}
-              <div className="flex items-center justify-center gap-4 mb-12">
-                <span className={`${billingCycle === 'monthly' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>Monthly</span>
-                <button
-                  onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-                  className="relative w-14 h-7 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  aria-label="Toggle billing cycle"
-                >
-                  <div className={`absolute top-1 left-1 w-5 h-5 bg-white dark:bg-gray-200 rounded-full transition-transform ${billingCycle === 'yearly' ? 'translate-x-7' : ''}`} />
-                </button>
-                <span className={`${billingCycle === 'yearly' ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
-                  Yearly <span className="text-green-500 text-sm">(Save 20%)</span>
-                </span>
-              </div>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {pricingPlans.map((plan, index) => (
-                <article key={index} className={`relative ${plan.highlight ? 'scale-105' : ''}`}>
-                  <GradientCard
-                    icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"></div>}
-                    title={plan.name}
-                    description={`${plan.price[billingCycle] === 'Custom' ? 'Custom' : `$${plan.price[billingCycle]}`}${plan.price[billingCycle] !== 'Custom' && plan.price[billingCycle] !== '0' ? '/month' : ''} - ${plan.description}. Features: ${plan.features.join(', ')}`}
-                    linkLabel={plan.buttonText}
-                  />
+                <article key={index} className={`relative ${plan.highlight ? 'md:scale-105' : ''}`}>
+                  <div className="relative p-6 rounded-2xl bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300 group h-full flex flex-col">
+                    {/* Plan Header */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{plan.name}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{plan.subtitle}</p>
+                      <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-4">
+                        {plan.price}
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div className="flex-1">
+                      <ul className="space-y-3">
+                        {plan.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start text-sm">
+                            <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Button */}
+                    <div className="mt-6">
+                      <Button className={`w-full ${plan.highlight 
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
+                        : 'bg-gray-600 hover:bg-gray-700 text-white'
+                      }`}>
+                        {plan.buttonText}
+                      </Button>
+                    </div>
+                  </div>
+                  
                   {plan.highlight && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                       <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 rounded-full text-sm font-medium">
@@ -335,26 +377,7 @@ const HomePage = () => {
               </blockquote>
             </div>
             
-            <div className="flex justify-center gap-8 mb-16">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">{testimonial.avatar}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <GradientCard
-                  key={index}
-                  icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">{testimonial.avatar}</span>
-                  </div>}
-                  title={testimonial.name}
-                  description={`${testimonial.title} - "${testimonial.quote}"`}
-                />
-              ))}
-            </div>
+            <TestimonialCards testimonials={testimonials} />
           </div>
         </section>
 
@@ -396,11 +419,7 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <GradientCard
-                icon={<div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg"></div>}
-                title="Contact Form"
-                description="Fill out our contact form to get in touch with our team and learn more about NucleasAI's capabilities for your business."
-              />
+              <ContactForm />
             </div>
           </div>
         </section>

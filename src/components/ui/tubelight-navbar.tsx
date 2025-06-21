@@ -7,6 +7,7 @@ import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { Link } from "react-router-dom"
 
 interface NavItem {
   name: string
@@ -56,7 +57,7 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [items])
 
@@ -80,7 +81,7 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-3 bg-black/20 border border-gray-800 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-3 bg-white/80 dark:bg-black/80 border border-gray-200 dark:border-gray-800 backdrop-blur-xl py-1 px-1 rounded-full shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -91,8 +92,8 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
               onClick={() => handleClick(item)}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-gray-300 hover:text-purple-400",
-                isActive && "bg-purple-900/30 text-purple-400",
+                "text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400",
+                isActive && "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400",
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
@@ -105,7 +106,7 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
                   className="absolute inset-0 w-full bg-purple-500/10 rounded-full -z-10"
                   initial={false}
                   transition={{
-                    type: "spring",
+                    type: "spring" as const,
                     stiffness: 300,
                     damping: 30,
                   }}
@@ -121,20 +122,24 @@ export function TubelightNavBar({ items, className, onNavClick }: NavBarProps) {
           )
         })}
         
-        {/*  Separator */}
-        <div className="w-px h-6 bg-gray-700 mx-1" />
+        {/* Separator */}
+        <div className="w-px h-6 bg-gray-300 dark:bg-gray-700 mx-1" />
         
         {/* Theme Toggle */}
         <ThemeToggle className="scale-75" />
         
         {/* Login/Signup Buttons */}
         <div className="flex items-center gap-2 ml-2">
-          <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white px-3 py-1 text-xs">
-            Login
-          </Button>
-          <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-3 py-1 text-xs">
-            Sign Up
-          </Button>
+          <Link to="/login">
+            <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-1 text-xs">
+              Login
+            </Button>
+          </Link>
+          <Link to="/signup">
+            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-3 py-1 text-xs">
+              Sign Up
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

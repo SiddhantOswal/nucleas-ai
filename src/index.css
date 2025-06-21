@@ -95,15 +95,23 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-gutter: stable;
   }
 
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* Performance optimizations */
+  /* Performance optimizations for smooth scrolling */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
   img, video, iframe {
     max-width: 100%;
     height: auto;
@@ -119,7 +127,7 @@
     }
   }
 
-  /* Optimize animations */
+  /* Optimize animations for performance */
   .will-change-transform {
     will-change: transform;
   }
@@ -131,6 +139,20 @@
   .gpu-accelerated {
     transform: translateZ(0);
     will-change: transform;
+  }
+
+  /* Optimize scrolling performance */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent layout shifts */
+  .contain-layout {
+    contain: layout;
+  }
+
+  .contain-paint {
+    contain: paint;
   }
 }
 
@@ -160,4 +182,30 @@
 *:focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
+}
+
+/* Smooth scroll optimization */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Backdrop blur optimization */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Glass morphism base styles */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
