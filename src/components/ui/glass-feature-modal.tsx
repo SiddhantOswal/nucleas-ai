@@ -41,7 +41,7 @@ export const GlassFeatureModal: React.FC<GlassFeatureModalProps> = ({
       {/* Learn More Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-600 hover:to-blue-600 text-white rounded-lg backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105"
+        className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 hover:scale-105"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -55,23 +55,16 @@ export const GlassFeatureModal: React.FC<GlassFeatureModalProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            onClick={() => setIsOpen(false)}
           >
-            {/* Backdrop */}
-            <motion.div
-              initial={{ backdropFilter: "blur(0px)" }}
-              animate={{ backdropFilter: "blur(8px)" }}
-              exit={{ backdropFilter: "blur(0px)" }}
-              className="absolute inset-0 bg-black/50"
-              onClick={() => setIsOpen(false)}
-            />
-
             {/* Modal Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-lg mx-auto bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl ring-1 ring-white/10"
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative w-full max-w-lg mx-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -83,12 +76,15 @@ export const GlassFeatureModal: React.FC<GlassFeatureModalProps> = ({
               </button>
 
               {/* Modal Header */}
-              <div className="p-6 pb-4">
+              <div className="mb-6">
                 <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
+                <p className="text-gray-300 text-sm">
+                  Discover how our advanced features can transform your business
+                </p>
               </div>
 
               {/* Modal Body */}
-              <div className="px-6 pb-6">
+              <div>
                 <ul className="space-y-4">
                   {features.map((feature, index) => (
                     <motion.li
@@ -96,7 +92,7 @@ export const GlassFeatureModal: React.FC<GlassFeatureModalProps> = ({
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.2, duration: 0.3 }}
-                      className="p-4 bg-white/10 dark:bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-lg hover:bg-white/15 transition-all duration-200"
+                      className="p-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl shadow-lg hover:bg-white/15 transition-all duration-200"
                     >
                       <div className="flex items-start space-x-3">
                         <span className="text-2xl flex-shrink-0 mt-1">

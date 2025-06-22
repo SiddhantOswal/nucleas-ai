@@ -5,20 +5,36 @@ import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
 import { TestimonialCards } from "@/components/ui/testimonial-cards";
 import { ContactForm } from "@/components/ui/contact-form";
 import { Globe } from "@/components/ui/globe";
+import { GlassFeatureModal } from "@/components/ui/glass-feature-modal";
+import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
+import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
+import { Home as HomeIcon, Package, Settings, DollarSign, User, Mail } from "lucide-react";
 
 const Home = () => {
+  const navItems = [
+    { name: "Home", url: "#home", icon: HomeIcon },
+    { name: "Product", url: "#product", icon: Package },
+    { name: "Solutions", url: "#solutions", icon: Settings },
+    { name: "Pricing", url: "#pricing", icon: DollarSign },
+    { name: "About", url: "#about", icon: User },
+    { name: "Contact", url: "#contact", icon: Mail },
+  ];
+
   return (
-    <div className="pt-16">
+    <div className="min-h-screen bg-black text-white">
+      {/* Floating Navigation Bar */}
+      <TubelightNavBar items={navItems} />
+
       {/* Hero Section with Globe */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-500/10 via-transparent to-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Hero Content */}
             <motion.div
@@ -60,9 +76,7 @@ const Home = () => {
                 <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25">
                   Start Free Trial
                 </button>
-                <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                  Watch Demo
-                </button>
+                <GlassFeatureModal buttonText="Learn More" />
               </motion.div>
             </motion.div>
 
@@ -94,20 +108,27 @@ const Home = () => {
       </section>
 
       {/* Interactive Dashboard Section */}
-      <InteractiveDashboard />
+      <section id="product">
+        <InteractiveDashboard />
+      </section>
 
       {/* Interactive Features Section */}
-      <InteractiveFeatures />
+      <section id="solutions">
+        <InteractiveFeatures />
+      </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-gray-900/30">
+      <section id="about" className="py-24 bg-gray-900/30">
         <TestimonialCards />
       </section>
 
       {/* Contact Section */}
-      <section className="py-24">
+      <section id="contact" className="py-24">
         <ContactForm />
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
