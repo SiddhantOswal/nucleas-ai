@@ -1,18 +1,18 @@
 
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Activity, Link, Database, Brain, Shuffle, Clock, ShoppingBag, 
-         GraduationCap, Palette, MapPin, Check, Home, Package, Target, 
-         CreditCard, Info, Mail, Bot, Users, Briefcase } from "lucide-react";
+import { ArrowRight, Home, Package, Target, CreditCard, Info, Mail } from "lucide-react";
 import { Globe } from "@/components/ui/globe";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";  
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import { Component as ShapeBlur } from "@/components/ui/shapeblur";
 import { Footer } from "@/components/layout/Footer";
-import { DashboardDemo } from "@/components/ui/dashboard-demo";
+import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
+import { InteractiveFeatures } from "@/components/ui/interactive-features";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { TestimonialCards } from "@/components/ui/testimonial-cards";
 import { ContactForm } from "@/components/ui/contact-form";
+import { Clock, ShoppingBag, GraduationCap, Palette, MapPin, Check, Users, Briefcase } from "lucide-react";
 
 const HomePage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
@@ -24,39 +24,6 @@ const HomePage = () => {
     { name: 'Pricing', url: '#pricing', icon: CreditCard },
     { name: 'About', url: '#about', icon: Info },
     { name: 'Contact', url: '#contact', icon: Mail }
-  ], []);
-
-  const productFeatures = useMemo(() => [
-    {
-      icon: <Activity className="w-6 h-6 text-purple-500" />,
-      title: "Pixel Tracker",
-      description: "Track UTM parameters, sessions, and events across all touchpoints with sub-second latency."
-    },
-    {
-      icon: <Link className="w-6 h-6 text-blue-500" />,
-      title: "Smart Redirect Engine", 
-      description: "Intelligent routing based on geography, device type, and campaign parameters."
-    },
-    {
-      icon: <Database className="w-6 h-6 text-green-500" />,
-      title: "Real-Time CDP",
-      description: "Event ingestion and identity resolution powered by advanced machine learning algorithms."
-    },
-    {
-      icon: <Brain className="w-6 h-6 text-pink-500" />,
-      title: "Analytics & AI Insights",
-      description: "ML-powered segmentation with GPT-driven insights and predictive analytics."
-    },
-    {
-      icon: <Shuffle className="w-6 h-6 text-orange-500" />,
-      title: "CRM & Ad Integrations",
-      description: "Seamlessly connect with Google Sheets, Zapier, Meta Ads, and 50+ other platforms."
-    },
-    {
-      icon: <Bot className="w-6 h-6 text-cyan-500" />,
-      title: "AI Agents Service",
-      description: "Deploy intelligent agents for automated customer interactions and lead qualification."
-    }
   ], []);
 
   const solutions = useMemo(() => [
@@ -229,49 +196,11 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Dashboard Demo Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/20">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                See NuclausAI in Action
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Experience our real-time customer data platform through an interactive preview
-              </p>
-            </div>
-            
-            <div className="flex justify-center">
-              <DashboardDemo />
-            </div>
-          </div>
-        </section>
+        {/* Interactive Dashboard Section */}
+        <InteractiveDashboard />
 
-        {/* Product Section */}
-        <section id="product" className="py-24 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <header className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-6">
-                All-in-One AI-Powered Customer Data Platform
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Collect, unify, and activate customer data in real-time across web, mobile, and marketing channels.
-              </p>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {productFeatures.map((feature, index) => (
-                <GradientCard
-                  key={index}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                  linkLabel="Learn more"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Interactive Features Section */}
+        <InteractiveFeatures />
 
         {/* Solutions Section */}
         <section id="solutions" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/20">
@@ -313,7 +242,7 @@ const HomePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {pricingPlans.map((plan, index) => (
                 <article key={index} className={`relative ${plan.highlight ? 'md:scale-105' : ''}`}>
-                  <div className="relative p-6 rounded-2xl bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300 group h-full flex flex-col">
+                  <div className="relative p-6 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/20 hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300 group h-full flex flex-col">
                     {/* Plan Header */}
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{plan.name}</h3>
