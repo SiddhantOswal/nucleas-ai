@@ -234,10 +234,10 @@ const Product = () => {
         </div>
       </section>
 
-      {/* Core Features Section */}
-      <section className="py-16 bg-gray-900/30">
+      {/* Core Features Section - Compact & Enhanced */}
+      <section className="py-12 bg-gray-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Core{" "}
               <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -251,7 +251,10 @@ const Product = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {coreFeatures.map((feature, index) => (
-              <Card key={index} className="bg-gray-800/40 border-gray-700 hover:bg-gray-800/60 transition-all duration-300 group">
+              <Card 
+                key={index} 
+                className="max-w-md backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/10 group"
+              >
                 <CardHeader className="pb-4">
                   <feature.icon className={`h-8 w-8 ${feature.color} mb-3 group-hover:scale-110 transition-transform duration-300`} />
                   <CardTitle className="text-lg font-semibold text-white">
@@ -269,12 +272,15 @@ const Product = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-16">
+      {/* Features Grid - Compact & Enhanced */}
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300">
+              <Card 
+                key={index} 
+                className="w-[400px] mx-auto backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/10"
+              >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <feature.icon className="h-10 w-10 text-purple-400" />
