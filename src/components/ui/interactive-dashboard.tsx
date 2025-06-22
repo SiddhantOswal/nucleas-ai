@@ -155,7 +155,7 @@ export const InteractiveDashboard = () => {
             className="flex justify-center mb-12"
           >
             <Select value={timePeriod} onValueChange={setTimePeriod}>
-              <SelectTrigger className="w-48 bg-white/10 dark:bg-white/10 backdrop-blur-xl border-white/20 dark:border-white/30">
+              <SelectTrigger className="w-48 bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border-white/30 ring-1 ring-white/10">
                 <SelectValue placeholder="Select time period" />
               </SelectTrigger>
               <SelectContent>
@@ -175,7 +175,8 @@ export const InteractiveDashboard = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative p-6 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/20 hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300 group"
+              whileHover={{ scale: 1.03 }}
+              className="relative p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 ${metric.color}`}>
@@ -209,7 +210,8 @@ export const InteractiveDashboard = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-6 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/20"
+            whileHover={{ scale: 1.03 }}
+            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Top Referrer Domains</h3>
             <div className="h-64">
@@ -243,39 +245,44 @@ export const InteractiveDashboard = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-6 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/20"
+            whileHover={{ scale: 1.03 }}
+            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300"
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Audience Segments</h3>
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={segmentData}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
-                    paddingAngle={5}
-                    dataKey="value"
-                  >
-                    {segmentData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="grid grid-cols-2 gap-2 mt-4">
-                {segmentData.map((entry, index) => (
-                  <div key={entry.name} className="flex items-center gap-2">
-                    <div 
-                      className="w-3 h-3 rounded-full"
-                      style={{ backgroundColor: COLORS[index % COLORS.length] }}
-                    />
-                    <span className="text-sm text-gray-600 dark:text-gray-300">
-                      {entry.name}: {entry.value}%
-                    </span>
-                  </div>
-                ))}
+            <div className="flex flex-col lg:flex-row items-center gap-6">
+              <div className="w-full lg:w-1/2 h-48">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={segmentData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={40}
+                      outerRadius={80}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {segmentData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </Respon siveContainer>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <div className="grid grid-cols-1 gap-2">
+                  {segmentData.map((entry, index) => (
+                    <div key={entry.name} className="flex items-center gap-2">
+                      <div 
+                        className="w-3 h-3 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                      />
+                      <span className="text-sm text-gray-600 dark:text-gray-300 truncate">
+                        {entry.name}: {entry.value}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

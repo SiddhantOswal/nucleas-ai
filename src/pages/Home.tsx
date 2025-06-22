@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Home, Package, Target, CreditCard, Info, Mail } from "lucide-react";
@@ -13,6 +12,7 @@ import { GradientCard } from "@/components/ui/gradient-card";
 import { TestimonialCards } from "@/components/ui/testimonial-cards";
 import { ContactForm } from "@/components/ui/contact-form";
 import { Clock, ShoppingBag, GraduationCap, Palette, MapPin, Check, Users, Briefcase } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HomePage = () => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
@@ -216,12 +216,18 @@ const HomePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {solutions.map((solution, index) => (
-                <GradientCard
+                <motion.div
                   key={index}
-                  icon={solution.icon}
-                  title={solution.title}
-                  description={solution.description}
-                />
+                  whileHover={{ scale: 1.03 }}
+                  className="h-full"
+                >
+                  <GradientCard
+                    icon={solution.icon}
+                    title={solution.title}
+                    description={solution.description}
+                    className="bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30"
+                  />
+                </motion.div>
               ))}
             </div>
           </div>
@@ -241,8 +247,12 @@ const HomePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {pricingPlans.map((plan, index) => (
-                <article key={index} className={`relative ${plan.highlight ? 'md:scale-105' : ''}`}>
-                  <div className="relative p-6 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/20 hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300 group h-full flex flex-col">
+                <motion.article 
+                  key={index} 
+                  className={`relative ${plan.highlight ? 'md:scale-105' : ''}`}
+                  whileHover={{ scale: plan.highlight ? 1.08 : 1.03 }}
+                >
+                  <div className="relative p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 group h-full flex flex-col">
                     {/* Plan Header */}
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{plan.name}</h3>
@@ -282,7 +292,7 @@ const HomePage = () => {
                       </span>
                     </div>
                   )}
-                </article>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -323,8 +333,11 @@ const HomePage = () => {
             </header>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div>
+              <motion.div 
+                className="space-y-8"
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Ready to get started?</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Join our beta program and be among the first to experience the future of customer data platforms.
@@ -346,7 +359,7 @@ const HomePage = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               <ContactForm />
             </div>

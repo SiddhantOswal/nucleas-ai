@@ -206,14 +206,21 @@ export const InteractiveFeatures = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.03 }}
             >
-              <div className="relative p-6 rounded-2xl bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 dark:border-white/20 hover:bg-white/10 dark:hover:bg-white/10 transition-all duration-300 group h-full">
-                <div className="flex flex-col h-full">
+              <motion.div 
+                className="relative p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 group overflow-hidden"
+                animate={{
+                  height: expandedFeature === feature.id ? "auto" : "auto"
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <div className="flex flex-col">
                   <div className="mb-4 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 dark:from-purple-400/30 dark:to-pink-400/30 flex items-center justify-center">
                     {feature.icon}
                   </div>
                   
-                  <div className="flex-1">
+                  <div className="flex-1 mb-4">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       {feature.title}
                     </h3>
@@ -221,12 +228,60 @@ export const InteractiveFeatures = () => {
                       {feature.description}
                     </p>
                   </div>
+
+                  <AnimatePresence>
+                    {expandedFeature === feature.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="mb-4 overflow-hidden"
+                      >
+                        <div className="space-y-3 pt-4 border-t border-white/20 dark:border-white/30">
+                          {feature.subFeatures.map((subFeature, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.2, delay: index * 0.1 }}
+                              className="flex items-start gap-3 p-3 rounded-lg bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 transition-colors duration-200"
+                            >
+                              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                                {subFeature.icon}
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <h4 className="font-medium text-gray-900 dark:text-white text-sm">
+                                    {subFeature.name}
+                                  </h4>
+                                  {subFeature.tag && (
+                                    <span className={cn(
+                                      "px-2 py-0.5 rounded-full text-xs font-medium",
+                                      subFeature.tag === "AI" 
+                                        ? "bg-purple-500/20 text-purple-600 dark:text-purple-400" 
+                                        : "bg-blue-500/20 text-blue-600 dark:text-blue-400"
+                                    )}>
+                                      {subFeature.tag}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                  {subFeature.description}
+                                </p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                   
                   <button
                     onClick={() => toggleFeature(feature.id)}
                     className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-white/10 dark:bg-white/10 hover:bg-white/20 dark:hover:bg-white/20 rounded-lg border border-white/20 dark:border-white/30 transition-all duration-200 text-purple-600 dark:text-purple-400 font-medium"
                   >
-                    Learn More
+                    {expandedFeature === feature.id ? "Hide" : "Learn More"}
                     <motion.div
                       animate={{ rotate: expandedFeature === feature.id ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
@@ -235,55 +290,7 @@ export const InteractiveFeatures = () => {
                     </motion.div>
                   </button>
                 </div>
-              </div>
-
-              <AnimatePresence>
-                {expandedFeature === feature.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute top-full left-0 right-0 z-10 mt-2 p-4 rounded-2xl bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 dark:border-white/30 shadow-xl"
-                  >
-                    <div className="space-y-3">
-                      {feature.subFeatures.map((subFeature, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.2, delay: index * 0.1 }}
-                          className="flex items-start gap-3 p-3 rounded-lg bg-white/5 dark:bg-white/5 hover:bg-white/10 dark:hover:bg-white/10 transition-colors duration-200"
-                        >
-                          <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-                            {subFeature.icon}
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h4 className="font-medium text-gray-900 dark:text-white text-sm">
-                                {subFeature.name}
-                              </h4>
-                              {subFeature.tag && (
-                                <span className={cn(
-                                  "px-2 py-0.5 rounded-full text-xs font-medium",
-                                  subFeature.tag === "AI" 
-                                    ? "bg-purple-500/20 text-purple-600 dark:text-purple-400" 
-                                    : "bg-blue-500/20 text-blue-600 dark:text-blue-400"
-                                )}>
-                                  {subFeature.tag}
-                                </span>
-                              )}
-                            </div>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm">
-                              {subFeature.description}
-                            </p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              </motion.div>
             </motion.div>
           ))}
         </div>
