@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
@@ -267,7 +266,7 @@ export const InteractiveDashboard = () => {
                       ))}
                     </Pie>
                   </PieChart>
-                </Respon siveContainer>
+                </ResponsiveContainer>
               </div>
               <div className="w-full lg:w-1/2">
                 <div className="grid grid-cols-1 gap-2">
