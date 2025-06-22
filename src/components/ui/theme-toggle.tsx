@@ -15,7 +15,6 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
 
   useEffect(() => {
     setMounted(true)
-    // Check initial theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme')
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     const shouldBeDark = savedTheme === 'dark' || (!savedTheme && systemDark)

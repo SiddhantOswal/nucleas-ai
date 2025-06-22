@@ -22,14 +22,14 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white">
       {/* Floating Navigation Bar */}
       <TubelightNavBar items={navItems} />
 
       {/* Hero Section with Globe */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black">
+        {/* Animated background elements - only visible in dark mode */}
+        <div className="absolute inset-0 overflow-hidden dark:block hidden">
           <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-500/10 via-transparent to-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
@@ -43,17 +43,12 @@ const Home = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center lg:text-left"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   NucleasAI
                 </span>
-                <br />
-                <span className="text-white">
-                  The Nucleus of Your
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
-                  Data Universe
+                <span className="text-zinc-900 dark:text-white block">
+                  The Core of Customer Intelligence
                 </span>
               </h1>
 
@@ -61,10 +56,9 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
+                className="text-lg md:text-xl text-zinc-700 dark:text-gray-300 mt-4 mb-8 leading-relaxed"
               >
-                Real-time CDP with AI-powered insights, smart redirects, and privacy-first tracking. 
-                Everything you need to understand and activate your customer data.
+                Real-time CDP with AI-powered insights, smart redirects, and privacy-first tracking.
               </motion.p>
 
               <motion.div
@@ -74,9 +68,11 @@ const Home = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
                 <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25">
-                  Start Free Trial
+                  Request Demo
                 </button>
-                <GlassFeatureModal buttonText="Learn More" />
+                <button className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105">
+                  Join Waitlist
+                </button>
               </motion.div>
             </motion.div>
 
@@ -88,19 +84,11 @@ const Home = () => {
               className="relative flex items-center justify-center"
             >
               <div className="relative w-full max-w-[500px] aspect-square">
-                {/* Glow effect behind globe */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
+                {/* Glow effect behind globe - only in dark mode */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
                 
                 {/* Globe component */}
                 <Globe className="relative z-10" />
-                
-                {/* Floating data points */}
-                <div className="absolute top-1/4 -left-8 w-16 h-16 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center animate-bounce">
-                  <span className="text-white text-sm font-bold">1.2M</span>
-                </div>
-                <div className="absolute bottom-1/4 -right-8 w-16 h-16 bg-gradient-to-r from-pink-500/20 to-orange-500/20 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center animate-bounce delay-500">
-                  <span className="text-white text-sm font-bold">AI</span>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -108,23 +96,55 @@ const Home = () => {
       </section>
 
       {/* Interactive Dashboard Section */}
-      <section id="product">
+      <section id="product" className="bg-zinc-50 dark:bg-gray-900/30">
         <InteractiveDashboard />
       </section>
 
       {/* Interactive Features Section */}
-      <section id="solutions">
+      <section id="solutions" className="bg-white dark:bg-black">
         <InteractiveFeatures />
       </section>
 
       {/* Testimonials Section */}
-      <section id="about" className="py-24 bg-gray-900/30">
+      <section id="about" className="bg-zinc-50 dark:bg-gray-900/30 py-24">
         <TestimonialCards />
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24">
-        <ContactForm />
+      <section id="contact" className="py-24 bg-white dark:bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-900 dark:text-white">
+              Get in Touch
+            </h2>
+            <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-2xl mx-auto">
+              Ready to transform your customer data strategy? We're here to help you get started.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Contact Info */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mb-4">Let's Connect</h3>
+                <p className="text-zinc-700 dark:text-gray-300 mb-6">
+                  Have questions about NucleasAI? Want to see how we can help your business? 
+                  Reach out and let's start a conversation.
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-6 h-6 text-purple-600" />
+                  <span className="text-zinc-700 dark:text-gray-300">hello@nucleasai.com</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <ContactForm />
+          </div>
+        </div>
       </section>
 
       {/* Footer */}
