@@ -1,8 +1,6 @@
-
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { InteractiveFeatures } from "@/components/ui/interactive-features";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
-import { TestimonialCards } from "@/components/ui/testimonial-cards";
 import { ContactForm } from "@/components/ui/contact-form";
 import { Globe } from "@/components/ui/globe";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
@@ -10,6 +8,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
+import { AboutSection } from "@/components/sections/about-section";
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, DollarSign, User, Mail } from "lucide-react";
 
@@ -118,10 +117,8 @@ const Home = () => {
         <InteractiveFeatures />
       </section>
 
-      {/* Testimonials Section */}
-      <section id="about" className="bg-zinc-50 dark:bg-gray-900/30 py-24">
-        <TestimonialCards />
-      </section>
+      {/* About Section - replaces Testimonials */}
+      <AboutSection />
 
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-white dark:bg-black">

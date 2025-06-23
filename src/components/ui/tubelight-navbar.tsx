@@ -32,6 +32,36 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  // Active section highlighting with IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            const sectionId = entry.target.id
+            const matchingItem = items.find(item => item.url === `#${sectionId}`)
+            if (matchingItem) {
+              setActiveTab(matchingItem.name)
+            }
+          }
+        })
+      },
+      { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' }
+    )
+
+    // Observe all sections
+    items.forEach(item => {
+      if (item.url.startsWith('#')) {
+        const element = document.querySelector(item.url)
+        if (element) {
+          observer.observe(element)
+        }
+      }
+    })
+
+    return () => observer.disconnect()
+  }, [items])
+
   const handleNavClick = (item: NavItem) => {
     setActiveTab(item.name)
     
@@ -46,6 +76,15 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
       }
     }
   }
+
+  // Request Demo URL from environment variable
+  const demoUrl = process.env.NEXT_PUBLIC_DEMO_SCHEDULE_URL || ""
+
+  useEffect(() => {
+    if (!demoUrl) {
+      console.warn("Please configure NEXT_PUBLIC_DEMO_SCHEDULE_URL for Request Demo functionality")
+    }
+  }, [demoUrl])
 
   return (
     <div
@@ -132,6 +171,23 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
             </RouterLink>
           )
         })}
+
+        {/* Request Demo Button */}
+        <a
+          href={demoUrl || "#"}
+          target={demoUrl ? "_blank" : undefined}
+          rel="noopener noreferrer"
+          className={cn(
+            "ml-2 py-2 px-4 rounded-full text-sm font-medium transition-all duration-300",
+            demoUrl
+              ? "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white hover:scale-105"
+              : "bg-gray-600 text-gray-300 cursor-not-allowed"
+          )}
+          aria-disabled={!demoUrl}
+        >
+          <span className="hidden sm:inline">Request Demo</span>
+          <span className="sm:hidden">Demo</span>
+        </a>
       </div>
     </div>
   )
