@@ -1,6 +1,6 @@
 
 // File: components/layout/FloatingNavbar.tsx
-// Floating navbar with Request Demo button and theme toggle, glassmorphic styling adapting to theme.
+// Updated: resized Request Demo button and theme toggle; applied pink-to-blue gradient styling.
 
 "use client"
 
@@ -28,7 +28,7 @@ export function FloatingNavbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className={cn(
-        "fixed top-4 right-4 z-50 flex items-center gap-3 p-3 rounded-2xl",
+        "fixed top-4 right-4 z-50 flex items-center gap-3 p-2 rounded-2xl",
         "bg-white/10 dark:bg-black/50 backdrop-blur-sm",
         "border border-white/20 dark:border-white/10",
         "shadow-lg hover:shadow-xl transition-all duration-300"
@@ -43,7 +43,7 @@ export function FloatingNavbar() {
           "px-4 py-2 rounded-xl font-medium transition-all duration-300",
           "focus:outline-none focus:ring-2 focus:ring-purple-500",
           demoUrl
-            ? "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white hover:scale-105 shadow-lg hover:shadow-purple-500/25"
+            ? "bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white hover:scale-105 shadow-lg hover:shadow-purple-500/25"
             : "bg-gray-600 text-gray-300 cursor-not-allowed"
         )}
         aria-disabled={!demoUrl}
