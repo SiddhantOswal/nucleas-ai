@@ -77,12 +77,12 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     }
   }
 
-  // Request Demo URL from environment variable
-  const demoUrl = process.env.NEXT_PUBLIC_DEMO_SCHEDULE_URL || ""
+  // Request Demo URL from environment variable (using Vite's import.meta.env)
+  const demoUrl = import.meta.env.VITE_DEMO_SCHEDULE_URL || ""
 
   useEffect(() => {
     if (!demoUrl) {
-      console.warn("Please configure NEXT_PUBLIC_DEMO_SCHEDULE_URL for Request Demo functionality")
+      console.warn("Please configure VITE_DEMO_SCHEDULE_URL for Request Demo functionality")
     }
   }, [demoUrl])
 
