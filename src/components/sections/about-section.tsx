@@ -1,4 +1,7 @@
 
+// File: components/sections/about-section.tsx
+// Updated: refreshed glass card styling for values and team cards for improved appeal.
+
 "use client"
 
 import React from "react"
@@ -40,13 +43,13 @@ const team = [
     name: "Alex Chen",
     role: "CEO & Co-Founder",
     bio: "Former VP of Data at Segment, 10+ years building customer data infrastructure.",
-    image: "/images/team/alex.jpg" // Replace with real photo
+    image: "/images/team/alex.jpg"
   },
   {
     name: "Sarah Kim",
     role: "CTO & Co-Founder", 
     bio: "Ex-Senior Engineer at Snowflake, expert in real-time data processing and ML.",
-    image: "/images/team/sarah.jpg" // Replace with real photo
+    image: "/images/team/sarah.jpg"
   }
 ]
 
@@ -56,7 +59,6 @@ export function AboutSection() {
       {/* Background overlay for dark mode */}
       <div className="absolute inset-0 bg-gradient-to-br from-black to-[#0a0a0a] dark:block hidden pointer-events-none" />
       
-      {/* Background elements for dark mode */}
       <div className="absolute inset-0 overflow-hidden dark:block hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -86,7 +88,7 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Values Grid */}
+        {/* Values Grid with improved styling */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,18 +109,27 @@ export function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.03, y: -4 }}
                 >
                   <Card className={cn(
                     "h-full transition-all duration-300",
-                    "bg-white/70 dark:bg-white/10 backdrop-blur-sm",
-                    "border border-zinc-200 dark:border-white/20",
-                    "hover:bg-white/90 dark:hover:bg-white/20",
-                    "hover:shadow-xl dark:hover:shadow-purple-500/10"
+                    // Improved glass styling for values cards
+                    "bg-white/15 dark:bg-black/40 backdrop-blur-lg",
+                    "border border-white/30 dark:border-white/20",
+                    "hover:bg-white/25 dark:hover:bg-black/60",
+                    "hover:border-purple-500/30 dark:hover:border-purple-500/50",
+                    "hover:shadow-xl hover:shadow-purple-500/10",
+                    "rounded-2xl"
                   )}>
                     <CardContent className="p-6 text-center">
                       <div className="mb-4">
-                        <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-white" />
+                        {/* Icon with accent background */}
+                        <div className={cn(
+                          "w-12 h-12 mx-auto rounded-full flex items-center justify-center",
+                          "bg-purple-500/20 dark:bg-purple-500/30",
+                          "border-2 border-purple-500/30 dark:border-purple-500/50"
+                        )}>
+                          <Icon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                         </div>
                       </div>
                       <h4 className="text-xl font-semibold mb-3 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -135,7 +146,7 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Team Section */}
+        {/* Team Section with improved styling */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -154,20 +165,30 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.03, y: -4 }}
               >
                 <Card className={cn(
                   "h-full transition-all duration-300",
-                  "bg-white/70 dark:bg-white/10 backdrop-blur-sm",
-                  "border border-zinc-200 dark:border-white/20",
-                  "hover:bg-white/90 dark:hover:bg-white/20",
-                  "hover:shadow-xl dark:hover:shadow-purple-500/10"
+                  // Improved glass styling for team cards
+                  "bg-white/15 dark:bg-black/40 backdrop-blur-lg",
+                  "border border-white/30 dark:border-white/20",
+                  "hover:bg-white/25 dark:hover:bg-black/60",
+                  "hover:border-purple-500/30 dark:hover:border-purple-500/50",
+                  "hover:shadow-xl hover:shadow-purple-500/10",
+                  "rounded-2xl"
                 )}>
                   <CardContent className="p-6 flex flex-col items-center text-center">
-                    {/* Placeholder circular image */}
-                    <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full mb-4 flex items-center justify-center">
-                      <span className="text-white font-bold text-2xl">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
+                    {/* Enhanced photo container with colored ring */}
+                    <div className={cn(
+                      "rounded-full border-2 border-purple-500/30 dark:border-purple-500/50 p-1 mb-4",
+                      "hover:border-purple-500/60 transition-all duration-300",
+                      "bg-gradient-to-r from-purple-500/10 to-blue-500/10"
+                    )}>
+                      <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-2xl">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
                     </div>
                     <h4 className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-1">
                       {member.name}

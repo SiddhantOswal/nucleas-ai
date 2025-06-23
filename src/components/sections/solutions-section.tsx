@@ -1,4 +1,7 @@
 
+// File: components/sections/solutions-section.tsx
+// Updated: new distinct glass-tinted styling for solution cards and always-visible Learn More button.
+
 "use client"
 
 import React from "react"
@@ -130,7 +133,7 @@ export function SolutionsSection() {
             </p>
           </motion.div>
 
-          {/* Solutions Grid */}
+          {/* Solutions Grid with distinct styling */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {solutions.map((solution, index) => {
               const Icon = solution.icon
@@ -142,23 +145,26 @@ export function SolutionsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="group"
+                  whileHover={{ scale: 1.03 }}
                 >
                   <Card className={cn(
                     "h-full cursor-pointer transition-all duration-300",
-                    "bg-white/70 dark:bg-white/10 backdrop-blur-sm",
-                    "border border-zinc-200 dark:border-white/20",
-                    "hover:bg-white/90 dark:hover:bg-white/20",
-                    "hover:border-zinc-300 dark:hover:border-white/40",
-                    "hover:shadow-xl dark:hover:shadow-purple-500/10",
-                    "hover:scale-105 hover:-translate-y-2"
+                    // Distinct styling for solutions cards
+                    "bg-purple-500/10 dark:bg-purple-500/5 backdrop-blur-lg",
+                    "border border-purple-500/20 dark:border-purple-500/30",
+                    "hover:bg-purple-500/20 dark:hover:bg-purple-500/10",
+                    "hover:border-purple-500/50 dark:hover:border-purple-500/60",
+                    "hover:shadow-xl hover:shadow-purple-500/20",
+                    "hover:-translate-y-2 rounded-xl"
                   )}>
                     <CardContent className="p-8 text-center">
-                      {/* Icon */}
+                      {/* Icon with distinct background */}
                       <div className="mb-6">
                         <div className={cn(
                           "w-16 h-16 mx-auto rounded-full flex items-center justify-center",
                           "bg-gradient-to-r from-purple-600 to-blue-600",
-                          "group-hover:scale-110 transition-transform duration-300"
+                          "group-hover:scale-110 transition-transform duration-300",
+                          "shadow-lg shadow-purple-500/25"
                         )}>
                           <Icon className="w-8 h-8 text-white" />
                         </div>
@@ -181,10 +187,16 @@ export function SolutionsSection() {
                         {solution.description}
                       </p>
 
-                      {/* Learn More Button - Always visible */}
+                      {/* Always visible Learn More Button */}
                       <Button
                         onClick={() => setSelectedSolution(solution)}
-                        className="mt-4 py-2 px-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-lg transition-all duration-300"
+                        className={cn(
+                          "mt-4 py-2 px-4 rounded-lg transition-all duration-300",
+                          "bg-purple-600 text-white hover:bg-purple-700",
+                          "focus:outline-none focus:ring-2 focus:ring-purple-500",
+                          "shadow-lg hover:shadow-purple-500/25"
+                        )}
+                        aria-label={`Learn more about ${solution.title}`}
                       >
                         Learn More
                       </Button>

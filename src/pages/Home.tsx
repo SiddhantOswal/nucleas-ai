@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ui/contact-form";
 import { Globe } from "@/components/ui/globe";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import { AboutSection } from "@/components/sections/about-section";
@@ -24,12 +24,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
-      {/* Theme Toggle - Fixed position */}
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle />
-      </div>
+      {/* Floating Navbar */}
+      <FloatingNavbar />
 
-      {/* Floating Navigation Bar */}
+      {/* Main Navigation Bar */}
       <TubelightNavBar items={navItems} />
 
       {/* Hero Section with Globe */}
@@ -117,7 +115,7 @@ const Home = () => {
         <InteractiveFeatures />
       </section>
 
-      {/* About Section - replaces Testimonials */}
+      {/* About Section */}
       <AboutSection />
 
       {/* Contact Section */}
