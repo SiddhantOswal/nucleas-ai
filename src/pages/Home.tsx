@@ -1,4 +1,3 @@
-
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { InteractiveFeatures } from "@/components/ui/interactive-features";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
@@ -15,7 +14,7 @@ import { Home as HomeIcon, Package, Settings, DollarSign, User, Mail } from "luc
 import { cn } from "@/lib/utils";
 
 // File: pages/Home.tsx
-// Updated: restored PricingSection with glassmorphic styling and pink-blue gradient CTAs.
+// Updated: removed InteractiveFeatures section; updated Join Waitlist button to scroll to contact; replaced globe with static image.
 
 const Home = () => {
   const navItems = [
@@ -75,6 +74,13 @@ const Home = () => {
     }
   ];
 
+  const handleJoinWaitlist = () => {
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
       {/* Floating Navbar */}
@@ -83,7 +89,7 @@ const Home = () => {
       {/* Main Navigation Bar */}
       <TubelightNavBar items={navItems} />
 
-      {/* Hero Section with Globe */}
+      {/* Hero Section with Static Globe */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black">
         {/* Animated background elements - only visible in dark mode */}
         <div className="absolute inset-0 overflow-hidden dark:block hidden">
@@ -127,13 +133,16 @@ const Home = () => {
                 <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25">
                   Request Demo
                 </button>
-                <button className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105">
+                <button 
+                  onClick={handleJoinWaitlist}
+                  className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105"
+                >
                   Join Waitlist
                 </button>
               </motion.div>
             </motion.div>
 
-            {/* Right side - Globe */}
+            {/* Right side - Static Globe Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -144,8 +153,12 @@ const Home = () => {
                 {/* Glow effect behind globe - only in dark mode */}
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
                 
-                {/* Globe component */}
-                <Globe className="relative z-10" />
+                {/* Static Globe Image */}
+                <img 
+                  src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=600&h=600&fit=crop"
+                  alt="Global Network"
+                  className="relative z-10 w-full h-full object-cover rounded-full opacity-80 dark:opacity-60"
+                />
               </div>
             </motion.div>
           </div>
@@ -242,11 +255,6 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Interactive Features Section */}
-      <section className="bg-white dark:bg-black">
-        <InteractiveFeatures />
       </section>
 
       {/* About Section */}

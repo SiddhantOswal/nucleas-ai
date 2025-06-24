@@ -1,6 +1,6 @@
 
 // File: components/layout/FloatingNavbar.tsx
-// Updated: resized Request Demo button and theme toggle; applied pink-to-blue gradient styling.
+// Updated: matched Request Demo button colors to hero section gradient styling.
 
 "use client"
 
