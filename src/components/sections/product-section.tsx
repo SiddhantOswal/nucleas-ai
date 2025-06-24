@@ -256,20 +256,39 @@ export function ProductSection() {
     <>
       <section id="product" className="py-20 bg-zinc-50 dark:bg-gray-900/30 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
+          {/* Intro Block */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center max-w-2xl mx-auto mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">
-              Powerful{" "}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-zinc-900 dark:text-white">
+              All-in-One.{" "}
               <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Products
+                Or One at a Time.
               </span>
             </h2>
+            <p className="text-lg text-zinc-700 dark:text-gray-300 leading-relaxed">
+              Each product — from Link Shortener to Real-Time CDP and AI Agents — is powerful on its own, but unstoppable together.
+            </p>
+          </motion.div>
+
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">
+              Powerful Features,{" "}
+              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                Seamlessly Integrated
+              </span>
+            </h3>
             <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-3xl mx-auto">
               Comprehensive suite of tools to track, analyze, and optimize your customer experience.
             </p>

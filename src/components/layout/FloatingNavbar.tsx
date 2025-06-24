@@ -1,6 +1,5 @@
 
-// File: components/layout/FloatingNavbar.tsx
-// Updated: matched Request Demo button colors to hero section gradient styling.
+// File: components/FloatingNavbar.tsx — Updated: Fixed Request Demo button click + gradient styling.
 
 "use client"
 
@@ -37,16 +36,13 @@ export function FloatingNavbar() {
       {/* Request Demo Button */}
       <a
         href={demoUrl || "#"}
-        target={demoUrl ? "_blank" : undefined}
+        target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "px-4 py-2 rounded-xl font-medium transition-all duration-300",
-          "focus:outline-none focus:ring-2 focus:ring-purple-500",
-          demoUrl
-            ? "bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white hover:scale-105 shadow-lg hover:shadow-purple-500/25"
-            : "bg-gray-600 text-gray-300 cursor-not-allowed"
+          "bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-2xl px-4 py-2",
+          "hover:from-pink-600 hover:to-blue-600 transition cursor-pointer",
+          "font-medium focus:outline-none focus:ring-2 focus:ring-purple-500"
         )}
-        aria-disabled={!demoUrl}
         aria-label="Request a demo"
       >
         <span className="hidden sm:inline">Request Demo</span>
@@ -54,7 +50,9 @@ export function FloatingNavbar() {
       </a>
 
       {/* Theme Toggle */}
-      <ThemeToggle />
+      <div className="ml-4">
+        <ThemeToggle />
+      </div>
     </motion.div>
   )
 }

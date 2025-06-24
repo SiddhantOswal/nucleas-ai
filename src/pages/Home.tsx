@@ -1,5 +1,5 @@
+
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
-import { InteractiveFeatures } from "@/components/ui/interactive-features";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
 import { ContactForm } from "@/components/ui/contact-form";
 import { Globe } from "@/components/ui/globe";
@@ -119,9 +119,18 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-lg md:text-xl text-zinc-700 dark:text-gray-300 mt-4 mb-8 leading-relaxed"
+                className="text-lg md:text-xl text-zinc-700 dark:text-gray-300 mt-4 mb-4 leading-relaxed"
               >
                 Real-time CDP with AI-powered insights, smart redirects, and privacy-first tracking.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-base text-gray-600 dark:text-gray-300 mb-8"
+              >
+                More than a tool — a modular ecosystem of AI-powered products.
               </motion.p>
 
               <motion.div

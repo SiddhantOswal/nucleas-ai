@@ -1,11 +1,14 @@
 
-import { useState } from "react";
+// File: components/Header.tsx — Updated: Fixed active highlighting for #about section.
+
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
 
   const navigation = [
@@ -17,7 +20,39 @@ export const Header = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  // Track active section on home page
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            const sectionId = entry.target.id;
+            if (sectionId === "about") {
+              setActiveSection("about");
+            }
+          }
+        });
+      },
+      { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' }
+    );
+
+    // Observe the about section
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+      observer.observe(aboutSection);
+    }
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+  const isActive = (href: string) => {
+    if (location.pathname === "/" && href === "/about") {
+      return activeSection === "about";
+    }
+    return location.pathname === href;
+  };
 
   return (
     <header className="fixed top-0 w-full z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">

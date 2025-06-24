@@ -1,3 +1,6 @@
+
+// Updated: Chart colors updated to match site gradient theme
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
@@ -33,7 +36,8 @@ const segmentData: ChartData[] = [
   { name: "New Users", value: 10 }
 ];
 
-const COLORS = ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+// Updated gradient colors to match site theme
+const COLORS = ['#ec4899', '#8b5cf6', '#3b82f6', '#06b6d4', '#f97316'];
 
 const CountUpAnimation = ({ end, duration = 2, prefix = "", suffix = "" }: { end: number; duration?: number; prefix?: string; suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -210,9 +214,9 @@ export const InteractiveDashboard = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.03 }}
-            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300"
+            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Top Referrer Domains</h3>
+            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">Top Referrer Domains</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={referrerData}>
@@ -220,7 +224,7 @@ export const InteractiveDashboard = () => {
                     dataKey="name" 
                     axisLine={false} 
                     tickLine={false}
-                    tick={{ fill: 'currentColor', fontSize: 12 }}
+                    tick={{ fill: '#e5e7eb', fontSize: 12 }}
                   />
                   <YAxis hide />
                   <Bar 
@@ -230,8 +234,8 @@ export const InteractiveDashboard = () => {
                   />
                   <defs>
                     <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#8b5cf6" />
-                      <stop offset="100%" stopColor="#06b6d4" />
+                      <stop offset="0%" stopColor="#ec4899" />
+                      <stop offset="100%" stopColor="#3b82f6" />
                     </linearGradient>
                   </defs>
                 </BarChart>
@@ -245,9 +249,9 @@ export const InteractiveDashboard = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.03 }}
-            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300"
+            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Audience Segments</h3>
+            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">Audience Segments</h3>
             <div className="flex flex-col lg:flex-row items-center gap-6">
               <div className="w-full lg:w-1/2 h-48">
                 <ResponsiveContainer width="100%" height="100%">
@@ -276,7 +280,7 @@ export const InteractiveDashboard = () => {
                         className="w-3 h-3 rounded-full flex-shrink-0"
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
-                      <span className="text-sm text-gray-600 dark:text-gray-300 truncate">
+                      <span className="text-sm text-gray-200 dark:text-gray-200 truncate">
                         {entry.name}: {entry.value}%
                       </span>
                     </div>
