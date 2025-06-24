@@ -1,3 +1,4 @@
+
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { InteractiveFeatures } from "@/components/ui/interactive-features";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
@@ -8,7 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
-import { AboutSection } from "@/components/sections/about-section";
+import AboutSection from "@/components/sections/about-section";
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, DollarSign, User, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
