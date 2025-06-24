@@ -169,7 +169,7 @@ const AboutSection = () => {
                 Ex-Netflix data architect with 10+ years in real-time analytics. 
                 Leads our engineering team in building scalable, privacy-first data infrastructure.
               </p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
