@@ -77,15 +77,6 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     }
   }
 
-  // Request Demo URL from environment variable (using Vite's import.meta.env)
-  const demoUrl = import.meta.env.VITE_DEMO_SCHEDULE_URL || ""
-
-  useEffect(() => {
-    if (!demoUrl) {
-      console.warn("Please configure VITE_DEMO_SCHEDULE_URL for Request Demo functionality")
-    }
-  }, [demoUrl])
-
   return (
     <div
       className={cn(
@@ -171,23 +162,6 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
             </RouterLink>
           )
         })}
-
-        {/* Request Demo Button */}
-        <a
-          href={demoUrl || "#"}
-          target={demoUrl ? "_blank" : undefined}
-          rel="noopener noreferrer"
-          className={cn(
-            "ml-2 py-2 px-4 rounded-full text-sm font-medium transition-all duration-300",
-            demoUrl
-              ? "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white hover:scale-105"
-              : "bg-gray-600 text-gray-300 cursor-not-allowed"
-          )}
-          aria-disabled={!demoUrl}
-        >
-          <span className="hidden sm:inline">Request Demo</span>
-          <span className="sm:hidden">Demo</span>
-        </a>
       </div>
     </div>
   )
