@@ -12,9 +12,6 @@ import AboutSection from "@/components/sections/about-section";
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, User, Mail } from "lucide-react";
 
-// File: pages/Home.tsx
-// Updated: removed pricing section and nav item; updated contact section with waitlist message.
-
 const Home = () => {
   const navItems = [
     { name: "Home", url: "#home", icon: HomeIcon },
@@ -39,7 +36,7 @@ const Home = () => {
       {/* Main Navigation Bar */}
       <TubelightNavBar items={navItems} />
 
-      {/* Hero Section with Static Globe */}
+      {/* Hero Section with Interactive Globe */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black">
         {/* Animated background elements - only visible in dark mode */}
         <div className="absolute inset-0 overflow-hidden dark:block hidden">
@@ -56,12 +53,18 @@ const Home = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center lg:text-left"
             >
+              <div className="mb-4">
+                <span className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full text-purple-600 dark:text-purple-400">
+                  AI-First by Design
+                </span>
+              </div>
+
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   NucleasAI
                 </span>
                 <span className="text-zinc-900 dark:text-white block">
-                  The Core of Customer Intelligence
+                  Autonomous Customer Data Engine
                 </span>
               </h1>
 
@@ -71,7 +74,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-lg md:text-xl text-zinc-700 dark:text-gray-300 mt-4 mb-4 leading-relaxed"
               >
-                Real-time CDP with AI-powered insights, smart redirects, and privacy-first tracking.
+                AI-native CDP ecosystem with autonomous agents, intelligent routing, and real-time customer intelligence.
               </motion.p>
 
               <motion.p
@@ -80,7 +83,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="text-base text-gray-600 dark:text-gray-300 mb-8"
               >
-                More than a tool — a modular ecosystem of AI-powered products.
+                Agent-powered insights that work while you sleep — where data meets intelligence.
               </motion.p>
 
               <motion.div
@@ -101,7 +104,7 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right side - Static Globe Image */}
+            {/* Right side - Interactive Globe */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -112,12 +115,8 @@ const Home = () => {
                 {/* Glow effect behind globe - only in dark mode */}
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
                 
-                {/* Static Globe Image */}
-                <img 
-                  src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=600&h=600&fit=crop"
-                  alt="Global Network"
-                  className="relative z-10 w-full h-full object-cover rounded-full opacity-80 dark:opacity-60"
-                />
+                {/* Interactive Globe */}
+                <Globe className="relative z-10" />
               </div>
             </motion.div>
           </div>
@@ -128,8 +127,12 @@ const Home = () => {
       <ProductSection />
 
       {/* Interactive Dashboard Section */}
-      <section id="dashboard" className="bg-zinc-50 dark:bg-gray-900/30">
-        <InteractiveDashboard />
+      <section id="dashboard" className="bg-zinc-50 dark:bg-gray-900/30 relative">
+        {/* Light mode overlay for better text contrast */}
+        <div className="absolute inset-0 bg-white/80 dark:bg-transparent pointer-events-none"></div>
+        <div className="relative z-10">
+          <InteractiveDashboard />
+        </div>
       </section>
 
       {/* Solutions Section */}
@@ -146,7 +149,7 @@ const Home = () => {
               Get in Touch
             </h2>
             <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to transform your customer data strategy? We're here to help you get started.
+              Ready to transform your customer data strategy with AI-powered intelligence? We're here to help you get started.
             </p>
           </div>
           
@@ -156,7 +159,7 @@ const Home = () => {
               <div>
                 <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mb-4">Let's Connect</h3>
                 <p className="text-zinc-700 dark:text-gray-300 mb-6">
-                  Have questions about NucleasAI? Want to see how we can help your business? 
+                  Have questions about our AI-native CDP ecosystem? Want to see how autonomous agents can transform your customer intelligence? 
                   Reach out and let's start a conversation.
                 </p>
               </div>

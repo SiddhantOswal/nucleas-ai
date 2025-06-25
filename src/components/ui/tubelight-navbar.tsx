@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Link as RouterLink } from "react-router-dom"
+import { Link as RouterLink, useLocation } from "react-router-dom"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -21,6 +21,7 @@ interface NavBarProps {
 export function TubelightNavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,10 +35,12 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
 
   // Active section highlighting with IntersectionObserver
   useEffect(() => {
+    if (location.pathname !== "/") return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
             const sectionId = entry.target.id
             const matchingItem = items.find(item => item.url === `#${sectionId}`)
             if (matchingItem) {
@@ -46,13 +49,14 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
           }
         })
       },
-      { threshold: 0.5, rootMargin: '-10% 0px -10% 0px' }
+      { threshold: [0.3, 0.7], rootMargin: '-20% 0px -20% 0px' }
     )
 
     // Observe all sections
     items.forEach(item => {
       if (item.url.startsWith('#')) {
-        const element = document.querySelector(item.url)
+        const sectionId = item.url.substring(1)
+        const element = document.querySelector(`#${sectionId}`)
         if (element) {
           observer.observe(element)
         }
@@ -60,7 +64,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     })
 
     return () => observer.disconnect()
-  }, [items])
+  }, [items, location.pathname])
 
   const handleNavClick = (item: NavItem) => {
     setActiveTab(item.name)
@@ -98,9 +102,14 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
           <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">N</span>
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
-            NucleasAI
-          </span>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+              NucleasAI
+            </span>
+            <span className="text-xs text-zinc-600 dark:text-gray-400 -mt-1">
+              The Nucleus of Customer Intelligence
+            </span>
+          </div>
         </div>
 
         {/* Navigation - centered */}
@@ -154,14 +163,14 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                 className={cn(
                   "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                   "text-zinc-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-purple-400",
-                  isActive && "bg-white/20 dark:bg-white/20 text-purple-600 dark:text-purple-400",
+                  location.pathname === item.url && "bg-white/20 dark:bg-white/20 text-purple-600 dark:text-purple-400",
                 )}
               >
                 <span className="hidden md:inline">{item.name}</span>
                 <span className="md:hidden">
                   <Icon size={18} strokeWidth={2.5} />
                 </span>
-                {isActive && (
+                {location.pathname === item.url && (
                   <motion.div
                     layoutId="lamp"
                     className="absolute inset-0 w-full bg-purple-500/10 dark:bg-purple-500/20 rounded-full -z-10"

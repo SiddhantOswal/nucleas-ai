@@ -1,6 +1,6 @@
 
 // File: components/sections/about-section.tsx
-// Updated: removed avatars and @ handles from values; added LinkedIn icons to team; improved text contrast and title formatting.
+// Updated: Added AI-native messaging and improved visibility
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -10,11 +10,11 @@ import { Users, Target, Shield, Zap, Brain, Globe, Linkedin } from "lucide-react
 const valuesData = [
   {
     author: {
-      name: "Innovation First",
+      name: "AI-First Innovation",
       handle: "",
       avatar: ""
     },
-    text: "We push the boundaries of what's possible with AI and data analytics, constantly innovating to deliver cutting-edge solutions.",
+    text: "We push the boundaries of autonomous AI agents and intelligent data processing, constantly innovating to deliver cutting-edge customer intelligence solutions.",
     href: undefined
   },
   {
@@ -23,43 +23,43 @@ const valuesData = [
       handle: "",
       avatar: ""
     },
-    text: "Your data privacy is paramount. We build with privacy-first principles, ensuring complete control over your customer data.",
+    text: "Your data privacy is paramount. We build with privacy-first principles and autonomous agents that ensure complete control over your customer data.",
     href: undefined
   },
   {
     author: {
-      name: "Customer Success",
+      name: "Agent-Powered Success",
       handle: "",
       avatar: ""
     },
-    text: "Your success is our mission. We provide dedicated support and tools to help you achieve your business goals.",
+    text: "Your success is our mission. AI agents work 24/7 to provide intelligent insights and automated actions that drive your business goals.",
     href: undefined
   },
   {
     author: {
-      name: "Scalable Solutions",
+      name: "Autonomous Scalability",
       handle: "",
       avatar: ""
     },
-    text: "Built to grow with you. Our platform scales seamlessly from startup to enterprise, handling millions of events.",
+    text: "Built to grow intelligently with you. Our AI-native platform scales seamlessly from startup to enterprise, with agents handling millions of events.",
     href: undefined
   },
   {
     author: {
-      name: "Real-time Insights",
+      name: "Real-time Intelligence",
       handle: "",
       avatar: ""
     },
-    text: "Get insights when they matter most. Our real-time analytics help you make decisions with the latest data.",
+    text: "Get AI-powered insights when they matter most. Our autonomous agents analyze and act on customer data in real-time for immediate impact.",
     href: undefined
   },
   {
     author: {
-      name: "Seamless Integration",
+      name: "Seamless AI Integration",
       handle: "",
       avatar: ""
     },
-    text: "Connect with your existing tools effortlessly. Our platform integrates with 50+ popular services and platforms.",
+    text: "Connect with your existing tools effortlessly. Our AI agents integrate with 50+ popular services, learning and adapting to your workflow.",
     href: undefined
   }
 ];
@@ -83,15 +83,16 @@ const AboutSection = () => {
             </span>
           </h2>
           <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We're building the future of customer data platforms. Our AI-powered solutions help businesses 
-            understand their customers better, protect their privacy, and drive growth through intelligent insights.
+            We're building the future of AI-native customer data platforms. Our autonomous agents and intelligent 
+            systems help businesses understand their customers better, protect their privacy, and drive growth through 
+            agentic AI that works around the clock.
           </p>
         </motion.div>
 
         {/* Our Values Section */}
         <TestimonialsSection
           title="Our Values"
-          description="The principles that guide everything we do"
+          description="The AI-first principles that guide everything we do"
           testimonials={valuesData}
           className="py-16 bg-transparent"
         />
@@ -112,7 +113,7 @@ const AboutSection = () => {
               </span>
             </h3>
             <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-2xl mx-auto">
-              Passionate experts working to revolutionize customer data intelligence
+              AI experts and data scientists working to revolutionize autonomous customer intelligence
             </p>
           </div>
 
@@ -145,9 +146,9 @@ const AboutSection = () => {
               >
                 <Linkedin className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
               </a>
-              <p className="text-zinc-700 dark:text-gray-200 text-sm leading-relaxed font-medium">
-                Former ML engineer at Google. Passionate about building privacy-first AI solutions 
-                that empower businesses to understand their customers better.
+              <p className="text-zinc-800 dark:text-gray-200 text-sm leading-relaxed font-semibold">
+                Former ML engineer at Google. Passionate about building AI-native, privacy-first solutions 
+                with autonomous agents that empower businesses to understand their customers better.
               </p>
             </motion.div>
 
@@ -179,9 +180,9 @@ const AboutSection = () => {
               >
                 <Linkedin className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
               </a>
-              <p className="text-zinc-700 dark:text-gray-200 text-sm leading-relaxed font-medium">
-                Ex-Netflix data architect with 10+ years in real-time analytics. 
-                Leads our engineering team in building scalable, privacy-first data infrastructure.
+              <p className="text-zinc-800 dark:text-gray-200 text-sm leading-relaxed font-semibold">
+                Ex-Netflix data architect with 10+ years in real-time analytics and AI systems. 
+                Leads our engineering team in building scalable, autonomous AI agents for customer data intelligence.
               </p>
             </motion.div>
           </div>
