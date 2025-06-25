@@ -166,9 +166,18 @@ const Home = () => {
                   <Mail className="w-6 h-6 text-purple-600" />
                   <span className="text-zinc-700 dark:text-gray-300">hello@nucleasai.com</span>
                 </div>
-                <p className="text-sm text-zinc-600 dark:text-gray-400 mt-4 font-medium">
-                  Filling out this form will also add you to our waitlist for early access to NucleasAI.
-                </p>
+                
+                {/* Enhanced waitlist message */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg"
+                >
+                  <p className="text-base font-medium bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                    ✨ By filling out this form, you'll secure early access to NucleasAI — be among the first to experience our AI-native CDP ecosystem before anyone else.
+                  </p>
+                </motion.div>
               </div>
             </div>
 

@@ -89,11 +89,11 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-40 pt-6 px-4">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo */}
+      <div className="flex justify-center items-center max-w-7xl mx-auto relative">
+        {/* Logo - positioned absolutely to left */}
         <div 
           onClick={handleLogoClick}
-          className="flex items-center space-x-2 cursor-pointer bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-2 px-4 rounded-full shadow-lg hover:bg-white/20 transition-colors"
+          className="absolute left-0 flex items-center space-x-2 cursor-pointer bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-2 px-4 rounded-full shadow-lg hover:bg-white/20 transition-colors h-12"
         >
           <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-lg">N</span>
@@ -103,8 +103,8 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
           </span>
         </div>
 
-        {/* Navigation */}
-        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+        {/* Navigation - centered */}
+        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg h-12">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name

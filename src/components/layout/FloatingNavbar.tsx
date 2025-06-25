@@ -30,7 +30,7 @@ export function FloatingNavbar() {
         "fixed top-6 right-4 z-50 flex items-center gap-3",
         "bg-white/10 dark:bg-white/10 backdrop-blur-lg",
         "border border-white/20 dark:border-white/10",
-        "shadow-lg rounded-full py-1 px-1"
+        "shadow-lg rounded-full py-1 px-1 h-12"
       )}
     >
       {/* Request Demo Button */}

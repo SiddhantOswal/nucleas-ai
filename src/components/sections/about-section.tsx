@@ -1,6 +1,6 @@
 
 // File: components/sections/about-section.tsx
-// Updated: removed avatars and @ handles from values; added LinkedIn icons to team; improved text contrast.
+// Updated: removed avatars and @ handles from values; added LinkedIn icons to team; improved text contrast and title formatting.
 
 import React from "react";
 import { motion } from "framer-motion";

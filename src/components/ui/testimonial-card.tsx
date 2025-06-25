@@ -20,10 +20,10 @@ export function TestimonialCard({ author, text, href }: TestimonialCardProps) {
         <div className="flex flex-col overflow-hidden">
           <figcaption className="flex flex-row items-center whitespace-nowrap">
             <div className="flex flex-col">
-              <p className="font-medium text-sm dark:text-white">{author.name}</p>
+              <p className="font-bold text-lg text-zinc-900 dark:text-white mb-2">{author.name}</p>
             </div>
           </figcaption>
-          <blockquote className="mt-2 text-sm text-zinc-700 dark:text-gray-200 font-medium leading-relaxed">
+          <blockquote className="text-sm text-zinc-700 dark:text-gray-200 font-semibold leading-relaxed">
             {text}
           </blockquote>
         </div>
