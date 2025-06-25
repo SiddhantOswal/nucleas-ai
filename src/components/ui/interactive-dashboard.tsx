@@ -1,4 +1,3 @@
-
 // Updated: Chart colors updated to match site gradient theme
 
 import React, { useState, useEffect } from "react";
@@ -216,7 +215,9 @@ export const InteractiveDashboard = () => {
             whileHover={{ scale: 1.03 }}
             className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">Top Referrer Domains</h3>
+            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
+              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Top Referrer Domains</span>
+            </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={referrerData}>
@@ -224,7 +225,7 @@ export const InteractiveDashboard = () => {
                     dataKey="name" 
                     axisLine={false} 
                     tickLine={false}
-                    tick={{ fill: '#e5e7eb', fontSize: 12 }}
+                    tick={{ fill: '#222', fontSize: 12, fontWeight: 600 }}
                   />
                   <YAxis hide />
                   <Bar 
@@ -251,7 +252,9 @@ export const InteractiveDashboard = () => {
             whileHover={{ scale: 1.03 }}
             className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">Audience Segments</h3>
+            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
+              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Audience Segments</span>
+            </h3>
             <div className="flex flex-col lg:flex-row items-center gap-6">
               <div className="w-full lg:w-1/2 h-48">
                 <ResponsiveContainer width="100%" height="100%">
@@ -280,7 +283,7 @@ export const InteractiveDashboard = () => {
                         className="w-3 h-3 rounded-full flex-shrink-0"
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
-                      <span className="text-sm text-gray-200 dark:text-gray-200 truncate">
+                      <span className="text-sm text-gray-900 dark:text-gray-200 truncate px-2 py-0.5 rounded bg-white/70 dark:bg-white/0">
                         {entry.name}: {entry.value}%
                       </span>
                     </div>

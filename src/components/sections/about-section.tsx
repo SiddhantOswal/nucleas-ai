@@ -1,4 +1,3 @@
-
 // File: components/sections/about-section.tsx
 // Updated: Added AI-native messaging and improved visibility
 

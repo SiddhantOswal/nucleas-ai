@@ -1,8 +1,6 @@
-
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
 import { ContactForm } from "@/components/ui/contact-form";
-import { Globe } from "@/components/ui/globe";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
@@ -31,7 +29,9 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
       {/* Floating Navbar */}
-      <FloatingNavbar />
+      <div className="hidden lg:block">
+        <FloatingNavbar />
+      </div>
 
       {/* Main Navigation Bar */}
       <TubelightNavBar items={navItems} />
@@ -55,7 +55,7 @@ const Home = () => {
             >
               <div className="mb-4">
                 <span className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full text-purple-600 dark:text-purple-400">
-                  AI-First by Design
+                  Autonomous AI for Customer Data
                 </span>
               </div>
 
@@ -63,8 +63,10 @@ const Home = () => {
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                   NucleasAI
                 </span>
-                <span className="text-zinc-900 dark:text-white block">
-                  Autonomous Customer Data Engine
+                <span className="block text-gray-900 text-3xl md:text-6xl font-bold mt-2 leading-tight tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.10)]">
+                  <span className="text-gray-900 dark:text-white">
+                    The Nucleus of<br />Customer Intelligence
+                  </span>
                 </span>
               </h1>
 
@@ -111,12 +113,13 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.3 }}
               className="relative flex items-center justify-center"
             >
-              <div className="relative w-full max-w-[500px] aspect-square">
+              {/* Scattered watermark phrases around the globe */}
+              {/* Watermarks removed as per user request */}
+              <div className="relative w-full max-w-[500px] aspect-square z-10">
                 {/* Glow effect behind globe - only in dark mode */}
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
-                
                 {/* Interactive Globe */}
-                <Globe className="relative z-10" />
+                <img src="/placeholder.svg" alt="Globe" className="relative z-10 w-full h-full object-contain" />
               </div>
             </motion.div>
           </div>
