@@ -1,18 +1,18 @@
 
 // File: components/sections/about-section.tsx
-// Updated: reduced team section to only two member profiles.
+// Updated: removed avatars and @ handles from values; added LinkedIn icons to team; improved text contrast.
 
 import React from "react";
 import { motion } from "framer-motion";
 import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
-import { Users, Target, Shield, Zap, Brain, Globe } from "lucide-react";
+import { Users, Target, Shield, Zap, Brain, Globe, Linkedin } from "lucide-react";
 
 const valuesData = [
   {
     author: {
       name: "Innovation First",
-      handle: "@innovation",
-      avatar: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=150&h=150&fit=crop&crop=face"
+      handle: "",
+      avatar: ""
     },
     text: "We push the boundaries of what's possible with AI and data analytics, constantly innovating to deliver cutting-edge solutions.",
     href: undefined
@@ -20,8 +20,8 @@ const valuesData = [
   {
     author: {
       name: "Privacy by Design",
-      handle: "@privacy",
-      avatar: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=150&h=150&fit=crop&crop=face"
+      handle: "",
+      avatar: ""
     },
     text: "Your data privacy is paramount. We build with privacy-first principles, ensuring complete control over your customer data.",
     href: undefined
@@ -29,8 +29,8 @@ const valuesData = [
   {
     author: {
       name: "Customer Success",
-      handle: "@success",
-      avatar: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=150&h=150&fit=crop&crop=face"
+      handle: "",
+      avatar: ""
     },
     text: "Your success is our mission. We provide dedicated support and tools to help you achieve your business goals.",
     href: undefined
@@ -38,8 +38,8 @@ const valuesData = [
   {
     author: {
       name: "Scalable Solutions",
-      handle: "@scalable",
-      avatar: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop&crop=face"
+      handle: "",
+      avatar: ""
     },
     text: "Built to grow with you. Our platform scales seamlessly from startup to enterprise, handling millions of events.",
     href: undefined
@@ -47,8 +47,8 @@ const valuesData = [
   {
     author: {
       name: "Real-time Insights",
-      handle: "@realtime",
-      avatar: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop&crop=face"
+      handle: "",
+      avatar: ""
     },
     text: "Get insights when they matter most. Our real-time analytics help you make decisions with the latest data.",
     href: undefined
@@ -56,8 +56,8 @@ const valuesData = [
   {
     author: {
       name: "Seamless Integration",
-      handle: "@integration",
-      avatar: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=150&h=150&fit=crop&crop=face"
+      handle: "",
+      avatar: ""
     },
     text: "Connect with your existing tools effortlessly. Our platform integrates with 50+ popular services and platforms.",
     href: undefined
@@ -138,7 +138,14 @@ const AboutSection = () => {
               <p className="text-purple-600 dark:text-purple-400 font-medium mb-3">
                 CEO & Co-Founder
               </p>
-              <p className="text-zinc-700 dark:text-gray-300 text-sm leading-relaxed">
+              <a
+                href="#"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors mb-3 group"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+              </a>
+              <p className="text-zinc-700 dark:text-gray-200 text-sm leading-relaxed font-medium">
                 Former ML engineer at Google. Passionate about building privacy-first AI solutions 
                 that empower businesses to understand their customers better.
               </p>
@@ -165,7 +172,14 @@ const AboutSection = () => {
               <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">
                 CTO & Co-Founder
               </p>
-              <p className="text-zinc-700 dark:text-gray-300 text-sm leading-relaxed">
+              <a
+                href="#"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors mb-3 group"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+              </a>
+              <p className="text-zinc-700 dark:text-gray-200 text-sm leading-relaxed font-medium">
                 Ex-Netflix data architect with 10+ years in real-time analytics. 
                 Leads our engineering team in building scalable, privacy-first data infrastructure.
               </p>

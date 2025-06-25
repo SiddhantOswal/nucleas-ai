@@ -77,23 +77,80 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     }
   }
 
-  return (
-    <div
-      className={cn(
-        "fixed top-0 left-1/2 -translate-x-1/2 z-40 pt-6",
-        className,
-      )}
-    >
-      <div className="flex items-center gap-3 bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
-        {items.map((item) => {
-          const Icon = item.icon
-          const isActive = activeTab === item.name
+  const handleLogoClick = () => {
+    const heroSection = document.querySelector('#home')
+    if (heroSection) {
+      heroSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
 
-          if (item.url.startsWith('#')) {
+  return (
+    <div className="fixed top-0 left-0 right-0 z-40 pt-6 px-4">
+      <div className="flex justify-between items-center max-w-7xl mx-auto">
+        {/* Logo */}
+        <div 
+          onClick={handleLogoClick}
+          className="flex items-center space-x-2 cursor-pointer bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-2 px-4 rounded-full shadow-lg hover:bg-white/20 transition-colors"
+        >
+          <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
+            <span className="text-white font-bold text-lg">N</span>
+          </div>
+          <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+            NucleasAI
+          </span>
+        </div>
+
+        {/* Navigation */}
+        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+          {items.map((item) => {
+            const Icon = item.icon
+            const isActive = activeTab === item.name
+
+            if (item.url.startsWith('#')) {
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => handleNavClick(item)}
+                  className={cn(
+                    "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                    "text-zinc-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-purple-400",
+                    isActive && "bg-white/20 dark:bg-white/20 text-purple-600 dark:text-purple-400",
+                  )}
+                >
+                  <span className="hidden md:inline">{item.name}</span>
+                  <span className="md:hidden">
+                    <Icon size={18} strokeWidth={2.5} />
+                  </span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="lamp"
+                      className="absolute inset-0 w-full bg-purple-500/10 dark:bg-purple-500/20 rounded-full -z-10"
+                      initial={false}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
+                    >
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-purple-500 rounded-t-full">
+                        <div className="absolute w-12 h-6 bg-purple-500/20 rounded-full blur-md -top-2 -left-2" />
+                        <div className="absolute w-8 h-6 bg-purple-500/20 rounded-full blur-md -top-1" />
+                        <div className="absolute w-4 h-4 bg-purple-500/20 rounded-full blur-sm top-0 left-2" />
+                      </div>
+                    </motion.div>
+                  )}
+                </button>
+              )
+            }
+
             return (
-              <button
+              <RouterLink
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                to={item.url}
+                onClick={() => setActiveTab(item.name)}
                 className={cn(
                   "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                   "text-zinc-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-purple-400",
@@ -122,46 +179,10 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                     </div>
                   </motion.div>
                 )}
-              </button>
+              </RouterLink>
             )
-          }
-
-          return (
-            <RouterLink
-              key={item.name}
-              to={item.url}
-              onClick={() => setActiveTab(item.name)}
-              className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-zinc-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-purple-400",
-                isActive && "bg-white/20 dark:bg-white/20 text-purple-600 dark:text-purple-400",
-              )}
-            >
-              <span className="hidden md:inline">{item.name}</span>
-              <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
-              </span>
-              {isActive && (
-                <motion.div
-                  layoutId="lamp"
-                  className="absolute inset-0 w-full bg-purple-500/10 dark:bg-purple-500/20 rounded-full -z-10"
-                  initial={false}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}
-                >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-purple-500 rounded-t-full">
-                    <div className="absolute w-12 h-6 bg-purple-500/20 rounded-full blur-md -top-2 -left-2" />
-                    <div className="absolute w-8 h-6 bg-purple-500/20 rounded-full blur-md -top-1" />
-                    <div className="absolute w-4 h-4 bg-purple-500/20 rounded-full blur-sm top-0 left-2" />
-                  </div>
-                </motion.div>
-              )}
-            </RouterLink>
-          )
-        })}
+          })}
+        </div>
       </div>
     </div>
   )

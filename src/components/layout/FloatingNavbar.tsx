@@ -1,5 +1,5 @@
 
-// File: components/FloatingNavbar.tsx — Updated: Fixed Request Demo button click + gradient styling.
+// File: components/FloatingNavbar.tsx — Updated: Fixed Request Demo button click + gradient styling + matched glassmorphism design.
 
 "use client"
 
@@ -27,10 +27,10 @@ export function FloatingNavbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className={cn(
-        "fixed top-4 right-4 z-50 flex items-center gap-3 p-2 rounded-2xl",
-        "bg-white/10 dark:bg-black/50 backdrop-blur-sm",
+        "fixed top-6 right-4 z-50 flex items-center gap-3",
+        "bg-white/10 dark:bg-white/10 backdrop-blur-lg",
         "border border-white/20 dark:border-white/10",
-        "shadow-lg hover:shadow-xl transition-all duration-300"
+        "shadow-lg rounded-full py-1 px-1"
       )}
     >
       {/* Request Demo Button */}
@@ -39,7 +39,7 @@ export function FloatingNavbar() {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-2xl px-4 py-2",
+          "bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-full px-4 py-2",
           "hover:from-pink-600 hover:to-blue-600 transition cursor-pointer",
           "font-medium focus:outline-none focus:ring-2 focus:ring-purple-500"
         )}
@@ -50,9 +50,7 @@ export function FloatingNavbar() {
       </a>
 
       {/* Theme Toggle */}
-      <div className="ml-4">
-        <ThemeToggle />
-      </div>
+      <ThemeToggle />
     </motion.div>
   )
 }
