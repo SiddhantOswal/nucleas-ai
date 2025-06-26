@@ -253,7 +253,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                         key={item.name}
                         onClick={() => { handleNavClick(item); setMenuOpen(false) }}
                         className={cn(
-                          "flex items-center gap-3 px-4 py-3 rounded-lg text-base font-semibold transition-colors",
+                          "flex items-center gap-3 px-4 py-3 rounded-md text-base font-semibold transition-colors",
                           isActive
                             ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
                             : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white",
@@ -270,7 +270,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                       to={item.url}
                       onClick={() => { setActiveTab(item.name); setMenuOpen(false) }}
                       className={cn(
-                        "flex items-center gap-3 px-4 py-3 rounded-lg text-base font-semibold transition-colors",
+                        "flex items-center gap-3 px-4 py-3 rounded-md text-base font-semibold transition-colors",
                         location.pathname === item.url
                           ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
                           : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white",

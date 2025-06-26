@@ -30,7 +30,7 @@ const products: ProductFeature[] = [
   {
     id: "analytics",
     title: "Real-time Analytics",
-    description: "Advanced customer behavior tracking and insights",
+    description: "Advanced behavior tracking and insights",
     icon: BarChart3,
     features: [
       "Real-time event tracking",

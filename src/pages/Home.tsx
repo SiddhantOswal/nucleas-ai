@@ -7,6 +7,7 @@ import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
+import { FAQSection } from '@/components/ui/FAQSection';
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, User, Mail } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
@@ -174,6 +175,9 @@ const Home = () => {
 
         {/* About Section */}
         <AboutSection />
+
+        {/* FAQ Section - added just before Get in Touch */}
+        <FAQSection />
 
         {/* Contact Section */}
         <section id="contact" className="py-24 bg-white dark:bg-black">
