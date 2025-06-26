@@ -1,73 +1,142 @@
-# Welcome to your Lovable project
+# NucleasAI
 
-## Project info
+AI-native Customer Data Platform with autonomous agents, intelligent routing, and real-time customer intelligence.
 
-**URL**: https://lovable.dev/projects/f1b536bb-3d2f-44bc-8f8f-310399fdb87f
+## 🚀 Tech Stack
 
-## How can I edit this code?
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** ShadCN UI
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Charts:** Recharts
+- **3D Globe:** Cobe
 
-There are several ways of editing your application.
+## 📁 Project Structure
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/f1b536bb-3d2f-44bc-8f8f-310399fdb87f) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+nucleas-ai/
+├── nucleas-next/          # Next.js application
+│   ├── src/
+│   │   ├── app/           # Next.js App Router pages
+│   │   ├── components/    # UI, layout, and section components
+│   │   └── lib/          # Utilities and configurations
+│   ├── public/           # Static assets
+│   └── package.json      # Next.js dependencies
+├── package.json          # Root project configuration
+└── README.md            # This file
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
 
-**Use GitHub Codespaces**
+- Node.js 18+ 
+- npm 8+
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Installation
 
-## What technologies are used for this project?
+1. **Install dependencies:**
+   ```bash
+   npm run install-deps
+   ```
 
-This project is built with:
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## How can I deploy this project?
+### Available Scripts
 
-Simply open [Lovable](https://lovable.dev/projects/f1b536bb-3d2f-44bc-8f8f-310399fdb87f) and click on Share -> Publish.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run install-deps` - Install dependencies
 
-## Can I connect a custom domain to my Lovable project?
+## 🌟 Features
 
-Yes, you can!
+- **AI-Native CDP:** Built from the ground up with artificial intelligence
+- **Autonomous Agents:** Self-learning agents that work 24/7
+- **Real-time Intelligence:** Live customer data processing and insights
+- **Modern UI:** Beautiful, responsive design with glassmorphism effects
+- **SEO Optimized:** Built-in SEO features with Next.js
+- **Performance:** Optimized for speed and user experience
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📄 Pages
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- **Home** (`/`) - Landing page with hero section and features
+- **About** (`/about`) - Company information and team
+- **Product** (`/product`) - Product features and capabilities
+- **Solutions** (`/solutions`) - Industry-specific solutions
+- **Pricing** (`/pricing`) - Pricing plans and packages
+- **Blog** (`/blog`) - Company blog and insights
+- **Contact** (`/contact`) - Contact form and information
+- **Signup** (`/signup`) - User registration
+- **Login** (`/login`) - User authentication
+
+## 🔧 Development
+
+### Component Structure
+
+- `src/components/ui/` - Reusable UI components (ShadCN)
+- `src/components/layout/` - Layout components (Header, Footer, Navigation)
+- `src/components/sections/` - Page sections and features
+
+### Styling
+
+- Tailwind CSS for utility-first styling
+- Custom CSS variables for theming
+- Responsive design with mobile-first approach
+
+### State Management
+
+- React hooks for local state
+- Context API for global state (if needed)
+- Server-side state with Next.js
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+### Other Platforms
+
+- **Netlify:** Use `npm run build` and deploy the `out` directory
+- **AWS Amplify:** Connect your repository and deploy
+- **Docker:** Use the provided Dockerfile
+
+## 📝 Environment Variables
+
+Create a `.env.local` file in the `nucleas-next` directory:
+
+```env
+NEXT_PUBLIC_DEMO_SCHEDULE_URL=your_demo_schedule_url
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support, email hello@nucleasai.com or create an issue in this repository.
+
+---
+
+**NucleasAI** - The Nucleus of Customer Intelligence
