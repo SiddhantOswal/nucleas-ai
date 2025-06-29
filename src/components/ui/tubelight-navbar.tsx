@@ -222,14 +222,19 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
               className="relative ml-auto w-4/5 max-w-xs h-full bg-background text-foreground shadow-2xl border-l border-white/20 flex flex-col py-8 px-6 gap-6"
               style={{ zIndex: 60 }}
             >
-              {/* Close button */}
-              <button
-                className="absolute top-4 right-4 text-2xl text-foreground hover:text-purple-500 transition-colors"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <X size={28} />
-              </button>
+              {/* Top row: Close button and Theme Toggle */}
+              <div className="flex items-center justify-between mb-8">
+                {/* Close button */}
+                <button
+                  className="text-2xl text-foreground hover:text-purple-500 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <X size={28} />
+                </button>
+                {/* Theme Toggle */}
+                <ThemeToggle />
+              </div>
               {/* Logo */}
               <div
                 onClick={() => { handleLogoClick(); setMenuOpen(false) }}
@@ -283,8 +288,6 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                 })}
               </nav>
               <div className="flex flex-col gap-4 mt-8">
-                {/* Theme Toggle */}
-                <ThemeToggle className="self-start" />
                 {/* Request Demo Button */}
                 <a
                   href={demoUrl || "#"}
