@@ -193,32 +193,27 @@ const Home = () => {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Contact Info */}
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mb-4">Let's Connect</h3>
-                  <p className="text-zinc-700 dark:text-gray-300 mb-6">
-                    Have questions about our AI-native CDP ecosystem? Want to see how autonomous agents can transform your customer intelligence? 
-                    Reach out and let's start a conversation.
+              <div className="flex flex-col items-center justify-center space-y-8 py-4 px-2">
+                {/* Heading and Description */}
+                <div className="text-center space-y-3">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">Let's Connect</h3>
+                  <p className="text-gray-300 text-base md:text-lg max-w-md mx-auto">
+                    Discover how our AI-native CDP ecosystem empowers you with real-time, autonomous customer intelligence. Reach out to us for questions, demos, or partnership opportunities.
                   </p>
                 </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-purple-600" />
-                    <span className="text-zinc-700 dark:text-gray-300">hello@nucleasai.com</span>
-                  </div>
-                  
-                  {/* Enhanced waitlist message */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg"
-                  >
-                    <p className="text-base font-medium bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                      ✨ By filling out this form, you'll secure early access to NucleasAI — be among the first to experience our AI-native CDP ecosystem before anyone else.
-                    </p>
-                  </motion.div>
+                {/* Inline Contact Row */}
+                <div className="flex items-center justify-center space-x-2">
+                  <Mail className="w-5 h-5 text-purple-400" />
+                  <a href="mailto:hello@nucleasai.com" className="text-white font-medium hover:underline focus:underline transition-all text-base md:text-lg">
+                    hello@nucleasai.com
+                  </a>
+                </div>
+                {/* Waitlist CTA Card */}
+                <div className="w-full max-w-md mx-auto bg-gradient-to-br from-purple-700/60 via-purple-600/40 to-blue-700/30 border border-purple-500/30 rounded-2xl p-6 md:p-8 shadow-lg flex flex-col items-center space-y-2 mt-2">
+                  <h4 className="text-lg md:text-xl font-bold text-white mb-1">🚀 Join our exclusive waitlist</h4>
+                  <p className="text-gray-300 text-center text-sm md:text-base">
+                    Secure early access to <span className="text-purple-400 font-semibold">NucleasAI</span> — the real-time, AI-native CDP ecosystem built for the future of customer data.
+                  </p>
                 </div>
               </div>
 
