@@ -44,34 +44,46 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
   useEffect(() => {
     if (location.pathname !== "/") return;
 
+    // Add scroll-margin-top to each section to account for sticky header
+    const headerOffset = 100;
+    items.forEach(item => {
+      if (item.url.startsWith('#')) {
+        const sectionId = item.url.substring(1);
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.style.scrollMarginTop = `${headerOffset}px`;
+        }
+      }
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-            const sectionId = entry.target.id
-            const matchingItem = items.find(item => item.url === `#${sectionId}`)
+          if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+            const sectionId = entry.target.id;
+            const matchingItem = items.find(item => item.url === `#${sectionId}`);
             if (matchingItem) {
-              setActiveTab(matchingItem.name)
+              setActiveTab(matchingItem.name);
             }
           }
-        })
+        });
       },
-      { threshold: [0.3, 0.7], rootMargin: '-20% 0px -20% 0px' }
-    )
+      { threshold: [0.2, 0.7], rootMargin: `-${headerOffset}px 0px 0px 0px` }
+    );
 
     // Observe all sections
     items.forEach(item => {
       if (item.url.startsWith('#')) {
-        const sectionId = item.url.substring(1)
-        const element = document.querySelector(`#${sectionId}`)
+        const sectionId = item.url.substring(1);
+        const element = document.getElementById(sectionId);
         if (element) {
-          observer.observe(element)
+          observer.observe(element);
         }
       }
-    })
+    });
 
-    return () => observer.disconnect()
-  }, [items, location.pathname])
+    return () => observer.disconnect();
+  }, [items, location.pathname]);
 
   const handleNavClick = (item: NavItem) => {
     setActiveTab(item.name)
