@@ -1,3 +1,5 @@
+'use client';
+import Head from 'next/head';
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
 import { ContactForm } from "@/components/ui/contact-form";
@@ -9,11 +11,15 @@ import { SolutionsSection } from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
 import { FAQSection } from '@/components/ui/FAQSection';
 import { motion } from "framer-motion";
-import { Home as HomeIcon, Package, Settings, User, Mail } from "lucide-react";
-import { Helmet } from 'react-helmet-async';
+import { Home as HomeIcon, Package, Settings, User, Mail, ArrowRight, MapPin, Clock } from "lucide-react";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-const Home = () => {
+export default function Home() {
   const navItems = [
     { name: "Home", url: "#home", icon: HomeIcon },
     { name: "Product", url: "#product", icon: Package },
@@ -31,7 +37,7 @@ const Home = () => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>AI-Native CDP | Real-time Customer Data Platform | NucleasAI</title>
         <meta name="description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
         <link rel="canonical" href="https://nucleasai.com/" />
@@ -58,8 +64,10 @@ const Home = () => {
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
           }
         `}</script>
-      </Helmet>
+      </Head>
       <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
+        {/* TEST BOX FOR DARK MODE */}
+        <div className="relative z-[9999] h-20 w-20 bg-white dark:bg-black border m-8 flex items-center justify-center">TEST</div>
         {/* Floating Navbar */}
         <div className="hidden lg:block">
           <FloatingNavbar />
@@ -190,44 +198,116 @@ const Home = () => {
                 Ready to transform your customer data strategy with AI-powered intelligence? We're here to help you get started.
               </p>
             </div>
-            
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Contact Info */}
-              <div className="flex flex-col items-center justify-center space-y-8 py-4 px-2">
-                {/* Heading and Description */}
-                <div className="text-center space-y-3">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">Let's Connect</h3>
-                  <p className="text-gray-800 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-md mx-auto">
-                    Discover how our AI-native CDP ecosystem empowers you with real-time, autonomous customer intelligence. Reach out to us for questions, demos, or partnership opportunities.
+              {/* Contact Info - now on the left */}
+              <div>
+                {/* Waitlist CTA box at the top */}
+                <div className="rounded-2xl p-6 bg-gradient-to-br from-purple-700 via-purple-600 to-blue-700 text-white dark:from-purple-800 dark:via-purple-700 dark:to-blue-800 shadow-lg mb-6">
+                  <div className="flex items-center mb-2">
+                    <span className="text-2xl mr-2">🚀</span>
+                    <span className="font-bold text-lg">Join our exclusive waitlist</span>
+                  </div>
+                  <p className="text-base text-white/90">
+                    Join the waitlist to secure early access to <span className="font-semibold text-purple-200">NucleasAI</span> the real-time, AI-native CDP ecosystem and unlock exclusive launch benefits available only to early adopters.
                   </p>
                 </div>
-                {/* Inline Contact Row */}
-                <div className="flex items-center justify-center space-x-2">
-                  <Mail className="w-5 h-5 text-purple-400" />
-                  <a href="mailto:hello@nucleasai.com" className="text-white font-medium hover:underline focus:underline transition-all text-base md:text-lg">
-                    hello@nucleasai.com
-                  </a>
+                {/* Let's Connect title and description */}
+                <h2 className="text-3xl font-bold text-white dark:text-white mb-4">Let's Connect</h2>
+                <p className="text-lg text-gray-200 dark:text-gray-200 mb-6">
+                  Discover how our AI-native CDP ecosystem empowers you with real-time, autonomous customer intelligence.<br />
+                  Reach out to us for questions, demos, or partnership opportunities.
+                </p>
+                {/* Email block */}
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <Mail className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white mb-1">Email</h3>
+                    <a href="mailto:hello@nucleasai.com" className="block font-bold text-white dark:text-white underline hover:text-purple-300">hello@nucleasai.com</a>
+                    {/* <a href="mailto:support@nucleasai.com" className="block font-bold text-white dark:text-white underline hover:text-purple-300">support@nucleasai.com</a> */}
+                  </div>
                 </div>
-                {/* Waitlist CTA Card */}
-                <div className="w-full max-w-md mx-auto bg-gradient-to-br from-purple-700/60 via-purple-600/40 to-blue-700/30 border border-purple-500/30 rounded-2xl p-6 md:p-8 shadow-lg flex flex-col items-center space-y-2 mt-2">
-                  <h4 className="text-lg md:text-xl font-extrabold text-white mb-1 drop-shadow-lg">🚀 Join our exclusive waitlist</h4>
-                  <p className="text-gray-100 font-medium text-center text-sm md:text-base">
-                    Secure early access to <span className="font-bold text-white">NucleasAI</span> — the real-time, AI-native CDP ecosystem built for the future of customer data.
-                  </p>
+                {/* Location block at the bottom */}
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white mb-1">Location</h3>
+                    <p className="text-gray-200">Pune, Maharashtra, India</p>
+                  </div>
                 </div>
               </div>
-
-              {/* Contact Form */}
-              <ContactForm />
+              {/* Form - now on the right */}
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-6">Send us a message</h2>
+                <p className="text-gray-400 mb-8">
+                  Fill out the form below and we'll get back to you within 24 hours.
+                </p>
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <Label htmlFor="firstName" className="text-white">First Name</Label>
+                      <Input 
+                        id="firstName"
+                        className="mt-2 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                        placeholder="John"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="lastName" className="text-white">Last Name</Label>
+                      <Input 
+                        id="lastName"
+                        className="mt-2 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="email" className="text-white">Email</Label>
+                    <Input 
+                      id="email"
+                      type="email"
+                      className="mt-2 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                      placeholder="john@company.com"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="company" className="text-white">Company</Label>
+                    <Input 
+                      id="company"
+                      className="mt-2 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                      placeholder="Acme Inc."
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="subject" className="text-white">Subject</Label>
+                    <Input 
+                      id="subject"
+                      className="mt-2 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                      placeholder="How can we help you?"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="message" className="text-white">Message</Label>
+                    <Textarea 
+                      id="message"
+                      rows={5}
+                      className="mt-2 bg-gray-800 border-gray-700 text-white placeholder-gray-400"
+                      placeholder="Tell us more about your needs..."
+                    />
+                  </div>
+                  <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+                    Send Message
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </form>
+              </div>
             </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <Footer />
       </div>
     </>
   );
-};
-
-export default Home;
+}

@@ -243,31 +243,6 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Response Times */}
-                <div className="mt-8 p-6 bg-gray-800/30 rounded-lg border border-gray-700">
-                  <h3 className="font-semibold text-white mb-4">Response Times</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400">General Inquiries</span>
-                      <Badge variant="secondary" className="bg-green-900/30 text-green-300 border-green-800">
-                        &lt; 24 hours
-                      </Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Sales Requests</span>
-                      <Badge variant="secondary" className="bg-blue-900/30 text-blue-300 border-blue-800">
-                        &lt; 4 hours
-                      </Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Enterprise Support</span>
-                      <Badge variant="secondary" className="bg-purple-900/30 text-purple-300 border-purple-800">
-                        &lt; 2 hours
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
