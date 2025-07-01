@@ -1,5 +1,5 @@
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
-import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
+// import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
 import { ContactForm } from "@/components/ui/contact-form";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,11 +7,14 @@ import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
-import { FAQSection } from '@/components/ui/FAQSection';
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, User, Mail, MapPin } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import React, { Suspense } from "react";
+
+const InteractiveDashboard = React.lazy(() => import("@/components/ui/interactive-dashboard").then(module => ({ default: module.InteractiveDashboard })));
+const FAQSection = React.lazy(() => import('@/components/ui/FAQSection').then(module => ({ default: module.FAQSection })));
 
 const Home = () => {
   const navItems = [
@@ -36,6 +39,18 @@ const Home = () => {
         <meta name="description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
         <link rel="canonical" href="https://nucleasai.com/" />
         <meta name="keywords" content="AI-native CDP, real-time customer data platform, AI agents, data activation, customer intelligence, identity resolution" />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="AI-Native CDP | Real-time Customer Data Platform | NucleasAI" />
+        <meta property="og:description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
+        <meta property="og:url" content="https://nucleasai.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://nucleasai.com/og-image.png" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI-Native CDP | Real-time Customer Data Platform | NucleasAI" />
+        <meta name="twitter:description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
+        <meta name="twitter:image" content="https://nucleasai.com/og-image.png" />
+        <meta name="twitter:site" content="@nucleasai" />
         {/* Breadcrumb structured data */}
         <script type="application/ld+json">{`
           {
@@ -151,7 +166,7 @@ const Home = () => {
                   {/* Glow effect behind globe - only in dark mode */}
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
                   {/* Interactive Globe */}
-                  <img src="/placeholder.svg" alt="Globe" className="relative z-10 w-full h-full object-contain" />
+                  <img src="/placeholder.svg" alt="Globe" className="relative z-10 w-full h-full object-contain" loading="lazy" />
                 </div>
               </motion.div>
             </div>
@@ -166,7 +181,9 @@ const Home = () => {
           {/* Light mode overlay for better text contrast */}
           <div className="absolute inset-0 bg-white/80 dark:bg-transparent pointer-events-none"></div>
           <div className="relative z-10">
-            <InteractiveDashboard />
+            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading dashboard...</div>}>
+              <InteractiveDashboard />
+            </Suspense>
           </div>
         </section>
 
@@ -177,7 +194,9 @@ const Home = () => {
         <AboutSection />
 
         {/* FAQ Section - added just before Get in Touch */}
-        <FAQSection />
+        <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading FAQs...</div>}>
+          <FAQSection />
+        </Suspense>
 
         {/* Contact Section */}
         <section id="contact" className="py-24 bg-white dark:bg-black">

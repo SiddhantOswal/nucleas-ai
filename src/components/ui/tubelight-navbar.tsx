@@ -87,9 +87,18 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
 
     timeoutId = window.setTimeout(setupObserver, 100);
 
+    // Add scroll event to force Home tab highlight at top
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setActiveTab(items[0].name); // Home
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
       if (observer) observer.disconnect();
       window.clearTimeout(timeoutId);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [items, location.pathname]);
 
