@@ -2,13 +2,13 @@
 "use client"
 
 import { Header } from "@/components/layout/Header";
-import { AboutSection } from "@/components/sections/about-section";
+import AboutSection from "@/components/sections/about-section";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { FAQSection } from "@/components/ui/FAQSection";
 
-export function Home() {
+export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
