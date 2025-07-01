@@ -65,9 +65,7 @@ export default function Home() {
           }
         `}</script>
       </Head>
-      <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
-        {/* TEST BOX FOR DARK MODE */}
-        <div className="relative z-[9999] h-20 w-20 bg-white dark:bg-black border m-8 flex items-center justify-center">TEST</div>
+      <div className="min-h-screen bg-black text-white" style={{ scrollBehavior: 'smooth' }}>
         {/* Floating Navbar */}
         <div className="hidden lg:block">
           <FloatingNavbar />

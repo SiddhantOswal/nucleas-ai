@@ -6,7 +6,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LucideIcon, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 interface NavItem {
   name: string
@@ -119,10 +118,10 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
           {/* Logo */}
           <div 
             onClick={handleLogoClick}
-            className="flex items-center space-x-2 cursor-pointer bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-2 px-4 rounded-full shadow-lg hover:bg-white/20 transition-colors h-12"
+            className="flex items-center space-x-2 cursor-pointer bg-black/10 border border-white/20 backdrop-blur-lg py-2 px-4 rounded-full shadow-lg hover:bg-black/20 transition-colors h-12"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">N</span>
+              <span className="text-purple-300 font-bold text-lg">N</span>
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
@@ -140,7 +139,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
           </button>
         </div>
         {/* Desktop Navigation - centered, only show on lg+ */}
-        <div className="hidden lg:flex items-center gap-3 bg-white/10 dark:bg-white/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg h-12 absolute left-1/2 -translate-x-1/2">
+        <div className="hidden lg:flex items-center gap-3 bg-black/10 border border-white/20 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg h-12 absolute left-1/2 -translate-x-1/2">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name
@@ -151,8 +150,8 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                   onClick={() => handleNavClick(item)}
                   className={cn(
                     "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                    "text-zinc-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-purple-400",
-                    isActive && "bg-white/20 dark:bg-white/20 text-purple-600 dark:text-purple-400",
+                    "text-gray-300 hover:text-purple-400",
+                    isActive && "bg-black/20 text-purple-400",
                   )}
                 >
                   <span className="hidden md:inline">{item.name}</span>
@@ -162,7 +161,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                   {isActive && (
                     <motion.div
                       layoutId="lamp"
-                      className="absolute inset-0 w-full bg-purple-500/10 dark:bg-purple-500/20 rounded-full -z-10"
+                      className="absolute inset-0 w-full bg-purple-500/20 rounded-full -z-10"
                       initial={false}
                       transition={{
                         type: "spring",
@@ -187,8 +186,8 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                 onClick={() => setActiveTab(item.name)}
                 className={cn(
                   "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                  "text-zinc-700 dark:text-white/80 hover:text-purple-600 dark:hover:text-purple-400",
-                  pathname === item.url && "bg-white/20 dark:bg-white/20 text-purple-600 dark:text-purple-400",
+                  "text-gray-300 hover:text-purple-400",
+                  pathname === item.url && "bg-black/20 text-purple-400",
                 )}
               >
                 <span className="hidden md:inline">{item.name}</span>
@@ -198,7 +197,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                 {pathname === item.url && (
                   <motion.div
                     layoutId="lamp"
-                    className="absolute inset-0 w-full bg-purple-500/10 dark:bg-purple-500/20 rounded-full -z-10"
+                    className="absolute inset-0 w-full bg-purple-500/20 rounded-full -z-10"
                     initial={false}
                     transition={{
                       type: "spring",
@@ -246,7 +245,16 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                   <X size={28} />
                 </button>
                 {/* Theme Toggle */}
-                <ThemeToggle />
+                <div className="flex items-center space-x-2 cursor-pointer bg-black/10 border border-white/20 backdrop-blur-lg py-2 px-4 rounded-full shadow-lg hover:bg-black/20 transition-colors h-12">
+                  <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
+                    <span className="text-purple-300 font-bold text-lg">N</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                      NucleasAI
+                    </span>
+                  </div>
+                </div>
               </div>
               {/* Logo */}
               <div
@@ -254,7 +262,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                 className="flex items-center space-x-2 cursor-pointer mb-8"
               >
                 <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">N</span>
+                  <span className="text-purple-300 font-bold text-lg">N</span>
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
                   NucleasAI
@@ -273,8 +281,8 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                         className={cn(
                           "flex items-center gap-3 px-4 py-3 rounded-md text-base font-semibold transition-colors",
                           isActive
-                            ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
-                            : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white",
+                            ? "bg-gradient-to-r from-pink-500 to-blue-500 text-purple-300 shadow"
+                            : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-purple-300",
                         )}
                       >
                         <Icon size={20} />
@@ -290,8 +298,8 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                       className={cn(
                         "flex items-center gap-3 px-4 py-3 rounded-md text-base font-semibold transition-colors",
                         pathname === item.url
-                          ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
-                          : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white",
+                          ? "bg-gradient-to-r from-pink-500 to-blue-500 text-purple-300 shadow"
+                          : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-purple-300",
                       )}
                     >
                       <Icon size={20} />
@@ -306,7 +314,7 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                   href={demoUrl || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-full px-4 py-3 font-medium shadow hover:from-pink-600 hover:to-blue-600 transition"
+                  className="bg-gradient-to-r from-pink-500 to-blue-500 text-purple-300 rounded-full px-4 py-3 font-medium shadow hover:from-pink-600 hover:to-blue-600 transition"
                   aria-label="Request a demo"
                 >
                   Request Demo

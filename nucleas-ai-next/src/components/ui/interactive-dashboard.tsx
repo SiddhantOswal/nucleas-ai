@@ -130,7 +130,7 @@ export const InteractiveDashboard = () => {
   }, []);
 
   return (
-    <section id="dashboard-section" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/20">
+    <section id="dashboard-section" className="py-24 px-4 sm:px-6 lg:px-8 bg-black/20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.h2 
@@ -143,7 +143,7 @@ export const InteractiveDashboard = () => {
             Your Real-Time Customer Dashboard
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8"
+            className="text-xl text-gray-300 max-w-3xl mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -160,7 +160,7 @@ export const InteractiveDashboard = () => {
             className="flex justify-center mb-12"
           >
             <Select value={timePeriod} onValueChange={setTimePeriod}>
-              <SelectTrigger className="w-48 bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border-white/30 ring-1 ring-white/10">
+              <SelectTrigger className="w-48 bg-black/20 backdrop-blur-[10px] border-white/30 ring-1 ring-white/10">
                 <SelectValue placeholder="Select time period" />
               </SelectTrigger>
               <SelectContent>
@@ -181,14 +181,14 @@ export const InteractiveDashboard = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.03 }}
-              className="relative p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 group"
+              className="relative p-6 rounded-2xl bg-black/20 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 group"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 ${metric.color}`}>
                   {metric.icon}
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white">
+                  <div className="text-3xl font-bold text-white">
                     {isVisible ? (
                       <CountUpAnimation 
                         end={metric.value} 
@@ -199,7 +199,7 @@ export const InteractiveDashboard = () => {
                       `${metric.prefix || ""}0${metric.suffix || ""}`
                     )}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  <div className="text-sm text-gray-300 mt-1">
                     {metric.label}
                   </div>
                 </div>
@@ -216,10 +216,10 @@ export const InteractiveDashboard = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.03 }}
-            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
+            className="p-6 rounded-2xl bg-black/20 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
-              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Top Referrer Domains</span>
+            <h3 className="text-xl font-semibold text-white mb-6">
+              <span className="inline-block px-2 py-1 rounded bg-black/40 text-white">Top Referrer Domains</span>
             </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
@@ -273,10 +273,10 @@ export const InteractiveDashboard = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.03 }}
-            className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
+            className="p-6 rounded-2xl bg-black/20 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
-              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Audience Segments</span>
+            <h3 className="text-xl font-semibold text-white mb-6">
+              <span className="inline-block px-2 py-1 rounded bg-black/40 text-white">Audience Segments</span>
             </h3>
             <div className="flex flex-col lg:flex-row items-center gap-6">
               <div className="w-full lg:w-1/2 h-48">
@@ -314,7 +314,7 @@ export const InteractiveDashboard = () => {
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
                       <span
-                        className="truncate px-2 py-0.5 rounded font-medium text-[1rem] text-gray-900 dark:text-white"
+                        className="truncate px-2 py-0.5 rounded font-medium text-[1rem] text-white"
                       >
                         {entry.name}: {entry.value}%
                       </span>
