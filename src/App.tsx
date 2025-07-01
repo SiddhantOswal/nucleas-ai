@@ -98,14 +98,6 @@ const App = () => {
             a.appendChild(r);
           })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
         `}</script>
-        {/* Microsoft Clarity (replace clarity_id with your ID) */}
-        <script type="text/javascript">{`
-          (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/clarity_id";
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "clarity_id");
-        `}</script>
       </Helmet>
       <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white">
         <BrowserRouter>
