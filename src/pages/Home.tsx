@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>AI-Native CDP | Real-time Customer Data Platform | NucleasAI</title>
+      <title>NucleasAI | AI-Native CDP | Real-time Customer Data Platform</title>
         <meta name="description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
         <link rel="canonical" href="https://nucleasai.com/" />
         <meta name="keywords" content="AI-native CDP, real-time customer data platform, AI agents, data activation, customer intelligence, identity resolution" />
@@ -206,7 +206,7 @@ const Home = () => {
                 Get in Touch
               </h2>
               <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-2xl mx-auto">
-                Ready to transform your customer data strategy with AI-powered intelligence? We're here to help you get started.
+                Ready to unlock the power of first-party customer data with a real-time CDP? Discover how NucleasAI's AI churn prediction and identity resolution can transform your business.
               </p>
             </div>
             
