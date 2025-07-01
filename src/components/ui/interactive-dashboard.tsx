@@ -1,11 +1,11 @@
-
 // Updated: Chart colors updated to match site gradient theme
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, Tooltip as RechartsTooltip, Legend } from "recharts";
 import { Activity, Users, Zap, Target, TrendingUp, Globe } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useTheme } from 'next-themes';
 
 interface Metric {
   label: string;
@@ -24,8 +24,8 @@ interface ChartData {
 const referrerData: ChartData[] = [
   { name: "Google", value: 45 },
   { name: "Facebook", value: 28 },
-  { name: "LinkedIn", value: 15 },
   { name: "Twitter", value: 8 },
+  { name: "LinkedIn", value: 15 },
   { name: "Direct", value: 4 }
 ];
 
@@ -66,8 +66,12 @@ const CountUpAnimation = ({ end, duration = 2, prefix = "", suffix = "" }: { end
 };
 
 export const InteractiveDashboard = () => {
+  const { resolvedTheme } = useTheme();
+  const theme = resolvedTheme || 'light';
+  const isDark = theme === 'dark';
   const [timePeriod, setTimePeriod] = useState("30");
   const [isVisible, setIsVisible] = useState(false);
+  const [activePie, setActivePie] = useState<number | null>(null);
 
   const metrics: Metric[] = [
     {
@@ -216,25 +220,47 @@ export const InteractiveDashboard = () => {
             whileHover={{ scale: 1.03 }}
             className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">Top Referrer Domains</h3>
+            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
+              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Top Referrer Domains</span>
+            </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={referrerData}>
+                <BarChart key={theme} data={referrerData}>
                   <XAxis 
                     dataKey="name" 
                     axisLine={false} 
                     tickLine={false}
-                    tick={{ fill: '#e5e7eb', fontSize: 12 }}
+                    tick={({ x, y, payload }) => (
+                      <text
+                        x={x}
+                        y={y + 16}
+                        fill={isDark ? '#ffffff' : '#1f2937'}
+                        fontSize={12}
+                        fontWeight={500}
+                        textAnchor="middle"
+                      >
+                        {payload.value}
+                      </text>
+                    )}
                   />
                   <YAxis hide />
+                  <RechartsTooltip
+                    cursor={{ fill: isDark ? 'rgba(139,92,246,0.08)' : 'rgba(139,92,246,0.04)' }}
+                    contentStyle={{ background: isDark ? '#18181b' : '#fff', border: 'none', borderRadius: 8, color: isDark ? '#fff' : '#222', fontWeight: 600 }}
+                    itemStyle={{ color: isDark ? '#fff' : '#222', fontWeight: 600 }}
+                    labelStyle={{ color: isDark ? '#a78bfa' : '#6d28d9', fontWeight: 600 }}
+                  />
                   <Bar 
                     dataKey="value" 
                     fill="url(#barGradient)"
-                    radius={[4, 4, 0, 0]}
+                    radius={[12, 12, 0, 0]}
+                    isAnimationActive={isVisible}
+                    animationDuration={1200}
                   />
                   <defs>
                     <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#ec4899" />
+                      <stop offset="0%" stopColor="#a21caf" />
+                      <stop offset="50%" stopColor="#8b5cf6" />
                       <stop offset="100%" stopColor="#3b82f6" />
                     </linearGradient>
                   </defs>
@@ -251,7 +277,9 @@ export const InteractiveDashboard = () => {
             whileHover={{ scale: 1.03 }}
             className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">Audience Segments</h3>
+            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
+              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Audience Segments</span>
+            </h3>
             <div className="flex flex-col lg:flex-row items-center gap-6">
               <div className="w-full lg:w-1/2 h-48">
                 <ResponsiveContainer width="100%" height="100%">
@@ -264,23 +292,32 @@ export const InteractiveDashboard = () => {
                       outerRadius={80}
                       paddingAngle={5}
                       dataKey="value"
+                      labelLine={false}
                     >
                       {segmentData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
+                    <RechartsTooltip
+                      formatter={(value, name) => [`${value}%`, name]}
+                      contentStyle={{ background: isDark ? '#18181b' : '#fff', border: 'none', borderRadius: 8, color: isDark ? '#fff' : '#222', fontWeight: 600 }}
+                      itemStyle={{ color: isDark ? '#fff' : '#222', fontWeight: 600 }}
+                      labelStyle={{ color: isDark ? '#a78bfa' : '#6d28d9', fontWeight: 600 }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
               <div className="w-full lg:w-1/2">
-                <div className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-1 gap-3">
                   {segmentData.map((entry, index) => (
-                    <div key={entry.name} className="flex items-center gap-2">
+                    <div key={entry.name} className="flex items-center gap-3">
                       <div 
-                        className="w-3 h-3 rounded-full flex-shrink-0"
+                        className="w-4 h-4 rounded-full flex-shrink-0"
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
-                      <span className="text-sm text-gray-200 dark:text-gray-200 truncate">
+                      <span
+                        className="truncate px-2 py-0.5 rounded font-medium text-[1rem] text-gray-900 dark:text-white"
+                      >
                         {entry.name}: {entry.value}%
                       </span>
                     </div>

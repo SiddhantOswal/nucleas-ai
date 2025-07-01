@@ -1,16 +1,17 @@
-
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
 import { ContactForm } from "@/components/ui/contact-form";
-import { Globe } from "@/components/ui/globe";
 import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
 import { ProductSection } from "@/components/sections/product-section";
 import { SolutionsSection } from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
+import { FAQSection } from '@/components/ui/FAQSection';
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, User, Mail } from "lucide-react";
+import { Helmet } from 'react-helmet-async';
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 const Home = () => {
   const navItems = [
@@ -29,170 +30,203 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
-      {/* Floating Navbar */}
-      <FloatingNavbar />
-
-      {/* Main Navigation Bar */}
-      <TubelightNavBar items={navItems} />
-
-      {/* Hero Section with Interactive Globe */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black">
-        {/* Animated background elements - only visible in dark mode */}
-        <div className="absolute inset-0 overflow-hidden dark:block hidden">
-          <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-500/10 via-transparent to-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+    <>
+      <Helmet>
+        <title>AI-Native CDP | Real-time Customer Data Platform | NucleasAI</title>
+        <meta name="description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
+        <link rel="canonical" href="https://nucleasai.com/" />
+        <meta name="keywords" content="AI-native CDP, real-time customer data platform, AI agents, data activation, customer intelligence, identity resolution" />
+        {/* Breadcrumb structured data */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nucleasai.com/"}
+            ]
+          }
+        `}</script>
+        {/* SoftwareApplication structured data */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "NucleasAI",
+            "operatingSystem": "Web",
+            "applicationCategory": "Customer Data Platform",
+            "description": "AI-native CDP for real-time customer data activation and intelligence.",
+            "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+          }
+        `}</script>
+      </Helmet>
+      <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-white" style={{ scrollBehavior: 'smooth' }}>
+        {/* Floating Navbar */}
+        <div className="hidden lg:block">
+          <FloatingNavbar />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Hero Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center lg:text-left"
-            >
-              <div className="mb-4">
-                <span className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full text-purple-600 dark:text-purple-400">
-                  AI-First by Design
-                </span>
-              </div>
+        {/* Main Navigation Bar */}
+        <TubelightNavBar items={navItems} />
 
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  NucleasAI
-                </span>
-                <span className="text-zinc-900 dark:text-white block">
-                  Autonomous Customer Data Engine
-                </span>
-              </h1>
+        {/* Hero Section with Interactive Globe */}
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black">
+          {/* Animated background elements - only visible in dark mode */}
+          <div className="absolute inset-0 overflow-hidden dark:block hidden">
+            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-pink-500/10 via-transparent to-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+          </div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-lg md:text-xl text-zinc-700 dark:text-gray-300 mt-4 mb-4 leading-relaxed"
-              >
-                AI-native CDP ecosystem with autonomous agents, intelligent routing, and real-time customer intelligence.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-base text-gray-600 dark:text-gray-300 mb-8"
-              >
-                Agent-powered insights that work while you sleep — where data meets intelligence.
-              </motion.p>
-
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left side - Hero Content */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-center lg:text-left"
               >
-                <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25">
-                  Request Demo
-                </button>
-                <button 
-                  onClick={handleJoinWaitlist}
-                  className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105"
-                >
-                  Join Waitlist
-                </button>
-              </motion.div>
-            </motion.div>
-
-            {/* Right side - Interactive Globe */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="relative flex items-center justify-center"
-            >
-              <div className="relative w-full max-w-[500px] aspect-square">
-                {/* Glow effect behind globe - only in dark mode */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
-                
-                {/* Interactive Globe */}
-                <Globe className="relative z-10" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Section */}
-      <ProductSection />
-
-      {/* Interactive Dashboard Section */}
-      <section id="dashboard" className="bg-zinc-50 dark:bg-gray-900/30 relative">
-        {/* Light mode overlay for better text contrast */}
-        <div className="absolute inset-0 bg-white/80 dark:bg-transparent pointer-events-none"></div>
-        <div className="relative z-10">
-          <InteractiveDashboard />
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <SolutionsSection />
-
-      {/* About Section */}
-      <AboutSection />
-
-      {/* Contact Section */}
-      <section id="contact" className="py-24 bg-white dark:bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-900 dark:text-white">
-              Get in Touch
-            </h2>
-            <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to transform your customer data strategy with AI-powered intelligence? We're here to help you get started.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mb-4">Let's Connect</h3>
-                <p className="text-zinc-700 dark:text-gray-300 mb-6">
-                  Have questions about our AI-native CDP ecosystem? Want to see how autonomous agents can transform your customer intelligence? 
-                  Reach out and let's start a conversation.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-6 h-6 text-purple-600" />
-                  <span className="text-zinc-700 dark:text-gray-300">hello@nucleasai.com</span>
+                <div className="mb-4">
+                  <span className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full text-purple-600 dark:text-purple-400">
+                    Autonomous AI for Customer Data
+                  </span>
                 </div>
-                
-                {/* Enhanced waitlist message */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }}
+
+                <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    NucleasAI
+                  </span>
+                  <span className="block text-gray-900 text-3xl md:text-6xl font-bold mt-2 leading-tight tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.10)]">
+                    <span className="text-gray-900 dark:text-white">
+                      The Nucleus of<br />Customer Intelligence
+                    </span>
+                  </span>
+                </h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg"
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-lg md:text-xl text-zinc-700 dark:text-gray-300 mt-4 mb-4 leading-relaxed"
                 >
-                  <p className="text-base font-medium bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                    ✨ By filling out this form, you'll secure early access to NucleasAI — be among the first to experience our AI-native CDP ecosystem before anyone else.
-                  </p>
+                  AI-native CDP ecosystem with autonomous agents, intelligent routing, and real-time customer intelligence.
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="text-base text-gray-600 dark:text-gray-300 mb-8"
+                >
+                  Agent-powered insights that work while you sleep — where data meets intelligence.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                >
+                  <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+                    Request Demo
+                  </button>
+                  <button 
+                    onClick={handleJoinWaitlist}
+                    className="px-8 py-4 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 hover:scale-105"
+                  >
+                    Join Waitlist
+                  </button>
                 </motion.div>
-              </div>
+              </motion.div>
+
+              {/* Right side - Interactive Globe */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="relative flex items-center justify-center"
+              >
+                {/* Scattered watermark phrases around the globe */}
+                {/* Watermarks removed as per user request */}
+                <div className="relative w-full max-w-[500px] aspect-square z-10">
+                  {/* Glow effect behind globe - only in dark mode */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
+                  {/* Interactive Globe */}
+                  <img src="/placeholder.svg" alt="Globe" className="relative z-10 w-full h-full object-contain" />
+                </div>
+              </motion.div>
             </div>
-
-            {/* Contact Form */}
-            <ContactForm />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Product Section */}
+        <ProductSection />
+
+        {/* Interactive Dashboard Section */}
+        <section id="dashboard" className="bg-zinc-50 dark:bg-gray-900/30 relative">
+          {/* Light mode overlay for better text contrast */}
+          <div className="absolute inset-0 bg-white/80 dark:bg-transparent pointer-events-none"></div>
+          <div className="relative z-10">
+            <InteractiveDashboard />
+          </div>
+        </section>
+
+        {/* Solutions Section */}
+        <SolutionsSection />
+
+        {/* About Section */}
+        <AboutSection />
+
+        {/* FAQ Section - added just before Get in Touch */}
+        <FAQSection />
+
+        {/* Contact Section */}
+        <section id="contact" className="py-24 bg-white dark:bg-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-900 dark:text-white">
+                Get in Touch
+              </h2>
+              <p className="text-lg text-zinc-700 dark:text-gray-300 max-w-2xl mx-auto">
+                Ready to transform your customer data strategy with AI-powered intelligence? We're here to help you get started.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              {/* Contact Info */}
+              <div className="flex flex-col items-center justify-center space-y-8 py-4 px-2">
+                {/* Heading and Description */}
+                <div className="text-center space-y-3">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">Let's Connect</h3>
+                  <p className="text-gray-800 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-md mx-auto">
+                    Discover how our AI-native CDP ecosystem empowers you with real-time, autonomous customer intelligence. Reach out to us for questions, demos, or partnership opportunities.
+                  </p>
+                </div>
+                {/* Inline Contact Row */}
+                <div className="flex items-center justify-center space-x-2">
+                  <Mail className="w-5 h-5 text-purple-400" />
+                  <a href="mailto:hello@nucleasai.com" className="text-white font-medium hover:underline focus:underline transition-all text-base md:text-lg">
+                    hello@nucleasai.com
+                  </a>
+                </div>
+                {/* Waitlist CTA Card */}
+                <div className="w-full max-w-md mx-auto bg-gradient-to-br from-purple-700/60 via-purple-600/40 to-blue-700/30 border border-purple-500/30 rounded-2xl p-6 md:p-8 shadow-lg flex flex-col items-center space-y-2 mt-2">
+                  <h4 className="text-lg md:text-xl font-extrabold text-white mb-1 drop-shadow-lg">🚀 Join our exclusive waitlist</h4>
+                  <p className="text-gray-100 font-medium text-center text-sm md:text-base">
+                    Secure early access to <span className="font-bold text-white">NucleasAI</span> — the real-time, AI-native CDP ecosystem built for the future of customer data.
+                  </p>
+                </div>
+              </div>
+
+              {/* Contact Form */}
+              <ContactForm />
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </>
   );
 };
 
