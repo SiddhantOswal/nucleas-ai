@@ -50,17 +50,28 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     const setupObserver = () => {
       observer = new window.IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.15) {
-              const sectionId = entry.target.id;
-              const matchingItem = items.find(item => item.url === `#${sectionId}`);
-              if (matchingItem) {
-                setActiveTab(matchingItem.name);
-              }
+          // Find all intersecting entries
+          const visibleSections = entries
+            .filter(entry => entry.isIntersecting && entry.intersectionRatio > 0)
+            .map(entry => ({
+              id: entry.target.id,
+              top: entry.boundingClientRect.top
+            }));
+
+          if (visibleSections.length > 0) {
+            // Pick the section closest to the top of the viewport (top >= 0)
+            visibleSections.sort((a, b) => Math.abs(a.top) - Math.abs(b.top));
+            const sectionId = visibleSections[0].id;
+            const matchingItem = items.find(item => item.url === `#${sectionId}`);
+            if (matchingItem) {
+              setActiveTab(matchingItem.name);
             }
-          });
+          }
         },
-        { threshold: [0.15], rootMargin: '-10% 0px -60% 0px' }
+        {
+          threshold: [0, 0.05, 0.1, 0.15, 0.2],
+          rootMargin: '-20% 0px -50% 0px'
+        }
       );
       // Observe all sections
       items.forEach(item => {
@@ -243,17 +254,17 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                 </button>
                 <ThemeToggle className="self-end" />
               </div>
-              {/* Logo Left Aligned */}
-              <div className="flex flex-col items-start justify-center pt-6 pb-4 pl-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center mb-2">
-                  <span className="text-white font-bold text-xl">N</span>
+              {/* Logo Left Aligned, Horizontal, Gradient N */}
+              <div className="flex items-center space-x-2 pt-6 pb-4 pl-6">
+                <div className="w-7 h-7 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">N</span>
                 </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                <span className="text-xl font-semibold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
                   NucleasAI
                 </span>
               </div>
               {/* Nav links */}
-              <nav className="flex flex-col gap-4 pt-2 pb-8 pl-6 w-full">
+              <nav className="flex flex-col gap-y-2 pt-2 pb-8 px-4 w-full">
                 {items.map((item) => {
                   const Icon = item.icon
                   const isActive = activeTab === item.name
@@ -263,10 +274,10 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                         key={item.name}
                         onClick={() => { handleNavClick(item); setMenuOpen(false) }}
                         className={cn(
-                          "flex items-center gap-3 px-0 py-3 rounded-md text-lg font-semibold transition-colors w-full",
+                          "flex items-center gap-3 w-full px-4 py-3 rounded-xl text-lg font-semibold transition-all duration-200",
                           isActive
-                            ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
-                            : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white text-zinc-800 dark:text-zinc-200",
+                            ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
+                            : "hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white text-zinc-800 dark:text-zinc-200",
                         )}
                         tabIndex={0}
                       >
@@ -281,10 +292,10 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                       to={item.url}
                       onClick={() => { setActiveTab(item.name); setMenuOpen(false) }}
                       className={cn(
-                        "flex items-center gap-3 px-0 py-3 rounded-md text-lg font-semibold transition-colors w-full",
+                        "flex items-center gap-3 w-full px-4 py-3 rounded-xl text-lg font-semibold transition-all duration-200",
                         location.pathname === item.url
-                          ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
-                          : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white text-zinc-800 dark:text-zinc-200",
+                          ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
+                          : "hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white text-zinc-800 dark:text-zinc-200",
                       )}
                       tabIndex={0}
                     >

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { Activity, Users, Zap, Target, TrendingUp, Globe } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import clsx from "clsx";
 
 interface Metric {
   label: string;
@@ -215,17 +216,29 @@ export const InteractiveDashboard = () => {
             whileHover={{ scale: 1.03 }}
             className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
-              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Top Referrer Domains</span>
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-6">
+              <span className="inline-block px-3 py-1 rounded-md text-base font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md">Top Referrer Domains</span>
             </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={referrerData}>
-                  <XAxis 
-                    dataKey="name" 
-                    axisLine={false} 
+                  <XAxis
+                    dataKey="name"
+                    axisLine={false}
                     tickLine={false}
-                    tick={{ fill: '#222', fontSize: 12, fontWeight: 600 }}
+                    tick={props => (
+                      <text
+                        x={props.x}
+                        y={props.y + 16}
+                        textAnchor="middle"
+                        className={clsx(
+                          "text-sm font-medium",
+                          "text-gray-800 dark:text-white"
+                        )}
+                      >
+                        {props.payload.value}
+                      </text>
+                    )}
                   />
                   <YAxis hide />
                   <Bar 
@@ -252,8 +265,8 @@ export const InteractiveDashboard = () => {
             whileHover={{ scale: 1.03 }}
             className="p-6 rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border border-white/30 ring-1 ring-white/10 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:ring-purple-500/30 transition-all duration-300 drop-shadow"
           >
-            <h3 className="text-xl font-semibold text-white dark:text-white mb-6">
-              <span className="inline-block px-2 py-1 rounded bg-black/40 dark:bg-black/0 text-white">Audience Segments</span>
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-6">
+              <span className="inline-block px-3 py-1 rounded-md text-base font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md">Audience Segments</span>
             </h3>
             <div className="flex flex-col lg:flex-row items-center gap-6">
               <div className="w-full lg:w-1/2 h-48">
