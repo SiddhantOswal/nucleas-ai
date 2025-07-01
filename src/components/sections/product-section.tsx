@@ -258,12 +258,14 @@ export function ProductSection() {
       </section>
 
       {/* Product Detail Modal */}
-      <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading product details...</div>}>
-        <ProductDetailModal 
-          product={selectedProduct} 
-          onClose={() => setSelectedProduct(null)} 
-        />
-      </Suspense>
+      {selectedProduct && (
+        <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading product details...</div>}>
+          <ProductDetailModal 
+            product={selectedProduct} 
+            onClose={() => setSelectedProduct(null)} 
+          />
+        </Suspense>
+      )}
     </>
   )
 }

@@ -212,12 +212,14 @@ export function SolutionsSection() {
       </section>
 
       {/* Solution Detail Modal */}
-      <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading solution details...</div>}>
-        <SolutionDetailModal 
-          solution={selectedSolution} 
-          onClose={() => setSelectedSolution(null)} 
-        />
-      </Suspense>
+      {selectedSolution && (
+        <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading solution details...</div>}>
+          <SolutionDetailModal 
+            solution={selectedSolution} 
+            onClose={() => setSelectedSolution(null)} 
+          />
+        </Suspense>
+      )}
     </>
   )
 }

@@ -14,7 +14,7 @@ interface DashboardChartsProps {
   COLORS: string[];
 }
 
-const DashboardCharts: React.FC<DashboardChartsProps> = ({ referrerData, segmentData, COLORS }) => (
+const DashboardCharts: React.FC<DashboardChartsProps> = React.memo(({ referrerData, segmentData, COLORS }) => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -114,6 +114,6 @@ const DashboardCharts: React.FC<DashboardChartsProps> = ({ referrerData, segment
       </div>
     </motion.div>
   </div>
-);
+));
 
 export default DashboardCharts; 
