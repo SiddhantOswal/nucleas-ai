@@ -9,7 +9,7 @@ import { SolutionsSection } from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
 import { FAQSection } from '@/components/ui/FAQSection';
 import { motion } from "framer-motion";
-import { Home as HomeIcon, Package, Settings, User, Mail } from "lucide-react";
+import { Home as HomeIcon, Package, Settings, User, Mail, MapPin } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
@@ -194,31 +194,47 @@ const Home = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Contact Info */}
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white mb-4">Let's Connect</h3>
-                  <p className="text-zinc-700 dark:text-gray-300 mb-6">
-                    Have questions about our AI-native CDP ecosystem? Want to see how autonomous agents can transform your customer intelligence? 
-                    Reach out and let's start a conversation.
-                  </p>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-6 h-6 text-purple-600" />
-                    <span className="text-zinc-700 dark:text-gray-300">hello@nucleasai.com</span>
+                {/* Waitlist CTA Section */}
+                <div className="mb-6 p-6 rounded-2xl shadow-lg bg-gradient-to-r from-purple-700 via-purple-600 to-blue-700 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <span className="text-3xl sm:text-4xl">🚀</span>
+                  <div>
+                    <div className="font-bold text-white text-lg sm:text-xl mb-1">Join our exclusive waitlist</div>
+                    <div className="text-white/90 text-base sm:text-lg">
+                      Secure early access to <span className="font-semibold">NucleasAI</span> — the real-time, AI-native CDP ecosystem. Be among the first to experience autonomous customer intelligence and next-gen data activation.
+                    </div>
                   </div>
-                  
-                  {/* Enhanced waitlist message */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg"
-                  >
-                    <p className="text-base font-medium bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                      ✨ By filling out this form, you'll secure early access to NucleasAI — be among the first to experience our AI-native CDP ecosystem before anyone else.
-                    </p>
-                  </motion.div>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-black dark:text-white mb-4">Let's Connect</h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-200 mb-8">
+                    Discover how our AI-native CDP ecosystem empowers you with real-time, autonomous customer intelligence.<br />
+                    Reach out to us for questions, demos, or partnership opportunities.
+                  </p>
+                  {/* Email Block */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 shadow-lg">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white text-base">Email</div>
+                      <a
+                        href="mailto:hello@nucleasai.com"
+                        className="font-bold text-gray-900 dark:text-white underline hover:text-purple-300 transition-colors text-base"
+                      >
+                        hello@nucleasai.com
+                      </a>
+                    </div>
+                  </div>
+                  {/* Location Block */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 shadow-lg">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white text-base">Location</div>
+                      <div className="text-gray-700 dark:text-gray-200 text-base">Pune, Maharashtra, India</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

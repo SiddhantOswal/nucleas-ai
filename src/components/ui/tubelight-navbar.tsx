@@ -44,34 +44,43 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
   useEffect(() => {
     if (location.pathname !== "/") return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-            const sectionId = entry.target.id
-            const matchingItem = items.find(item => item.url === `#${sectionId}`)
-            if (matchingItem) {
-              setActiveTab(matchingItem.name)
+    let observer: IntersectionObserver | null = null;
+    let timeoutId: number;
+
+    const setupObserver = () => {
+      observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.15) {
+              const sectionId = entry.target.id;
+              const matchingItem = items.find(item => item.url === `#${sectionId}`);
+              if (matchingItem) {
+                setActiveTab(matchingItem.name);
+              }
             }
+          });
+        },
+        { threshold: [0.15], rootMargin: '-10% 0px -60% 0px' }
+      );
+      // Observe all sections
+      items.forEach(item => {
+        if (item.url.startsWith('#')) {
+          const sectionId = item.url.substring(1);
+          const element = document.querySelector(`#${sectionId}`);
+          if (element) {
+            observer!.observe(element);
           }
-        })
-      },
-      { threshold: [0.3, 0.7], rootMargin: '-20% 0px -20% 0px' }
-    )
-
-    // Observe all sections
-    items.forEach(item => {
-      if (item.url.startsWith('#')) {
-        const sectionId = item.url.substring(1)
-        const element = document.querySelector(`#${sectionId}`)
-        if (element) {
-          observer.observe(element)
         }
-      }
-    })
+      });
+    };
 
-    return () => observer.disconnect()
-  }, [items, location.pathname])
+    timeoutId = window.setTimeout(setupObserver, 100);
+
+    return () => {
+      if (observer) observer.disconnect();
+      window.clearTimeout(timeoutId);
+    };
+  }, [items, location.pathname]);
 
   const handleNavClick = (item: NavItem) => {
     setActiveTab(item.name)
@@ -210,40 +219,41 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
           <div className="fixed inset-0 z-50 flex">
             {/* Overlay */}
             <div
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300"
+              className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-md transition-opacity duration-300"
               onClick={() => setMenuOpen(false)}
             />
             {/* Drawer */}
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              initial={{ x: '100%', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '100%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="relative ml-auto w-4/5 max-w-xs h-full bg-background text-foreground shadow-2xl border-l border-white/20 flex flex-col py-8 px-6 gap-6"
+              className="relative ml-auto w-4/5 max-w-xs h-full bg-white/80 dark:bg-zinc-900/90 shadow-2xl border-l border-white/20 flex flex-col overflow-y-auto"
               style={{ zIndex: 60 }}
             >
-              {/* Close button */}
-              <button
-                className="absolute top-4 right-4 text-2xl text-foreground hover:text-purple-500 transition-colors"
-                onClick={() => setMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <X size={28} />
-              </button>
-              {/* Logo */}
-              <div
-                onClick={() => { handleLogoClick(); setMenuOpen(false) }}
-                className="flex items-center space-x-2 cursor-pointer mb-8"
-              >
-                <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">N</span>
+              {/* Top Row: Close (left) and Theme Toggle (right) */}
+              <div className="flex items-center justify-between px-4 pt-6">
+                <button
+                  className="text-2xl text-zinc-700 dark:text-white hover:text-purple-500 transition-colors focus:outline-none"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Close menu"
+                  tabIndex={0}
+                >
+                  <X size={28} />
+                </button>
+                <ThemeToggle className="self-end" />
+              </div>
+              {/* Logo Left Aligned */}
+              <div className="flex flex-col items-start justify-center pt-6 pb-4 pl-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center mb-2">
+                  <span className="text-white font-bold text-xl">N</span>
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
                   NucleasAI
                 </span>
               </div>
               {/* Nav links */}
-              <nav className="flex flex-col gap-2 mt-2">
+              <nav className="flex flex-col gap-4 pt-2 pb-8 pl-6 w-full">
                 {items.map((item) => {
                   const Icon = item.icon
                   const isActive = activeTab === item.name
@@ -253,13 +263,14 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                         key={item.name}
                         onClick={() => { handleNavClick(item); setMenuOpen(false) }}
                         className={cn(
-                          "flex items-center gap-3 px-4 py-3 rounded-md text-base font-semibold transition-colors",
+                          "flex items-center gap-3 px-0 py-3 rounded-md text-lg font-semibold transition-colors w-full",
                           isActive
                             ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
-                            : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white",
+                            : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white text-zinc-800 dark:text-zinc-200",
                         )}
+                        tabIndex={0}
                       >
-                        <Icon size={20} />
+                        <Icon size={22} />
                         {item.name}
                       </button>
                     )
@@ -270,32 +281,19 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
                       to={item.url}
                       onClick={() => { setActiveTab(item.name); setMenuOpen(false) }}
                       className={cn(
-                        "flex items-center gap-3 px-4 py-3 rounded-md text-base font-semibold transition-colors",
+                        "flex items-center gap-3 px-0 py-3 rounded-md text-lg font-semibold transition-colors w-full",
                         location.pathname === item.url
                           ? "bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow"
-                          : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white",
+                          : "hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-500 hover:text-white text-zinc-800 dark:text-zinc-200",
                       )}
+                      tabIndex={0}
                     >
-                      <Icon size={20} />
+                      <Icon size={22} />
                       {item.name}
                     </RouterLink>
                   )
                 })}
               </nav>
-              <div className="flex flex-col gap-4 mt-8">
-                {/* Theme Toggle */}
-                <ThemeToggle className="self-start" />
-                {/* Request Demo Button */}
-                <a
-                  href={demoUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-pink-500 to-blue-500 text-white rounded-full px-4 py-3 font-medium shadow hover:from-pink-600 hover:to-blue-600 transition"
-                  aria-label="Request a demo"
-                >
-                  Request Demo
-                </a>
-              </div>
             </motion.div>
           </div>
         )}

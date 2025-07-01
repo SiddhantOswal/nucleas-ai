@@ -128,26 +128,27 @@ const AboutSection = () => {
               <div className="relative mb-6">
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-                  alt="Alex Chen"
+                  alt="Siddhant Oswal"
                   className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-purple-500/30"
                 />
               </div>
               <h4 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">
-                Alex Chen
+                Siddhant Oswal
               </h4>
               <p className="text-purple-600 dark:text-purple-400 font-medium mb-3">
-                CEO & Co-Founder
+                Co-Founder
               </p>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/siddhant-oswal/"
+                target="_blank"
+     rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors mb-3 group"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
               </a>
               <p className="text-zinc-800 dark:text-gray-200 text-sm leading-relaxed font-semibold">
-                Former ML engineer at Google. Passionate about building AI-native, privacy-first solutions 
-                with autonomous agents that empower businesses to understand their customers better.
+              Weathered multiple tech downturns while supporting cross-functional teams and driving outcomes without titles. Built trust through consistency and grit now channeling that leadership and AI expertise into shaping the future of autonomous, AI-native customer data platforms.
               </p>
             </motion.div>
 
@@ -162,26 +163,27 @@ const AboutSection = () => {
               <div className="relative mb-6">
                 <img
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
-                  alt="Sarah Rodriguez"
+                  alt="Om Jain"
                   className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-blue-500/30"
                 />
               </div>
               <h4 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">
-                Sarah Rodriguez
+                Om Jain
               </h4>
               <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">
-                CTO & Co-Founder
+                Co-Founder
               </p>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/omjain23/"
+                target="_blank"
+rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600/20 hover:bg-blue-600/30 transition-colors mb-3 group"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
               </a>
               <p className="text-zinc-800 dark:text-gray-200 text-sm leading-relaxed font-semibold">
-                Ex-Netflix data architect with 10+ years in real-time analytics and AI systems. 
-                Leads our engineering team in building scalable, autonomous AI agents for customer data intelligence.
+              Engineer with deep expertise in AI systems, pixel tracking, and CDP infrastructure having built them from the ground up. Now leading architecture at NucleasAI to deliver scalable, intelligent, and privacy-conscious customer data experiences powered by autonomous agents.
               </p>
             </motion.div>
           </div>
