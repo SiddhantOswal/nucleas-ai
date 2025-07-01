@@ -1,7 +1,8 @@
+
 "use client"
 
 import createGlobe, { COBEOptions } from "cobe"
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -40,73 +41,57 @@ export function Globe({
   className?: string
   config?: COBEOptions
 }) {
-  const phi = useRef(0)
-  const width = useRef(0)
+  let phi = 0
+  let width = 0
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const pointerInteracting = useRef<number | null>(null)
+  const pointerInteracting = useRef(null)
   const pointerInteractionMovement = useRef(0)
-  const velocity = useRef(0)
-  const lastPointerX = useRef(0)
-  const globeInstance = useRef<any>(null)
+  const [r, setR] = useState(0)
 
-  const updatePointerInteraction = (value: number | null, clientX?: number) => {
+  const updatePointerInteraction = (value: any) => {
     pointerInteracting.current = value
     if (canvasRef.current) {
-      canvasRef.current.style.cursor = value !== null ? "grabbing" : "grab"
-    }
-    if (value !== null && typeof clientX === "number") {
-      lastPointerX.current = clientX
+      canvasRef.current.style.cursor = value ? "grabbing" : "grab"
     }
   }
 
-  const onPointerMove = (clientX: number) => {
+  const updateMovement = (clientX: any) => {
     if (pointerInteracting.current !== null) {
-      const delta = clientX - lastPointerX.current
-      lastPointerX.current = clientX
-      phi.current += delta / 200
-      velocity.current = delta / 200
+      const delta = clientX - pointerInteracting.current
+      pointerInteractionMovement.current = delta
+      setR(delta / 200)
     }
   }
 
-  // Memoize onRender so it doesn't get recreated on every render
   const onRender = useCallback(
     (state: Record<string, any>) => {
-      if (!pointerInteracting.current) {
-        phi.current += 0.005 + velocity.current
-        // Apply friction for inertia
-        velocity.current *= 0.95
-        if (Math.abs(velocity.current) < 0.00001) velocity.current = 0
-      }
-      state.phi = phi.current
-      state.width = width.current * 2
-      state.height = width.current * 2
+      if (!pointerInteracting.current) phi += 0.005
+      state.phi = phi + r
+      state.width = width * 2
+      state.height = width * 2
     },
-    [],
+    [r],
   )
 
-  // Only update width ref on resize
-  const onResize = useCallback(() => {
+  const onResize = () => {
     if (canvasRef.current) {
-      width.current = canvasRef.current.offsetWidth
+      width = canvasRef.current.offsetWidth
     }
-  }, [])
+  }
 
   useEffect(() => {
     window.addEventListener("resize", onResize)
     onResize()
-    // Create globe only once
-    globeInstance.current = createGlobe(canvasRef.current!, {
+
+    const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width.current * 2,
-      height: width.current * 2,
+      width: width * 2,
+      height: width * 2,
       onRender,
     })
+
     setTimeout(() => (canvasRef.current!.style.opacity = "1"))
-    return () => {
-      globeInstance.current && globeInstance.current.destroy()
-      window.removeEventListener("resize", onResize)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => globe.destroy()
   }, [])
 
   return (
@@ -121,11 +106,17 @@ export function Globe({
           "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
         )}
         ref={canvasRef}
-        onPointerDown={(e) => updatePointerInteraction(e.clientX, e.clientX)}
+        onPointerDown={(e) =>
+          updatePointerInteraction(
+            e.clientX - pointerInteractionMovement.current,
+          )
+        }
         onPointerUp={() => updatePointerInteraction(null)}
         onPointerOut={() => updatePointerInteraction(null)}
-        onMouseMove={(e) => onPointerMove(e.clientX)}
-        onTouchMove={(e) => e.touches[0] && onPointerMove(e.touches[0].clientX)}
+        onMouseMove={(e) => updateMovement(e.clientX)}
+        onTouchMove={(e) =>
+          e.touches[0] && updateMovement(e.touches[0].clientX)
+        }
       />
     </div>
   )

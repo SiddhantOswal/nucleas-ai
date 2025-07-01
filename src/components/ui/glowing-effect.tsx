@@ -1,3 +1,4 @@
+
 "use client";
 
 import { memo, useCallback, useEffect, useRef } from "react";
@@ -121,7 +122,7 @@ const GlowingEffect = memo(
       <>
         <div
           className={cn(
-            "pointer-events-none absolute -inset-px hidden rounded-md border opacity-0 transition-opacity",
+            "pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity",
             glow && "opacity-100",
             variant === "white" && "border-white",
             disabled && "!block"
@@ -159,7 +160,7 @@ const GlowingEffect = memo(
             } as React.CSSProperties
           }
           className={cn(
-            "pointer-events-none absolute inset-0 rounded-md opacity-100 transition-opacity",
+            "pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity",
             glow && "opacity-100",
             blur > 0 && "blur-[var(--blur)] ",
             className,
@@ -169,8 +170,8 @@ const GlowingEffect = memo(
           <div
             className={cn(
               "glow",
-              "rounded-md",
-              'after:content-[""] after:rounded-md after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
+              "rounded-[inherit]",
+              'after:content-[""] after:rounded-[inherit] after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
               "after:[border:var(--glowingeffect-border-width)_solid_transparent]",
               "after:[background:var(--gradient)] after:[background-attachment:fixed]",
               "after:opacity-[var(--active)] after:transition-opacity after:duration-300",
