@@ -31,18 +31,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nucleasai.com/about</loc>
-    <lastmod>2024-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://nucleasai.com/contact</loc>
-    <lastmod>2024-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nucleasai.com/pricing</loc>
     <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
