@@ -144,7 +144,7 @@ const Home = () => {
                   </span>
                   <span className="block text-gray-900 text-3xl md:text-6xl font-bold mt-2 leading-tight tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.10)]">
                     <span className="text-gray-900 dark:text-white">
-                      The Nucleus of<br />Customer Intelligence
+                      The Nucleus Of<br />Customer Intelligence
                     </span>
                   </span>
                 </h1>
@@ -189,16 +189,21 @@ const Home = () => {
               <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[640px] aspect-square z-10">
               <img
                 src="/hero-section.webp"
+                srcSet="
+                  /hero-section-small.webp 320w,
+                  /hero-section.webp 640w
+                "
+                sizes="(max-width: 640px) 320px, 640px"
                 alt="Globe"
                 width="640"
                 height="640"
-                className="w-full h-full object-contain"
+                className="w-full h-auto object-contain"
                 fetchPriority="high"
                 decoding="async"
                 loading="eager"
                 style={{ display: 'block' }}
               />
-              </div>
+            </div>
             </div>
           </div>
         </section>
