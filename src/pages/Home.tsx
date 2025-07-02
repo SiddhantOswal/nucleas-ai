@@ -164,9 +164,9 @@ const Home = () => {
                 {/* Watermarks removed as per user request */}
                 <div className="relative w-full max-w-[500px] aspect-square z-10">
                   {/* Glow effect behind globe - only in dark mode */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" />
+                  {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" /> */}
                   {/* Interactive Globe */}
-                  <img src="/placeholder.svg" alt="Globe" className="relative z-10 w-full h-full object-contain" loading="lazy" />
+                  <img src="/hero-section.webp" alt="Globe" className="relative z-10 w-full h-full object-contain" loading="lazy" />
                 </div>
               </motion.div>
             </div>

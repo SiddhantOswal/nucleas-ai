@@ -38,6 +38,111 @@
     <!-- Preload hero image for LCP -->
     <link rel="preload" as="image" href="/placeholder.svg" fetchpriority="high" />
     <!-- vite-plugin-critical will inline critical CSS for above-the-fold content -->
+    <style>
+      /* Critical CSS for hero section */
+      html, body {
+        min-height: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: #fff;
+        color: #18181b;
+      }
+      body.dark {
+        background: #000;
+        color: #fff;
+      }
+      .min-h-screen { min-height: 100vh; }
+      .flex { display: flex; }
+      .items-center { align-items: center; }
+      .justify-center { justify-content: center; }
+      .overflow-hidden { overflow: hidden; }
+      .relative { position: relative; }
+      .z-10 { z-index: 10; }
+      .max-w-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; }
+      .mx-auto { margin-left: auto; margin-right: auto; }
+      .px-4 { padding-left: 1rem; padding-right: 1rem; }
+      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .pt-20 { padding-top: 5rem; }
+      .grid { display: grid; }
+      .grid-cols-1 { grid-template-columns: 1fr; }
+      .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gap-12 { gap: 3rem; }
+      .text-center { text-align: center; }
+      .lg\:text-left { text-align: left; }
+      .mb-4 { margin-bottom: 1rem; }
+      .text-sm { font-size: 0.875rem; }
+      .font-medium { font-weight: 500; }
+      .bg-gradient-to-r { background-image: linear-gradient(to right, #a21caf, #2563eb); }
+      .from-purple-500\/20 { background-color: rgba(168, 85, 247, 0.2); }
+      .to-blue-500\/20 { background-color: rgba(59, 130, 246, 0.2); }
+      .border { border-width: 1px; }
+      .border-purple-500\/30 { border-color: rgba(168, 85, 247, 0.3); }
+      .rounded-full { border-radius: 9999px; }
+      .text-purple-600 { color: #9333ea; }
+      .dark .text-purple-400 { color: #c4b5fd; }
+      .text-5xl { font-size: 3rem; font-weight: 700; }
+      .md\:text-6xl { font-size: 3.75rem; font-weight: 700; }
+      .font-bold { font-weight: 700; }
+      .mb-6 { margin-bottom: 1.5rem; }
+      .bg-gradient-to-r { background-image: linear-gradient(to right, #2563eb, #a21caf, #db2777); }
+      .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
+      .text-transparent { color: transparent; }
+      .block { display: block; }
+      .text-gray-900 { color: #18181b; }
+      .dark .text-white { color: #fff; }
+      .mt-2 { margin-top: 0.5rem; }
+      .leading-tight { line-height: 1.1; }
+      .tracking-wide { letter-spacing: 0.025em; }
+      .drop-shadow-\[0_2px_8px_rgba\(0\,0\,0\,0\.10\)\] { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10)); }
+      .text-lg { font-size: 1.125rem; }
+      .md\:text-xl { font-size: 1.25rem; }
+      .text-zinc-700 { color: #3f3f46; }
+      .dark .text-gray-300 { color: #d1d5db; }
+      .mt-4 { margin-top: 1rem; }
+      .mb-8 { margin-bottom: 2rem; }
+      .text-base { font-size: 1rem; }
+      .text-gray-600 { color: #52525b; }
+      .flex-col { flex-direction: column; }
+      .sm\:flex-row { flex-direction: row; }
+      .gap-4 { gap: 1rem; }
+      .justify-center { justify-content: center; }
+      .lg\:justify-start { justify-content: flex-start; }
+      .px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+      .bg-gradient-to-r { background-image: linear-gradient(to right, #db2777, #2563eb); }
+      .hover\:from-pink-600:hover { background-color: #be185d; }
+      .hover\:to-blue-600:hover { background-color: #2563eb; }
+      .text-white { color: #fff; }
+      .rounded-xl { border-radius: 0.75rem; }
+      .transition-all { transition: all 0.3s; }
+      .duration-300 { transition-duration: 300ms; }
+      .hover\:scale-105:hover { transform: scale(1.05); }
+      .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); }
+      .hover\:shadow-purple-500\/25:hover { box-shadow: 0 10px 15px -3px rgba(168,85,247,0.25), 0 4px 6px -4px rgba(168,85,247,0.15); }
+      .border-2 { border-width: 2px; }
+      .border-purple-600 { border-color: #9333ea; }
+      .dark .text-purple-400 { color: #c4b5fd; }
+      .font-semibold { font-weight: 600; }
+      .hover\:bg-purple-600:hover { background-color: #9333ea; }
+      .hover\:text-white:hover { color: #fff; }
+      @media (min-width: 640px) {
+        .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .sm\:flex-row { flex-direction: row; }
+      }
+      @media (min-width: 768px) {
+        .md\:text-6xl { font-size: 3.75rem; }
+        .md\:text-xl { font-size: 1.25rem; }
+      }
+      @media (min-width: 1024px) {
+        .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .lg\:text-left { text-align: left; }
+        .lg\:justify-start { justify-content: flex-start; }
+      }
+    </style>
   </head>
 
   <body>
