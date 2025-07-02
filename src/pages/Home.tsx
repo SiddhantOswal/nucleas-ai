@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, User, Mail, MapPin } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 
 const InteractiveDashboard = React.lazy(() => import("@/components/ui/interactive-dashboard").then(module => ({ default: module.InteractiveDashboard })));
 const FAQSection = React.lazy(() => import('@/components/ui/FAQSection').then(module => ({ default: module.FAQSection })));
@@ -34,6 +34,95 @@ const Home = () => {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const [showDashboard, setShowDashboard] = useState(false);
+  const dashboardRef = useRef<HTMLDivElement>(null);
+  const [showTestimonials, setShowTestimonials] = useState(false);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const [showFAQ, setShowFAQ] = useState(false);
+  const faqRef = useRef<HTMLDivElement>(null);
+  const [showAbout, setShowAbout] = useState(false);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const [showSolutions, setShowSolutions] = useState(false);
+  const solutionsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowDashboard(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (dashboardRef.current) {
+      observer.observe(dashboardRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const obsTestimonials = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowTestimonials(true);
+          obsTestimonials.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (testimonialsRef.current) {
+      obsTestimonials.observe(testimonialsRef.current);
+    }
+    const obsFAQ = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowFAQ(true);
+          obsFAQ.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (faqRef.current) {
+      obsFAQ.observe(faqRef.current);
+    }
+    return () => {
+      obsTestimonials.disconnect();
+      obsFAQ.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const obsAbout = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowAbout(true);
+          obsAbout.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (aboutRef.current) {
+      obsAbout.observe(aboutRef.current);
+    }
+    const obsSolutions = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowSolutions(true);
+          obsSolutions.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (solutionsRef.current) {
+      obsSolutions.observe(solutionsRef.current);
+    }
+    return () => {
+      obsAbout.disconnect();
+      obsSolutions.disconnect();
+    };
+  }, []);
 
   // Delay analytics scripts
   useEffect(() => {
@@ -63,6 +152,25 @@ const Home = () => {
       }
     }, 3000);
   }, []);
+
+  // Testimonials data for TestimonialsWithMarquee
+  const testimonials = [
+    {
+      author: { name: "Sarah Chen", handle: "@zendesk", avatar: undefined },
+      text: "NucleasAI transformed how we understand our customers. The real-time insights helped us reduce churn by 40% in just 3 months.",
+      href: undefined
+    },
+    {
+      author: { name: "Marcus Johnson", handle: "@stripe", avatar: undefined },
+      text: "The AI-powered segmentation is incredible. We can now predict customer behavior with 85% accuracy and optimize our campaigns accordingly.",
+      href: undefined
+    },
+    {
+      author: { name: "Elena Rodriguez", handle: "@shopify", avatar: undefined },
+      text: "Finally, a CDP that actually works in real-time. The privacy-first approach gives us confidence while the insights drive real results.",
+      href: undefined
+    }
+  ];
 
   return (
     <>
@@ -215,23 +323,66 @@ const Home = () => {
         <section id="dashboard" className="bg-zinc-50 dark:bg-gray-900/30 relative">
           {/* Light mode overlay for better text contrast */}
           <div className="absolute inset-0 bg-white/80 dark:bg-transparent pointer-events-none"></div>
-          <div className="relative z-10">
-            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading dashboard...</div>}>
-              <InteractiveDashboard />
-            </Suspense>
+          <div className="relative z-10" ref={dashboardRef}>
+            {showDashboard ? (
+              <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading dashboard...</div>}>
+                <InteractiveDashboard />
+              </Suspense>
+            ) : (
+              <div style={{ minHeight: 600 }} className="w-full flex items-center justify-center">
+                <div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading dashboard...</div>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Solutions Section */}
-        <SolutionsSection />
+        <div ref={solutionsRef}>
+          {showSolutions ? (
+            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading solutions...</div>}>
+              <SolutionsSection />
+            </Suspense>
+          ) : (
+            <div style={{ minHeight: 600 }} />
+          )}
+        </div>
 
         {/* About Section */}
-        <AboutSection />
+        <div ref={aboutRef}>
+          {showAbout ? (
+            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading about...</div>}>
+              <AboutSection />
+            </Suspense>
+          ) : (
+            <div style={{ minHeight: 600 }} />
+          )}
+        </div>
 
         {/* FAQ Section - added just before Get in Touch */}
-        <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading FAQs...</div>}>
-          <FAQSection />
-        </Suspense>
+        <div ref={faqRef}>
+          {showFAQ ? (
+            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading FAQs...</div>}>
+              <FAQSection />
+            </Suspense>
+          ) : (
+            <div style={{ minHeight: 300 }} />
+          )}
+        </div>
+
+        {/* Testimonials Section - after FAQ, before Contact */}
+        <div ref={testimonialsRef}>
+          {showTestimonials ? (
+            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading testimonials...</div>}>
+              <TestimonialsWithMarquee
+                title="Trusted by Leading Companies"
+                description="See how industry leaders are transforming their customer data strategy with NucleasAI."
+                testimonials={testimonials}
+              />
+            </Suspense>
+          ) : (
+            <div style={{ minHeight: 300 }} />
+          )}
+        </div>
 
         {/* Contact Section */}
         <section id="contact" className="py-24 bg-white dark:bg-black">
