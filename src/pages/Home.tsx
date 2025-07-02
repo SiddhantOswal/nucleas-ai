@@ -46,18 +46,20 @@ const Home = () => {
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "CLARITY_ID_PLACEHOLDER");
         // Hotjar
-        // @ts-ignore
-        (function(h,o,t,j,a,r){
+        if (import.meta.env.PROD && window.location.protocol === 'https:') {
           // @ts-ignore
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          // @ts-ignore
-          h._hjSettings={hjid: 123456, hjsv: 6};
-          a=o.getElementsByTagName("head")[0];
-          r=o.createElement("script");r.async=1;
-          // @ts-ignore
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-        })(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv=");
+          (function(h,o,t,j,a,r){
+            // @ts-ignore
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            // @ts-ignore
+            h._hjSettings={hjid: 123456, hjsv: 6};
+            a=o.getElementsByTagName("head")[0];
+            r=o.createElement("script");r.async=1;
+            // @ts-ignore
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+          })(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv=");
+        }
       }
     }, 3000);
   }, []);
@@ -196,7 +198,7 @@ const Home = () => {
                   {/* Glow effect behind globe - only in dark mode */}
                   {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" /> */}
                   {/* Interactive Globe */}
-                  <img src="/hero-section.webp" alt="Globe" width="640" height="640" className="relative z-10 w-[640px] h-[640px] object-contain" loading="lazy" />
+                  <img src="/hero-section.webp" alt="Globe" width="640" height="640" className="relative z-10 w-full h-full object-contain"fetchPriority="high"decoding="async"/>
                 </div>
               </motion.div>
             </div>

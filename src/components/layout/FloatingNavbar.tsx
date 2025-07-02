@@ -1,4 +1,3 @@
-
 // File: components/FloatingNavbar.tsx — Updated: Fixed Request Demo button click + gradient styling + matched glassmorphism design.
 
 "use client"
@@ -20,6 +19,14 @@ export function FloatingNavbar() {
       console.warn("Please configure VITE_DEMO_SCHEDULE_URL for Request Demo functionality")
     }
   }, [])
+
+  const handleDemoClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (!demoUrl || demoUrl === "https://example.com/demo") {
+      e.preventDefault();
+      alert("Demo scheduling will be available soon.");
+    }
+    // else, let the link work as normal
+  };
 
   return (
     <motion.div
@@ -44,6 +51,7 @@ export function FloatingNavbar() {
           "font-medium focus:outline-none focus:ring-2 focus:ring-purple-500"
         )}
         aria-label="Request a demo"
+        onClick={handleDemoClick}
       >
         <span className="hidden sm:inline">Request Demo</span>
         <span className="sm:hidden">Demo</span>
