@@ -4,6 +4,7 @@ import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { Mesh } from 'three';
+import React from 'react';
 
 extend(THREE as any);
 
@@ -50,7 +51,7 @@ const Scene = () => {
   return null;
 };
 
-export const HeroFuturistic = () => {
+const HeroFuturistic = () => {
   const titleWords = 'NucleasAI CDP'.split(' ');
   const subtitle = 'The nucleus of your customer data universe.';
   const [visibleWords, setVisibleWords] = useState(0);
@@ -121,4 +122,4 @@ export const HeroFuturistic = () => {
   );
 };
 
-export default HeroFuturistic;
+export default React.memo(HeroFuturistic);

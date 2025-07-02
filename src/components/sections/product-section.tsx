@@ -151,7 +151,7 @@ const products: ProductFeature[] = [
 
 const ProductDetailModal = lazy(() => import("@/components/sections/ProductDetailModal"))
 
-export function ProductSection() {
+const ProductSection = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductFeature | null>(null)
 
   return (
@@ -269,3 +269,5 @@ export function ProductSection() {
     </>
   )
 }
+
+export default React.memo(ProductSection);

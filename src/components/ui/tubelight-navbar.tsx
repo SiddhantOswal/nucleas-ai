@@ -18,7 +18,7 @@ interface NavBarProps {
   className?: string
 }
 
-export function TubelightNavBar({ items, className }: NavBarProps) {
+const TubelightNavBar = ({ items, className }: NavBarProps) => {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -321,3 +321,5 @@ export function TubelightNavBar({ items, className }: NavBarProps) {
     </div>
   )
 }
+
+export default React.memo(TubelightNavBar);

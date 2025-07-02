@@ -1,12 +1,12 @@
-
 // File: components/Header.tsx — Updated: Fixed active highlighting for #about section.
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import React from "react";
 
-export const Header = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
@@ -141,3 +141,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default React.memo(Header);

@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
 
-export function FloatingNavbar() {
+const FloatingNavbar = () => {
   const [demoUrl, setDemoUrl] = useState("")
 
   useEffect(() => {
@@ -62,3 +62,5 @@ export function FloatingNavbar() {
     </motion.div>
   )
 }
+
+export default React.memo(FloatingNavbar);

@@ -1,6 +1,7 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="backdrop-blur-md bg-white/5 dark:bg-white/5 text-zinc-700 dark:text-white/80 border-t border-zinc-200 dark:border-white/20">
       <script type="application/ld+json">{`
@@ -91,3 +92,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default React.memo(Footer);

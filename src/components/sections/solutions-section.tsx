@@ -103,7 +103,7 @@ const solutions: SolutionCard[] = [
 
 const SolutionDetailModal = lazy(() => import("@/components/sections/SolutionDetailModal"))
 
-export function SolutionsSection() {
+const SolutionsSection = () => {
   const [selectedSolution, setSelectedSolution] = React.useState<SolutionCard | null>(null)
 
   return (
@@ -223,3 +223,5 @@ export function SolutionsSection() {
     </>
   )
 }
+
+export default React.memo(SolutionsSection);

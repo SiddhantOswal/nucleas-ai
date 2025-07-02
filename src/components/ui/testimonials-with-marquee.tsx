@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
-import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card"
+import TestimonialCard, { TestimonialAuthor } from "@/components/ui/testimonial-card"
+import React from "react"
 
 interface TestimonialsSectionProps {
   title: string
@@ -12,12 +13,12 @@ interface TestimonialsSectionProps {
   className?: string
 }
 
-export function TestimonialsSection({ 
+const TestimonialsSection = ({ 
   title,
   description,
   testimonials,
   className 
-}: TestimonialsSectionProps) {
+}: TestimonialsSectionProps) => {
   return (
     <section className={cn(
       "bg-background text-foreground",
@@ -56,4 +57,4 @@ export function TestimonialsSection({
   )
 }
 
-export default TestimonialsSection;
+export default React.memo(TestimonialsSection);

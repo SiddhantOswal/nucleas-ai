@@ -3,7 +3,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
+import TestimonialsSection from "@/components/ui/testimonials-with-marquee";
 import { Users, Target, Shield, Zap, Brain, Globe, Linkedin } from "lucide-react";
 
 const valuesData = [
@@ -199,4 +199,4 @@ rel="noopener noreferrer"
   );
 };
 
-export default AboutSection;
+export default React.memo(AboutSection);

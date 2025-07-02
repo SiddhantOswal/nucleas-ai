@@ -1,11 +1,11 @@
-import { HeroFuturistic } from "@/components/ui/hero-futuristic";
+import HeroFuturistic from "@/components/ui/hero-futuristic";
 // import { InteractiveDashboard } from "@/components/ui/interactive-dashboard";
-import { ContactForm } from "@/components/ui/contact-form";
-import { TubelightNavBar } from "@/components/ui/tubelight-navbar";
-import { Footer } from "@/components/layout/Footer";
-import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
-import { ProductSection } from "@/components/sections/product-section";
-import { SolutionsSection } from "@/components/sections/solutions-section";
+import ContactForm from "@/components/ui/contact-form";
+import TubelightNavBar from "@/components/ui/tubelight-navbar";
+import Footer from "@/components/layout/Footer";
+import FloatingNavbar from "@/components/layout/FloatingNavbar";
+import ProductSection from "@/components/sections/product-section";
+import SolutionsSection from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
 import { motion } from "framer-motion";
 import { Home as HomeIcon, Package, Settings, User, Mail, MapPin } from "lucide-react";
@@ -14,7 +14,7 @@ import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbP
 import React, { Suspense, useEffect, useRef, useState } from "react";
 
 const InteractiveDashboard = React.lazy(() => import("@/components/ui/interactive-dashboard").then(module => ({ default: module.InteractiveDashboard })));
-const FAQSection = React.lazy(() => import('@/components/ui/FAQSection').then(module => ({ default: module.FAQSection })));
+const FAQSection = React.lazy(() => import('@/components/ui/FAQSection'));
 // @ts-ignore
 const Dashboard = React.lazy(() => import("@/components/Dashboard").then(module => ({ default: module.default || module.Dashboard })));
 const TestimonialsWithMarquee = React.lazy(() => import("@/components/ui/testimonials-with-marquee"));

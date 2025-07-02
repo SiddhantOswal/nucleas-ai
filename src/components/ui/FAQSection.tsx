@@ -42,7 +42,7 @@ const faqJsonLd = {
   })),
 };
 
-export const FAQSection: React.FC = () => {
+const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 
   return (
@@ -94,4 +94,6 @@ export const FAQSection: React.FC = () => {
       </script>
     </section>
   );
-}; 
+};
+
+export default React.memo(FAQSection); 

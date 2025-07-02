@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-export const ContactForm: React.FC = () => {
+const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -127,4 +127,6 @@ export const ContactForm: React.FC = () => {
     </div>
   );
 };
+
+export default React.memo(ContactForm);
 

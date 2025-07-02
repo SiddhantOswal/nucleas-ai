@@ -1,4 +1,3 @@
-
 import React from "react";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -13,7 +12,7 @@ interface GradientCardProps {
   onClick?: () => void;
 }
 
-export const GradientCard: React.FC<GradientCardProps> = ({
+const GradientCard: React.FC<GradientCardProps> = ({
   icon,
   title,
   description,
@@ -66,3 +65,5 @@ export const GradientCard: React.FC<GradientCardProps> = ({
     </div>
   );
 };
+
+export default React.memo(GradientCard);

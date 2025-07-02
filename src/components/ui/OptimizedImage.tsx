@@ -16,7 +16,7 @@ interface OptimizedImageProps {
  * Uses vite-imagetools to generate AVIF, WebP, and fallback formats automatically.
  * Usage: <OptimizedImage src="../assets/hero.png" alt="Hero" width={600} height={400} />
  */
-export const OptimizedImage: React.FC<OptimizedImageProps> = ({ src, alt, width, height, className }) => {
+const OptimizedImage: React.FC<OptimizedImageProps> = ({ src, alt, width, height, className }) => {
   // Dynamically import the image with ?imagetools for optimization
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const image = require(`${src}?format=avif;webp;png&as=srcset`);
@@ -40,6 +40,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({ src, alt, width,
     </picture>
   );
 };
+
+export default React.memo(OptimizedImage);
 
 // Usage example (replace with your actual image path):
 // <OptimizedImage src="../assets/hero.png" alt="Hero" width={600} height={400} /> 
