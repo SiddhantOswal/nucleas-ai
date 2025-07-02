@@ -161,7 +161,7 @@ export const InteractiveDashboard = () => {
             className="flex justify-center mb-12"
           >
             <Select value={timePeriod} onValueChange={setTimePeriod}>
-              <SelectTrigger className="w-48 bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border-white/30 ring-1 ring-white/10">
+              <SelectTrigger className="w-48 bg-white/20 dark:bg-white/10 backdrop-blur-[10px] border-white/30 ring-1 ring-white/10" aria-label="Time period selector">
                 <SelectValue placeholder="Select time period" />
               </SelectTrigger>
               <SelectContent>

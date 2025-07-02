@@ -22,7 +22,9 @@ const SelectTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {children}
+    {children && React.Children.count(children) > 0 ? children : (
+      <SelectPrimitive.Value placeholder={props['aria-label'] || 'Select option'} />
+    )}
     <SelectPrimitive.Icon asChild>
       <ChevronDown className="h-4 w-4 opacity-50" />
     </SelectPrimitive.Icon>

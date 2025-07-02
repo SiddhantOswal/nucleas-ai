@@ -1,14 +1,9 @@
-
 'use client';
 
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
-import { useAspect, useTexture } from '@react-three/drei';
 import { useMemo, useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { Mesh } from 'three';
-
-const TEXTUREMAP = { src: 'https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=300&h=300&fit=crop' };
-const DEPTHMAP = { src: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=300&h=300&fit=crop' };
 
 extend(THREE as any);
 
@@ -16,25 +11,26 @@ const WIDTH = 300;
 const HEIGHT = 300;
 
 const Scene = () => {
-  const [rawMap, depthMap] = useTexture([TEXTUREMAP.src, DEPTHMAP.src]);
+  // Texture logic removed for now
+  // const [rawMap, depthMap] = useTexture([TEXTUREMAP.src, DEPTHMAP.src]);
   const meshRef = useRef<Mesh>(null);
   const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    if (rawMap && depthMap) {
-      setVisible(true);
-    }
-  }, [rawMap, depthMap]);
+  // useEffect(() => {
+  //   if (rawMap && depthMap) {
+  //     setVisible(true);
+  //   }
+  // }, [rawMap, depthMap]);
 
-  const material = useMemo(() => {
-    return new THREE.MeshBasicMaterial({
-      map: rawMap,
-      transparent: true,
-      opacity: 0.8,
-    });
-  }, [rawMap]);
+  // const material = useMemo(() => {
+  //   return new THREE.MeshBasicMaterial({
+  //     map: rawMap,
+  //     transparent: true,
+  //     opacity: 0.8,
+  //   });
+  // }, [rawMap]);
 
-  const [w, h] = useAspect(WIDTH, HEIGHT);
+  // const [w, h] = useAspect(WIDTH, HEIGHT);
 
   useFrame(({ clock }) => {
     if (meshRef.current) {
@@ -45,12 +41,13 @@ const Scene = () => {
     }
   });
 
-  const scaleFactor = 0.40;
-  return (
-    <mesh ref={meshRef} scale={[w * scaleFactor, h * scaleFactor, 1]} material={material}>
-      <planeGeometry />
-    </mesh>
-  );
+  // const scaleFactor = 0.40;
+  // return (
+  //   <mesh ref={meshRef} scale={[w * scaleFactor, h * scaleFactor, 1]} material={material}>
+  //     <planeGeometry />
+  //   </mesh>
+  // );
+  return null;
 };
 
 export const HeroFuturistic = () => {
@@ -120,12 +117,6 @@ export const HeroFuturistic = () => {
           </svg>
         </span>
       </button>
-
-      <Canvas className="absolute inset-0">
-        <Scene />
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-      </Canvas>
     </div>
   );
 };
