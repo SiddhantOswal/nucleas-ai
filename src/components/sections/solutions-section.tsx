@@ -50,7 +50,7 @@ const solutions: SolutionCard[] = [
   {
     id: "saas",
     title: "SaaS Tools",
-    description: "Understand user adoption & reduce churn",
+    description: "Understand behavior, increase adoption, predict churn, and improve retention metrics",
     icon: Wrench,
     category: "For SaaS Tools",
     details: [

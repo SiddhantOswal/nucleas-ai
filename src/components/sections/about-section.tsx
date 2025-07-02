@@ -129,7 +129,9 @@ const AboutSection = () => {
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
                   alt="Siddhant Oswal"
-                  className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-purple-500/30"
+                  width="150"
+                  height="150"
+                  className="w-[150px] h-[150px] rounded-full mx-auto object-cover border-4 border-purple-500/30"
                   loading="lazy"
                 />
               </div>
@@ -165,7 +167,9 @@ const AboutSection = () => {
                 <img
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
                   alt="Om Jain"
-                  className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-blue-500/30"
+                  width="150"
+                  height="150"
+                  className="w-[150px] h-[150px] rounded-full mx-auto object-cover border-4 border-blue-500/30"
                   loading="lazy"
                 />
               </div>
