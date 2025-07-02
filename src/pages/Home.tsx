@@ -37,8 +37,6 @@ const Home = () => {
 
   const [showDashboard, setShowDashboard] = useState(false);
   const dashboardRef = useRef<HTMLDivElement>(null);
-  const [showTestimonials, setShowTestimonials] = useState(false);
-  const testimonialsRef = useRef<HTMLDivElement>(null);
   const [showFAQ, setShowFAQ] = useState(false);
   const faqRef = useRef<HTMLDivElement>(null);
   const [showAbout, setShowAbout] = useState(false);
@@ -63,18 +61,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const obsTestimonials = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowTestimonials(true);
-          obsTestimonials.disconnect();
-        }
-      },
-      { rootMargin: '200px' }
-    );
-    if (testimonialsRef.current) {
-      obsTestimonials.observe(testimonialsRef.current);
-    }
     const obsFAQ = new window.IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -88,7 +74,6 @@ const Home = () => {
       obsFAQ.observe(faqRef.current);
     }
     return () => {
-      obsTestimonials.disconnect();
       obsFAQ.disconnect();
     };
   }, []);
@@ -152,25 +137,6 @@ const Home = () => {
       }
     }, 3000);
   }, []);
-
-  // Testimonials data for TestimonialsWithMarquee
-  const testimonials = [
-    {
-      author: { name: "Sarah Chen", handle: "@zendesk", avatar: undefined },
-      text: "NucleasAI transformed how we understand our customers. The real-time insights helped us reduce churn by 40% in just 3 months.",
-      href: undefined
-    },
-    {
-      author: { name: "Marcus Johnson", handle: "@stripe", avatar: undefined },
-      text: "The AI-powered segmentation is incredible. We can now predict customer behavior with 85% accuracy and optimize our campaigns accordingly.",
-      href: undefined
-    },
-    {
-      author: { name: "Elena Rodriguez", handle: "@shopify", avatar: undefined },
-      text: "Finally, a CDP that actually works in real-time. The privacy-first approach gives us confidence while the insights drive real results.",
-      href: undefined
-    }
-  ];
 
   return (
     <>
@@ -363,21 +329,6 @@ const Home = () => {
           {showFAQ ? (
             <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading FAQs...</div>}>
               <FAQSection />
-            </Suspense>
-          ) : (
-            <div style={{ minHeight: 300 }} />
-          )}
-        </div>
-
-        {/* Testimonials Section - after FAQ, before Contact */}
-        <div ref={testimonialsRef}>
-          {showTestimonials ? (
-            <Suspense fallback={<div className="text-center py-12 text-lg text-zinc-500 dark:text-zinc-300">Loading testimonials...</div>}>
-              <TestimonialsWithMarquee
-                title="Trusted by Leading Companies"
-                description="See how industry leaders are transforming their customer data strategy with NucleasAI."
-                testimonials={testimonials}
-              />
             </Suspense>
           ) : (
             <div style={{ minHeight: 300 }} />
