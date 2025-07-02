@@ -186,21 +186,19 @@ const Home = () => {
               </motion.div>
 
               {/* Right side - Interactive Globe */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                className="relative flex items-center justify-center"
-              >
-                {/* Scattered watermark phrases around the globe */}
-                {/* Watermarks removed as per user request */}
-                <div className="relative w-[640px] h-[640px] z-10">
-                  {/* Glow effect behind globe - only in dark mode */}
-                  {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" /> */}
-                  {/* Interactive Globe */}
-                  <img src="/hero-section.webp" alt="Globe" width="640" height="640" className="relative z-10  object-contain"fetchPriority="high"decoding="async"/>
-                </div>
-              </motion.div>
+              <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[640px] aspect-square z-10">
+              <img
+                src="/hero-section.webp"
+                alt="Globe"
+                width="640"
+                height="640"
+                className="w-full h-full object-contain"
+                fetchPriority="high"
+                decoding="async"
+                loading="eager"
+                style={{ display: 'block' }}
+              />
+              </div>
             </div>
           </div>
         </section>
