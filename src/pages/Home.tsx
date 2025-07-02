@@ -194,11 +194,11 @@ const Home = () => {
               >
                 {/* Scattered watermark phrases around the globe */}
                 {/* Watermarks removed as per user request */}
-                <div className="relative w-full max-w-[500px] aspect-square z-10">
+                <div className="relative w-[640px] h-[640px] z-10">
                   {/* Glow effect behind globe - only in dark mode */}
                   {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse dark:block hidden" /> */}
                   {/* Interactive Globe */}
-                  <img src="/hero-section.webp" alt="Globe" width="640" height="640" className="relative z-10 w-full h-full object-contain"fetchPriority="high"decoding="async"/>
+                  <img src="/hero-section.webp" alt="Globe" width="640" height="640" className="relative z-10  object-contain"fetchPriority="high"decoding="async"/>
                 </div>
               </motion.div>
             </div>
