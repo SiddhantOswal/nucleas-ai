@@ -29,6 +29,9 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            if (id.includes('framer-motion')) return 'framer-motion';
+            if (id.includes('lucide-react')) return 'lucide-react';
+            if (id.includes('@tanstack/react-query')) return 'react-query';
             return 'vendor';
           }
         },
