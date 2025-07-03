@@ -185,7 +185,7 @@ const ProductSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">
+            <h3 id="product" className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">
               Powerful Features,{" "}
               <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 Seamlessly Integrated
