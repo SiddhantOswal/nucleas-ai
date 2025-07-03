@@ -29,6 +29,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // You can add more libraries here to split large vendor chunks for better caching and performance
           if (id.includes('node_modules')) {
             if (id.includes('framer-motion')) return 'framer-motion';
             if (id.includes('react-router-dom')) return 'react-router-dom';

@@ -111,7 +111,7 @@ const Home = () => {
 
   // Delay analytics scripts
   useEffect(() => {
-    setTimeout(() => {
+    const loadAnalytics = () => {
       if (location.hostname === "nucleasai.com") {
         // Microsoft Clarity
         (function(c,l,a,r,i,t,y){
@@ -135,7 +135,12 @@ const Home = () => {
           })(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv=");
         }
       }
-    }, 3000);
+    };
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(loadAnalytics);
+    } else {
+      setTimeout(loadAnalytics, 2000);
+    }
   }, []);
 
   return (

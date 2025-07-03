@@ -41,6 +41,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({ src, alt, width, height
   );
 };
 
+// Memoized for render performance
 export default React.memo(OptimizedImage);
 
 // Usage example (replace with your actual image path):
