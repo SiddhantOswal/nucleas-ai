@@ -72,6 +72,18 @@ const Blog = () => {
         <meta name="description" content="Read the latest insights, tutorials, and thought leadership on AI-native CDPs, real-time customer data platforms, and AI agents for data activation from NucleasAI." />
         <link rel="canonical" href="https://nucleasai.com/blog" />
         <meta name="keywords" content="AI-native CDP blog, customer data platform, AI agents, data activation, customer intelligence, real-time analytics" />
+        {/* OpenGraph Meta Tags */}
+        <meta property="og:title" content="AI-Native CDP Blog | Customer Data Platform Insights | NucleasAI" />
+        <meta property="og:description" content="Read the latest insights, tutorials, and thought leadership on AI-native CDPs, real-time customer data platforms, and AI agents for data activation from NucleasAI." />
+        <meta property="og:url" content="https://nucleasai.com/blog" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://nucleasai.com/og-image.png" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI-Native CDP Blog | Customer Data Platform Insights | NucleasAI" />
+        <meta name="twitter:description" content="Read the latest insights, tutorials, and thought leadership on AI-native CDPs, real-time customer data platforms, and AI agents for data activation from NucleasAI." />
+        <meta name="twitter:image" content="https://nucleasai.com/og-image.png" />
+        <meta name="twitter:site" content="@nucleasai" />
         {/* Breadcrumb structured data */}
         <script type="application/ld+json">{`
           {

@@ -20,6 +20,19 @@ const NotFound = () => {
         <title>404 Not Found | NucleasAI</title>
         <meta name="description" content="Sorry, the page you are looking for does not exist. Return to the NucleasAI homepage." />
         <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://nucleasai.com/" />
+        {/* OpenGraph Meta Tags */}
+        <meta property="og:title" content="404 Not Found | NucleasAI" />
+        <meta property="og:description" content="Sorry, the page you are looking for does not exist. Return to the NucleasAI homepage." />
+        <meta property="og:url" content="https://nucleasai.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://nucleasai.com/og-image.png" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="404 Not Found | NucleasAI" />
+        <meta name="twitter:description" content="Sorry, the page you are looking for does not exist. Return to the NucleasAI homepage." />
+        <meta name="twitter:image" content="https://nucleasai.com/og-image.png" />
+        <meta name="twitter:site" content="@nucleasai" />
       </Helmet>
       <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white">
         <div className="text-center max-w-2xl mx-auto px-4">
