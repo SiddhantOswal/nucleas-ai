@@ -34,13 +34,13 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Product */}
+          {/* Platform (was Product) */}
           <div>
-            <h3 className="text-zinc-900 dark:text-white font-semibold mb-4">Product</h3>
+            <h3 className="text-zinc-900 dark:text-white font-semibold mb-4">Platform</h3>
             <ul className="space-y-2">
-              <li><Link to="/product" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Product Features">Features</Link></li>
-              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="API Documentation">API Docs</a></li>
-              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Integrations">Integrations</a></li>
+              <li><a href="/#product" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Product">Product</a></li>
+              <li><a href="/#solutions" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Platform Solutions">Solutions</a></li>
+              <li className="text-zinc-600 dark:text-gray-400 text-sm">Blog</li>
             </ul>
           </div>
 
@@ -48,10 +48,8 @@ const Footer = () => {
           <div>
             <h3 className="text-zinc-900 dark:text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="About NucleasAI">About</Link></li>
-              <li><Link to="/blog" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="NucleasAI Blog">Blog</Link></li>
-              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Careers">Careers</a></li>
-              <li><Link to="/contact" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Contact NucleasAI">Contact</Link></li>
+              <li><a href="/#about" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="About NucleasAI">About</a></li>
+              <li><a href="/#contact" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Contact NucleasAI">Contact</a></li>
             </ul>
           </div>
 

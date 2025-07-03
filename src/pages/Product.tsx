@@ -1,4 +1,4 @@
-import { ProductSection } from "@/components/sections/product-section";
+import ProductSection from "@/components/sections/product-section";
 import { Helmet } from 'react-helmet-async';
 
 const Product = () => (
