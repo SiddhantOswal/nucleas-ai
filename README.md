@@ -71,3 +71,33 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Deployment
+
+To deploy NucleasAI to production (e.g., Vercel, Netlify, AWS S3, or any static host):
+
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Generate the sitemap:**
+   ```sh
+   npm run generate:sitemap
+   ```
+   This will create/update `public/sitemap.xml` with all main routes and anchors.
+3. **Build the production bundle:**
+   ```sh
+   npm run build
+   ```
+   This outputs static files to the `dist/` directory.
+4. **Deploy the contents of `dist/`** to your static hosting provider.
+   - For Vercel/Netlify: just push to your repo and connect the project.
+   - For S3/CloudFront: upload the contents of `dist/`.
+5. **Verify:**
+   - `https://nucleasai.com/robots.txt` is accessible and correct.
+   - `https://nucleasai.com/sitemap.xml` is accessible and up to date.
+   - All main routes and anchor sections are crawlable.
+
+**Tip:**
+- Re-run `npm run generate:sitemap` whenever you add, remove, or rename a route or section.
+- For automated CI/CD, add `npm run generate:sitemap` before the build step.
