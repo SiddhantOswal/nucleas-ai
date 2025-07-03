@@ -141,7 +141,11 @@ const Home = () => {
   return (
     <>
       <Helmet>
-      <title>NucleasAI | AI-Native CDP | Real-time Customer Data Platform</title>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+        <title>NucleasAI | AI-Native CDP | Real-time Customer Data Platform</title>
         <meta name="description" content="NucleasAI is the leading AI-native CDP for real-time customer data activation. Unify, analyze, and activate customer insights instantly with AI agents for data activation, identity resolution, and more." />
         <link rel="canonical" href="https://nucleasai.com/" />
         <meta name="keywords" content="AI-native CDP, real-time customer data platform, AI agents, data activation, customer intelligence, identity resolution" />
