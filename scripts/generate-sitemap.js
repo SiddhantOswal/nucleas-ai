@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const BASE_URL = 'https://nucleasai.com';
 const today = new Date().toISOString().split('T')[0];
@@ -26,6 +26,6 @@ ${routes.map(route => `  <url>
 </urlset>
 `;
 
-const outPath = path.join(__dirname, '../public/sitemap.xml');
+const outPath = path.join(path.resolve(), 'public', 'sitemap.xml');
 fs.writeFileSync(outPath, sitemap);
 console.log('✅ Sitemap generated at', outPath);
