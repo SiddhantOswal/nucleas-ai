@@ -20,6 +20,17 @@ const Solutions = () => (
       <meta name="twitter:description" content="Discover NucleasAI's AI-native CDP solutions for SaaS, D2C, fintech, and more. Real-time customer data activation, industry use cases, and AI-powered insights." />
       <meta name="twitter:image" content="https://nucleasai.com/og-image.png" />
       <meta name="twitter:site" content="@nucleasai" />
+      {/* BreadcrumbList Structured Data */}
+      <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nucleasai.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://nucleasai.com/solutions" }
+          ]
+        }
+      `}</script>
     </Helmet>
     <SolutionsSection />
   </>

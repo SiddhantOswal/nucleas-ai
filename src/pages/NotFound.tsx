@@ -33,6 +33,16 @@ const NotFound = () => {
         <meta name="twitter:description" content="Sorry, the page you are looking for does not exist. Return to the NucleasAI homepage." />
         <meta name="twitter:image" content="https://nucleasai.com/og-image.png" />
         <meta name="twitter:site" content="@nucleasai" />
+        {/* BreadcrumbList Structured Data */}
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nucleasai.com/" }
+            ]
+          }
+        `}</script>
       </Helmet>
       <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white">
         <div className="text-center max-w-2xl mx-auto px-4">
