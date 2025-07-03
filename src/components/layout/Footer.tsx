@@ -57,10 +57,9 @@ const Footer = () => {
           <div>
             <h3 className="text-zinc-900 dark:text-white font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Help Center">Help Center</a></li>
-              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Privacy Policy">Privacy Policy</a></li>
               <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Terms of Service">Terms of Service</a></li>
-              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Status">Status</a></li>
+              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Privacy Policy">Privacy Policy</a></li>
+              <li><a href="#" className="text-zinc-600 dark:text-gray-400 hover:text-zinc-900 dark:hover:text-white text-sm" aria-label="Cookie Policy">Cookie Policy</a></li>
             </ul>
           </div>
         </div>
