@@ -1,20 +1,6 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
-Disallow: /api/
-Disallow: /admin
-Disallow: /drafts
-
 Allow: /
-
+Disallow: /admin
+Disallow: /api
+Disallow: /private
 Sitemap: https://nucleasai.com/sitemap.xml
