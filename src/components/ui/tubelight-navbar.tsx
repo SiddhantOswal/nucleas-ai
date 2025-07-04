@@ -18,18 +18,10 @@ interface NavBarProps {
   className?: string
 }
 
-// Minimalistic X (Twitter) icon
+// Official X (Twitter) logo SVG
 const IconX = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M4 4L20 20M20 4L4 20" />
+  <svg viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
   </svg>
 );
 
@@ -332,15 +324,18 @@ const TubelightNavBar = ({ items, className }: NavBarProps) => {
               {/* Let's connect section */}
               <div className="flex items-center justify-between mt-8 pt-4 px-4">
                 <span className="font-semibold text-base tracking-wide text-zinc-900 dark:text-white">Let's connect</span>
-                <div className="flex gap-x-4">
+                <div className="flex space-x-6">
                   <a
-                    href="https://www.linkedin.com/company/nucleasai/"
+                    href="https://linkedin.com/company/nucleasai"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                     className="text-zinc-800 dark:text-white hover:text-purple-500 transition"
                   >
-                    <Linkedin size={24} />
+                    <span className="sr-only">LinkedIn</span>
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
+                    </svg>
                   </a>
                   <a
                     href="https://twitter.com/nucleasai"
@@ -349,7 +344,8 @@ const TubelightNavBar = ({ items, className }: NavBarProps) => {
                     aria-label="X (Twitter)"
                     className="text-zinc-800 dark:text-white hover:text-purple-500 transition"
                   >
-                    <IconX width={24} height={24} />
+                    <span className="sr-only">X (Twitter)</span>
+                    <IconX className="h-5 w-5" />
                   </a>
                 </div>
               </div>
