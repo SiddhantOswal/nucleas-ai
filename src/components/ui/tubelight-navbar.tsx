@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Link as RouterLink, useLocation } from "react-router-dom"
-import { LucideIcon, Menu, X } from "lucide-react"
+import { LucideIcon, Menu, X, Linkedin } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 
@@ -17,6 +17,21 @@ interface NavBarProps {
   items: NavItem[]
   className?: string
 }
+
+// Minimalistic X (Twitter) icon
+const IconX = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M4 4L20 20M20 4L4 20" />
+  </svg>
+);
 
 const TubelightNavBar = ({ items, className }: NavBarProps) => {
   const [activeTab, setActiveTab] = useState(items[0].name)
@@ -314,6 +329,30 @@ const TubelightNavBar = ({ items, className }: NavBarProps) => {
                   )
                 })}
               </nav>
+              {/* Let's connect section */}
+              <div className="flex items-center justify-between mt-8 pt-4 px-4">
+                <span className="font-semibold text-base tracking-wide text-zinc-900 dark:text-white">Let's connect</span>
+                <div className="flex gap-x-4">
+                  <a
+                    href="https://www.linkedin.com/company/nucleasai/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="text-zinc-800 dark:text-white hover:text-purple-500 transition"
+                  >
+                    <Linkedin size={24} />
+                  </a>
+                  <a
+                    href="https://twitter.com/nucleasai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X (Twitter)"
+                    className="text-zinc-800 dark:text-white hover:text-purple-500 transition"
+                  >
+                    <IconX width={24} height={24} />
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
         )}
