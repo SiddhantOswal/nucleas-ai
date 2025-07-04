@@ -8,10 +8,11 @@ import ProductSection from "@/components/sections/product-section";
 import SolutionsSection from "@/components/sections/solutions-section";
 import AboutSection from "@/components/sections/about-section";
 import { motion } from "framer-motion";
-import { Home as HomeIcon, Package, Settings, User, Mail, MapPin } from "lucide-react";
+import { Home as HomeIcon, Package, Settings, User, Mail, MapPin, Linkedin, Users } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import React, { Suspense, useEffect, useRef, useState } from "react";
+import { IconX } from "@/components/ui/tubelight-navbar";
 
 const InteractiveDashboard = React.lazy(() => import("@/components/ui/interactive-dashboard").then(module => ({ default: module.InteractiveDashboard })));
 const FAQSection = React.lazy(() => import('@/components/ui/FAQSection'));
@@ -388,6 +389,28 @@ const Home = () => {
                       >
                         hello@nucleasai.com
                       </a>
+                    </div>
+                  </div>
+                  {/* Follow Us Block */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 shadow-lg">
+                      <Users className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-3">
+                        <span className="font-semibold text-gray-900 dark:text-white text-base">Follow us</span>
+                        <span className="sr-only">LinkedIn</span>
+                        <a href="#" aria-label="LinkedIn" className="w-5 h-5 text-zinc-800 dark:text-white hover:text-purple-500 transition flex items-center justify-center">
+                          <span className="sr-only">LinkedIn</span>
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                          </svg>
+                        </a>
+                        <a href="#" aria-label="X" className="w-5 h-5 text-zinc-800 dark:text-white hover:text-purple-500 transition flex items-center justify-center">
+                          <span className="sr-only">X</span>
+                          <IconX width={20} height={20} />
+                        </a>
+                      </div>
                     </div>
                   </div>
                   {/* Location Block */}

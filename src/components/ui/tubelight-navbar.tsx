@@ -358,3 +358,5 @@ const TubelightNavBar = ({ items, className }: NavBarProps) => {
 }
 
 export default React.memo(TubelightNavBar);
+
+export { IconX };
