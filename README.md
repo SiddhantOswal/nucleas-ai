@@ -45,6 +45,8 @@ npm install
 # Start the development server
 npm run dev
 
+
+NOTE:
 To build the project for production:
 npm run build
 
