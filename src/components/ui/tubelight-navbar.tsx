@@ -323,7 +323,7 @@ const TubelightNavBar = ({ items, className }: NavBarProps) => {
               </nav>
               {/* Let's connect section */}
               <div className="flex items-center justify-between mt-8 pt-4 px-4">
-                <span className="font-semibold text-base tracking-wide text-zinc-900 dark:text-white">Let's connect</span>
+                <span className="font-bold text-lg tracking-wide text-zinc-900 dark:text-white">Let's connect</span>
                 <div className="flex space-x-6">
                   <a
                     href="https://linkedin.com/company/nucleasai"
